@@ -52,9 +52,9 @@ class AppointmentSerializer(serializers.ModelSerializer):
         model = Appointment
         fields = [
             'id', 'user', 'patient_name', 'specialist', 'specialist_id', 'appointment_date',
-            'time_slot', 'status', 'meeting_link', 'notes', 'created_at'
+            'time_slot', 'status', 'meeting_link', 'is_link_shared', 'notes', 'created_at'
         ]
-        read_only_fields = ['id', 'user', 'patient_name', 'meeting_link', 'created_at']
+        read_only_fields = ['id', 'user', 'patient_name', 'created_at']
 
     def get_patient_name(self, obj):
         if obj.user:

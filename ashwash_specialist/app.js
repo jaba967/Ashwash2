@@ -1138,7 +1138,8 @@ async function handleSendMeetingLink(e) {
             },
             body: JSON.stringify({
                 meeting_link: meetingLink,
-                notes: sessionNotes
+                notes: sessionNotes,
+                is_link_shared: true
             })
         });
         const data = await res.json();
