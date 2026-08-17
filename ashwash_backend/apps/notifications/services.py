@@ -26,7 +26,7 @@ except ImportError:
 
 class NotificationManager:
     @staticmethod
-    def send_notification(receiver, title, body, notif_type='GENERAL', sender=None, related_object_id=None, related_object_type=None):
+    def send_notification(receiver, title, body, notif_type='GENERAL', sender=None, related_object_id=None, related_object_type=None, extra_data=None):
         """
         Creates a Notification record in the database and sends an FCM push notification to all active devices of the receiver.
         """
@@ -76,12 +76,22 @@ class NotificationManager:
                 title=title,
                 body=body,
             ),
-            data={
-                'notification_id': str(notification.id),
-                'type': notif_type,
-                'related_object_id': str(related_object_id) if related_object_id else '',
-                'related_object_type': related_object_type or '',
-            },
+        data_payload = {
+            'notification_id': str(notification.id),
+            'type': notif_type,
+            'related_object_id': str(related_object_id) if related_object_id else '',
+            'related_object_type': related_object_type or '',
+        }
+        if extra_data:
+            for k, v in extra_data.items():
+                data_payload[str(k)] = str(v)
+
+        message = messaging.MulticastMessage(
+            notification=messaging.Notification(
+                title=title,
+                body=body,
+            ),
+            data=data_payload,
             tokens=tokens,
         )
         
@@ -101,7 +111,7 @@ class NotificationManager:
 
 def send_notification(recipient=None, receiver=None, title=None, title_en=None, title_bn=None, 
                       body=None, message_en=None, message_bn=None, category='GENERAL', notif_type=None,
-                      sender=None, related_object_id=None, related_object_type=None):
+                      sender=None, related_object_id=None, related_object_type=None, extra_data=None):
     """
     Universal helper function compatible with all calling styles across the codebase.
     """
@@ -120,6 +130,7 @@ def send_notification(recipient=None, receiver=None, title=None, title_en=None, 
         notif_type=final_type,
         sender=sender,
         related_object_id=related_object_id,
-        related_object_type=related_object_type
+        related_object_type=related_object_type,
+        extra_data=extra_data
     )
 

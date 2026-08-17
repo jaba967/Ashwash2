@@ -112,7 +112,8 @@ class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
                     title_bn="মিটিং লিংক পাঠানো হয়েছে 🔗",
                     message_en=f"Join your session with {spec_name} using the provided video link.",
                     message_bn=f"{spec_name}-এর সাথে আপনার সেশনে যুক্ত হওয়ার ভিডিও লিংক দেওয়া হয়েছে।",
-                    category='APPOINTMENT'
+                    category='APPOINTMENT',
+                    extra_data={'meeting_link': appointment.meeting_link}
                 )
 
             # Notify patient when session is completed
