@@ -65,6 +65,16 @@ class FCMService {
         _handleNotificationClick(context, message);
       });
 
+      // Handle terminated state message clicks
+      RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+      if (initialMessage != null) {
+        print('App was launched from terminated state via a notification!');
+        // Delay slightly to ensure UI is ready before showing dialog
+        Future.delayed(const Duration(milliseconds: 500), () {
+          _handleNotificationClick(context, initialMessage);
+        });
+      }
+
     } else {
       print('User declined or has not accepted permission');
     }
