@@ -1,19 +1,25 @@
 from django.db import migrations, models
+from django.db import connection
 
 def add_is_link_shared_if_not_exists(apps, schema_editor):
-    Appointment = apps.get_model('appointments', 'Appointment')
-    db_table = Appointment._meta.db_table
+    table_name = 'appointments_appointment'
+    column_name = 'is_link_shared'
     
-    # Check if the column exists in the database
-    with schema_editor.connection.cursor() as cursor:
+    with connection.cursor() as cursor:
         try:
-            columns = [col[0] for col in schema_editor.connection.introspection.get_table_description(cursor, db_table)]
+            columns = [col[0] for col in connection.introspection.get_table_description(cursor, table_name)]
         except Exception:
-            return # Table might not exist yet if running tests or new db
+            return
             
-        if 'is_link_shared' not in columns:
-            field = Appointment._meta.get_field('is_link_shared')
-            schema_editor.add_field(Appointment, field)
+        if column_name not in columns:
+            try:
+                # SQLite workaround for boolean default
+                if connection.vendor == 'sqlite':
+                    cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN {column_name} bool DEFAULT 0 NOT NULL")
+                else:
+                    cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN {column_name} boolean DEFAULT False NOT NULL")
+            except Exception as e:
+                print(f"Ignoring error adding column: {e}")
 
 class Migration(migrations.Migration):
 
