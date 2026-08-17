@@ -16,6 +16,7 @@ class Appointment(models.Model):
     time_slot = models.CharField(max_length=50) # e.g. "10:00 AM - 11:00 AM"
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     meeting_link = models.URLField(blank=True, null=True)
+    is_link_shared = models.BooleanField(default=False)
     notes = models.TextField(blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
 
