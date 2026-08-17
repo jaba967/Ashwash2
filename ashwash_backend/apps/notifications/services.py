@@ -71,11 +71,6 @@ class NotificationManager:
 
         tokens = [device.fcm_token for device in devices]
         
-        message = messaging.MulticastMessage(
-            notification=messaging.Notification(
-                title=title,
-                body=body,
-            ),
         data_payload = {
             'notification_id': str(notification.id),
             'type': notif_type,
