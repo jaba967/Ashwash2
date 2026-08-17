@@ -372,7 +372,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         backgroundColor: primaryThemeColor,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                       ),
-                      onPressed: isLoading
+                      onPressed: (isLoading || _selectedTimeSlot == null)
                           ? null
                           : () async {
                               setModalState(() => isLoading = true);
@@ -392,13 +392,14 @@ class _BookingScreenState extends State<BookingScreen> {
                                   ? patientFullName
                                   : (currentUserPre?.username ?? 'Patient');
 
+                              int? createdAppointmentId;
+
                               try {
-                                await ApiService.post(ApiEndpoints.bookings, {
+                                final bookingRes = await ApiService.post(ApiEndpoints.bookings, {
                                   'specialist': widget.specialist.id,
                                   'specialist_id': widget.specialist.id,
                                   'specialist_name': widget.specialist.name,
                                   'appointment_date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
-                                  'date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
                                   'time_slot': _selectedTimeSlot,
                                   'status': 'pending',
                                   'notes': 'Booked with ${widget.specialist.name}',
@@ -407,7 +408,15 @@ class _BookingScreenState extends State<BookingScreen> {
                                   'patient_name': patientDisplayName,
                                   if (currentUserPre?.email != null) 'patient_email': currentUserPre!.email,
                                 }, requireAuth: true);
-                              } catch (_) {}
+                                
+                                if (bookingRes != null && bookingRes['id'] != null) {
+                                  createdAppointmentId = bookingRes['id'];
+                                }
+                              } catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to book session: $e')));
+                                setModalState(() => isLoading = false);
+                                return; // DO NOT PROCEED TO PAYMENT IF BOOKING FAILS
+                              }
 
                               try {
                                 const payEndpoint = 'payments/bkash/execute/';
@@ -423,6 +432,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                     if (patientIdForApi != null) 'patient': patientIdForApi,
                                     'patient_name': patientDisplayName,
                                     if (currentUserPre?.email != null) 'patient_email': currentUserPre!.email,
+                                    if (createdAppointmentId != null) 'appointment_id': createdAppointmentId,
                                   },
                                   requireAuth: true,
                                 );
