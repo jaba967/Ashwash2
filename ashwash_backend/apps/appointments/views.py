@@ -127,5 +127,17 @@ class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
                     category='APPOINTMENT'
                 )
                 
+            # Notify patient when session is declined/cancelled
+            if old_status != 'cancelled' and appointment.status == 'cancelled':
+                send_notification(
+                    recipient=appointment.user,
+                    sender=appointment.specialist.user if appointment.specialist else None,
+                    title_en="Session Declined ❌",
+                    title_bn="সেশন বাতিল করা হয়েছে ❌",
+                    message_en=f"Your session with {spec_name} has been declined. Please book another slot.",
+                    message_bn=f"{spec_name}-এর সাথে আপনার সেশনটি বাতিল করা হয়েছে। দয়া করে অন্য সময় বুক করুন।",
+                    category='APPOINTMENT'
+                )
+
         except Exception as e:
             print("Error in update appointment notification:", e)

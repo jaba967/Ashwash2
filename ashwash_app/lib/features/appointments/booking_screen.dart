@@ -400,7 +400,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   'appointment_date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
                                   'date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
                                   'time_slot': _selectedTimeSlot,
-                                  'status': 'confirmed',
+                                  'status': 'pending',
                                   'notes': 'Booked with ${widget.specialist.name}',
                                   if (patientIdForApi != null) 'patient': patientIdForApi,
                                   if (patientIdForApi != null) 'patient_id': patientIdForApi,

@@ -912,7 +912,10 @@ async function loadSpecialistDashboard() {
                     
                     if (b.status === 'pending') {
                         statusBadge = '<span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i> Pending</span>';
-                        actionButtons = `<button class="btn btn-sm btn-success rounded-3 px-2 py-1" onclick="confirmAppointment(${b.id})"><i class="fa-solid fa-check me-1"></i> Confirm Session</button>`;
+                        actionButtons = `
+                            <button class="btn btn-sm btn-success rounded-3 px-2 py-1 me-1" onclick="confirmAppointment(${b.id})"><i class="fa-solid fa-check me-1"></i> Confirm</button>
+                            <button class="btn btn-sm btn-danger rounded-3 px-2 py-1" onclick="declineAppointment(${b.id})"><i class="fa-solid fa-times me-1"></i> Decline</button>
+                        `;
                     } else if (b.status === 'confirmed') {
                         statusBadge = '<span class="badge bg-success"><i class="fa-solid fa-circle-check me-1"></i> Confirmed</span>';
                         if (!b.meeting_link) {
