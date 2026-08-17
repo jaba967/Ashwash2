@@ -28,11 +28,16 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(add_is_link_shared_if_not_exists, reverse_code=migrations.RunPython.noop, state_operations=[
-            migrations.AddField(
-                model_name='appointment',
-                name='is_link_shared',
-                field=models.BooleanField(default=False),
-            ),
-        ])
+        migrations.SeparateDatabaseAndState(
+            database_operations=[
+                migrations.RunPython(add_is_link_shared_if_not_exists, reverse_code=migrations.RunPython.noop),
+            ],
+            state_operations=[
+                migrations.AddField(
+                    model_name='appointment',
+                    name='is_link_shared',
+                    field=models.BooleanField(default=False),
+                ),
+            ]
+        )
     ]
