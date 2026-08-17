@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Admin Account & Profile - Ashwash Executive Admin</title>
+    <script>
+        if (!localStorage.getItem('admin_token')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom border-secondary border-opacity-25 bg-dark px-4 py-3 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold fs-5" href="index.html">
+                <span class="bg-primary rounded-3 p-2 me-2 d-inline-flex"><i class="fa-solid fa-user-shield text-white"></i></span>
+                Ashwash Executive Admin Portal
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <a href="index.html" class="btn btn-outline-light btn-sm rounded-3"><i class="fa-solid fa-arrow-left me-1"></i> Back to Dashboard</a>
+                <button class="btn btn-outline-danger btn-sm rounded-3" onclick="logoutAdmin()"><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5" style="max-width: 900px;">
+        <div class="row g-4">
+            <!-- Left Side: Profile Summary Card -->
+            <div class="col-md-4">
+                <div class="card-custom p-4 text-center h-100">
+                    <div class="brand-badge mb-3"><i class="fa-solid fa-user-gear text-white"></i></div>
+                    <h5 class="fw-bold text-white mb-1" id="displayUsername">Admin User</h5>
+                    <p class="text-secondary small mb-3" id="displayEmail">admin@ashwash.com</p>
+                    <span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill mb-4"><i class="fa-solid fa-shield-halved me-1"></i> Superuser Administrator</span>
+                    
+                    <hr class="border-secondary border-opacity-25 my-3">
+
+                    <div class="text-start small">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-secondary">Account Status:</span>
+                            <span class="text-success fw-bold"><i class="fa-solid fa-circle-check me-1"></i> Active</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Role:</span>
+                            <span class="text-white fw-semibold">Executive Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Edit Details Forms -->
+            <div class="col-md-8">
+                <div id="profileAlertBox" class="alert d-none border-0 rounded-3 py-3 px-4 mb-4 small"></div>
+
+                <!-- Form 1: Username & Email Settings -->
+                <div class="card-custom p-4 mb-4">
+                    <h5 class="fw-bold text-white mb-3"><i class="fa-solid fa-user-pen me-2 text-primary"></i> Profile Information</h5>
+                    <form id="profileInfoForm">
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Admin Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary"><i class="fa-solid fa-user"></i></span>
+                                <input type="text" id="profileUsername" class="form-control text-white" required placeholder="admin">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-secondary small fw-semibold">Admin Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary"><i class="fa-solid fa-envelope"></i></span>
+                                <input type="email" id="profileEmail" class="form-control text-white" required placeholder="admin@ashwash.com">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary rounded-3 px-4 py-2 fw-semibold"><i class="fa-solid fa-floppy-disk me-2"></i> Update Profile Info</button>
+                    </form>
+                </div>
+
+                <!-- Form 2: Change Password & Previous Password Verification -->
+                <div class="card-custom p-4">
+                    <h5 class="fw-bold text-white mb-3"><i class="fa-solid fa-lock me-2 text-warning"></i> Change Password & Security</h5>
+                    <form id="changePasswordForm">
+                        <!-- Previous Password Verification -->
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">Current / Previous Password <span class="text-danger">* (Required for verification)</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary"><i class="fa-solid fa-key"></i></span>
+                                <input type="password" id="currentPassword" class="form-control text-white" required placeholder="Enter current password">
+                                <button class="btn btn-outline-secondary border-opacity-25" type="button" onclick="togglePasswordVisibility('currentPassword', 'eyeIconCurrent')">
+                                    <i class="fa-solid fa-eye text-secondary" id="eyeIconCurrent"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- New Password -->
+                        <div class="mb-3">
+                            <label class="form-label text-secondary small fw-semibold">New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary"><i class="fa-solid fa-lock"></i></span>
+                                <input type="password" id="newPassword" class="form-control text-white" required placeholder="••••••••">
+                                <button class="btn btn-outline-secondary border-opacity-25" type="button" onclick="togglePasswordVisibility('newPassword', 'eyeIconNew')">
+                                    <i class="fa-solid fa-eye text-secondary" id="eyeIconNew"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Confirm New Password -->
+                        <div class="mb-4">
+                            <label class="form-label text-secondary small fw-semibold">Confirm New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary"><i class="fa-solid fa-check-double"></i></span>
+                                <input type="password" id="confirmPassword" class="form-control text-white" required placeholder="••••••••">
+                                <button class="btn btn-outline-secondary border-opacity-25" type="button" onclick="togglePasswordVisibility('confirmPassword', 'eyeIconConfirm')">
+                                    <i class="fa-solid fa-eye text-secondary" id="eyeIconConfirm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning rounded-3 px-4 py-2 fw-semibold"><i class="fa-solid fa-shield-halved me-2"></i> Update Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAdminProfile();
+            
+            const infoForm = document.getElementById('profileInfoForm');
+            if (infoForm) {
+                infoForm.addEventListener('submit', handleProfileInfoSubmit);
+            }
+            
+            const passForm = document.getElementById('changePasswordForm');
+            if (passForm) {
+                passForm.addEventListener('submit', handleChangePasswordSubmit);
+            }
+        });
+
+        // Hide / Reveal Password Toggle
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498385268612",
+    "project_id": "ashwash-b0441",
+    "storage_bucket": "ashwash-b0441.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498385268612:android:3393f73b9a46a439a5f7d1",
+        "android_client_info": {
+          "package_name": "com.example.ashwash_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb0jwn1mvMw06wjSnoThBp_qVQQqgvLF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

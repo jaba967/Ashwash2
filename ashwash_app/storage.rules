@@ -1,0 +1,33 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Public Read access for app media assets
+    match /knowledge_hub/{allPaths=**} {
+      allow read: if true;
+      allow write: if false; // Admin upload
+    }
+
+    match /course_thumbnails/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /app_assets/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // User Avatar Uploads
+    match /user_avatars/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Community Post Media Uploads
+    match /community_media/{allPaths=**} {
+      allow read: if true;
+      allow create: if request.auth != null;
+    }
+  }
+}

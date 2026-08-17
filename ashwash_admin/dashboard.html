@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwash Executive Admin Web App</title>
+    <script>
+        if (!localStorage.getItem('admin_token')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom border-secondary border-opacity-25 bg-dark px-4 py-3 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold fs-5" href="#">
+                <span class="bg-primary rounded-3 p-2 me-2 d-inline-flex"><i class="fa-solid fa-user-shield text-white"></i></span>
+                Ashwash Executive Admin Portal
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary btn-sm rounded-circle position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false" onclick="loadNotifications()">
+                        <i class="fa-regular fa-bell text-light"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="notificationBadge">
+                            0
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow" aria-labelledby="notificationDropdown" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                        <li>
+                            <div class="d-flex justify-content-between align-items-center px-3 py-2">
+                                <h6 class="dropdown-header p-0 m-0">Notifications</h6>
+                                <button class="btn btn-link btn-sm text-primary p-0 text-decoration-none" onclick="markAllNotificationsRead(); event.stopPropagation();">Mark all read</button>
+                            </div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <div id="notificationsList">
+                            <li><a class="dropdown-item text-muted text-center py-3" href="#">Loading...</a></li>
+                        </div>
+                    </ul>
+                </div>
+                <a href="https://ashwash-backend.onrender.com/admin/" target="_blank" class="btn btn-outline-warning btn-sm rounded-3"><i class="fa-solid fa-database me-1"></i> Django Core Admin</a>
+                <a href="profile.html" class="btn btn-outline-info btn-sm rounded-3"><i class="fa-solid fa-user-gear me-1"></i> Manage Account</a>
+                <button class="btn btn-outline-danger btn-sm rounded-3" onclick="logoutAdmin()"><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <!-- KPI Metrics Row (Clickable Cards) -->
+        <div class="row g-3 mb-4">
+            <div class="col-md">
+                <div class="stat-card d-flex align-items-center justify-content-between" onclick="openPatientsModal()" title="Click to view Patients Directory">
+                    <div>
+                        <div class="text-secondary small fw-semibold">Total Patients</div>
+                        <div class="fs-3 fw-bold text-white" id="statPatients">0</div>
+                    </div>
+                    <div class="stat-icon bg-primary bg-opacity-25 text-primary"><i class="fa-solid fa-users"></i></div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="stat-card d-flex align-items-center justify-content-between" onclick="openSpecialistsModal()" title="Click to view Specialists Directory">
+                    <div>
+                        <div class="text-secondary small fw-semibold">Specialists</div>
+                        <div class="fs-3 fw-bold text-white" id="statSpecialists">0</div>
+                    </div>
+                    <div class="stat-icon bg-success bg-opacity-25 text-success"><i class="fa-solid fa-user-doctor"></i></div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="stat-card d-flex align-items-center justify-content-between" onclick="openCoursesModal()" title="Click to view Course Approval Requests">
+                    <div>
+                        <div class="text-secondary small fw-semibold">Courses</div>
+                        <div class="fs-3 fw-bold text-white" id="statCourses">0</div>
+                    </div>
+                    <div class="stat-icon bg-info bg-opacity-25 text-info"><i class="fa-solid fa-book-open"></i></div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="stat-card d-flex align-items-center justify-content-between" onclick="openKnowledgeHubModal()" title="Click to view Knowledge Hub Resources">
+                    <div>
+                        <div class="text-secondary small fw-semibold">Knowledge Hub</div>
+                        <div class="fs-3 fw-bold text-warning" id="statKnowledgeHub">0</div>
+                    </div>
+                    <div class="stat-icon bg-warning bg-opacity-25 text-warning"><i class="fa-solid fa-book-bookmark"></i></div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="stat-card d-flex align-items-center justify-content-between" onclick="openPaymentsModal()" title="Click to view Payment Transactions">
+                    <div>
+                        <div class="text-secondary small fw-semibold">Total Revenue</div>
+                        <div class="fs-3 fw-bold text-success" id="statRevenue">৳0</div>
+                    </div>
+                    <div class="stat-icon bg-success bg-opacity-25 text-success"><i class="fa-solid fa-money-bill-wave"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Tabs -->
+        <ul class="nav nav-tabs mb-4 border-secondary" id="adminTabs">
+            <li class="nav-item">
+                <button class="nav-link text-light active fw-bold" data-bs-toggle="tab" data-bs-target="#specialists-tab"><i class="fa-solid fa-user-doctor me-2"></i> Specialist Verification</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link text-light fw-bold" data-bs-toggle="tab" data-bs-target="#users-tab"><i class="fa-solid fa-user-gear me-2"></i> User Access Control</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link text-light fw-bold" data-bs-toggle="tab" data-bs-target="#courses-admin-tab">
+                    <i class="fa-solid fa-book-open-reader me-2 text-warning"></i> Course Approval Requests <span class="badge bg-danger rounded-pill ms-1" id="badgePendingCourses">0</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link text-light fw-bold" data-bs-toggle="tab" data-bs-target="#knowledge-hub-tab">
+                    <i class="fa-solid fa-book-bookmark me-2 text-info"></i> Knowledge Hub Resources
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link text-light fw-bold" data-bs-toggle="tab" data-bs-target="#payments-admin-tab">
+                    <i class="fa-solid fa-wallet me-2 text-success"></i> bKash Payments
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link text-light fw-bold" data-bs-toggle="tab" data-bs-target="#community-reports-tab" onclick="loadCommunityReports()">
+                    <i class="fa-solid fa-flag me-2 text-danger"></i> Community Reports
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- TAB 1: SPECIALISTS -->
+            <div class="tab-pane fade show active" id="specialists-tab">
+                <div class="card-custom p-4">
+                    <h5 class="fw-bold text-white mb-3">Specialist Verification & Medical Licenses</h5>
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Doctor Name</th>
+                                    <th>Specialization</th>
+                                    <th>Qualification</th>
+                                    <th>License No.</th>
+                                    <th>Verification</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="specialistsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: USERS -->
+            <div class="tab-pane fade" id="users-tab">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-white mb-0">Registered Platform Users</h5>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-outline-primary active" onclick="filterUserTable('ALL')">All Users</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterUserTable('PATIENT')">Patients Only</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="filterUserTable('SPECIALIST')">Specialists Only</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: COURSE APPROVAL REQUESTS & GOVERNANCE -->
+            <div class="tab-pane fade" id="courses-admin-tab">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-book-open-reader me-2 text-warning"></i> Course Approval Requests & Governance</h5>
+                            <p class="text-secondary small mb-0">Review courses submitted by specialists. Once approved, the course will be published to the main database and visible to patients.</p>
+                        </div>
+                        <div class="btn-group btn-group-sm" role="group" id="adminCourseFilterGroup">
+                            <button type="button" class="btn btn-outline-warning active" onclick="filterAdminCourses(event, 'PENDING')"><i class="fa-solid fa-clock me-1"></i> Pending Approval Requests</button>
+                            <button type="button" class="btn btn-outline-success" onclick="filterAdminCourses(event, 'APPROVED')"><i class="fa-solid fa-circle-check me-1"></i> Approved & Live</button>
+                            <button type="button" class="btn btn-outline-light" onclick="filterAdminCourses(event, 'ALL')">All Courses</button>
+                        </div>
+                    </div>
+
+                    <div class="row g-3" id="coursesAdminContainer"></div>
+                </div>
+            </div>
+
+            <!-- TAB 4: KNOWLEDGE HUB RESOURCES -->
+            <div class="tab-pane fade" id="knowledge-hub-tab">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                        <div>
+                            <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-book-bookmark me-2 text-info"></i> Knowledge Hub Resources Management</h5>
+                            <p class="text-secondary small mb-0">Upload Audio (.mp3), Video (.mp4), and PDF (.pdf) documents from your device directly to the patient app.</p>
+                        </div>
+                        <button class="btn btn-primary rounded-3 fw-bold" onclick="openUploadResourceModal()"><i class="fa-solid fa-cloud-arrow-up me-2"></i> Upload New Resource (Audio/Video/PDF)</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Title (Bangla / English)</th>
+                                    <th>Duration</th>
+                                    <th>Access Tier</th>
+                                    <th>Media / File Link</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="knowledgeHubTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: BKASH PAYMENTS -->
+            <div class="tab-pane fade" id="payments-admin-tab">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-wallet me-2 text-success"></i> bKash Payment Transactions</h5>
+                            <p class="text-secondary small mb-0">Live audit log of all patient payments, course purchases, and consultation fees.</p>
+                        </div>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-outline-success active" onclick="filterPayments('ALL')">bKash Gateways</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Gateway</th>
+                                    <th>Transaction ID (TrxID)</th>
+                                    <th>Purpose</th>
+                                    <th>Amount (BDT)</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: COMMUNITY REPORTS -->
+            <div class="tab-pane fade" id="community-reports-tab">
+                <div class="card-custom p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-flag me-2 text-danger"></i> Community Reports</h5>
+                            <p class="text-secondary small mb-0">Manage flagged and reported posts from the community forum.</p>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm rounded-3" onclick="loadCommunityReports()"><i class="fa-solid fa-arrows-rotate me-1"></i> Refresh</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Reported Post</th>
+                                    <th>Post Author</th>
+                                    <th>Reported By</th>
+                                    <th>Reason</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1: Dedicated Patients Directory -->
+    <div class="modal fade" id="patientsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-primary"><i class="fa-solid fa-users me-2"></i> Registered Patients Directory</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Patient Username</th>
+                                    <th>Email Address</th>
+                                    <th>Account Role</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patientsModalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Dedicated Specialists Directory -->
+    <div class="modal fade" id="specialistsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-success"><i class="fa-solid fa-user-doctor me-2"></i> Specialists & Doctor Verification Hub</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Doctor Name</th>
+                                    <th>Specialization</th>
+                                    <th>Qualification</th>
+                                    <th>License No.</th>
+                                    <th>Verification</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="specialistsModalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Dedicated Course Approval Requests & Published Directory -->
+    <div class="modal fade" id="coursesModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-warning"><i class="fa-solid fa-book-open-reader me-2"></i> Course Approval Requests & Published Directory</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-secondary mb-0">Review pending specialist requests and live platform courses</h6>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-outline-warning active" onclick="filterModalCourses('PENDING')">Pending Requests</button>
+                            <button type="button" class="btn btn-outline-success" onclick="filterModalCourses('APPROVED')">Approved & Live</button>
+                            <button type="button" class="btn btn-outline-light" onclick="filterModalCourses('ALL')">All</button>
+                        </div>
+                    </div>
+                    <div class="row g-3" id="coursesModalContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Dedicated Payments Audit Popup -->
+    <div class="modal fade" id="paymentsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-success"><i class="fa-solid fa-wallet me-2"></i> bKash & Nagad Payment Audit Hub</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="table-responsive">
+                        <table class="table table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Patient Username</th>
+                                    <th>Gateway</th>
+                                    <th>TrxID</th>
+                                    <th>Purpose</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsModalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Upload Knowledge Hub Resource -->
+    <div class="modal fade" id="uploadResourceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-info"><i class="fa-solid fa-cloud-arrow-up me-2"></i> Upload Knowledge Hub Resource (Audio / Video / PDF)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="uploadResourceForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Title in English</label>
+                                <input type="text" id="resTitleEn" required class="form-control bg-secondary bg-opacity-25 text-white border-secondary" placeholder="e.g. Deep Meditation & Relaxation Track">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Title in Bangla (বাংলা শিরোনাম)</label>
+                                <input type="text" id="resTitleBn" required class="form-control bg-secondary bg-opacity-25 text-white border-secondary" placeholder="যেমন: প্রসূতি পরবর্তী ডিপ্রেশন গাইডলাইন (PDF)">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Resource Format / Type</label>
+                                <select id="resType" class="form-select bg-secondary bg-opacity-25 text-white border-secondary">
+                                    <option value="audio">🎵 Audio Track (.mp3)</option>
+                                    <option value="video">🎥 Video Stream (.mp4)</option>
+                                    <option value="pdf">📄 PDF Book / Document (.pdf)</option>
+                                    <option value="article">📰 Article & Link</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Access Tier (Free vs Paid)</label>
+                                <select id="resPremium" class="form-select bg-secondary bg-opacity-25 text-white border-secondary">
+                                    <option value="false">Free Access (সকলের জন্য ফ্রি)</option>
+                                    <option value="true">Paid / Premium (৳50)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-secondary small fw-semibold">Upload File from Device (Audio .mp3, Video .mp4, Document .pdf)</label>
+                                <input type="file" id="resFile" accept="audio/*,video/*,application/pdf" class="form-control bg-secondary bg-opacity-25 text-white border-secondary">
+                                <div class="form-text text-secondary small">Select an .mp3, .mp4, or .pdf file directly from your computer or phone.</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-secondary small fw-semibold">OR Media URL / Cloud Link (Optional if file uploaded)</label>
+                                <input type="url" id="resUrl" class="form-control bg-secondary bg-opacity-25 text-white border-secondary" placeholder="https://res.cloudinary.com/...">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Summary in Bangla (সংক্ষিপ্ত বর্ণনা)</label>
+                                <textarea id="resSummaryBn" rows="2" class="form-control bg-secondary bg-opacity-25 text-white border-secondary" placeholder="যেমন: মানসিক চাপ ও উদ্বেগ কমানোর ১০ মিনিটের অডিও..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-semibold">Summary in English</label>
+                                <textarea id="resSummaryEn" rows="2" class="form-control bg-secondary bg-opacity-25 text-white border-secondary" placeholder="Brief summary of the audio, video, or PDF booklet..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label text-secondary small fw-semibold">Duration (Minutes)</label>
+                                <input type="number" id="resDuration" value="10" min="1" class="form-control bg-secondary bg-opacity-25 text-white border-secondary">
+                            </div>
+                        </div>
+                        <div id="uploadAlert" class="alert alert-danger mt-3 d-none"></div>
+                        <div class="mt-4 text-end">
+                            <button type="button" class="btn btn-secondary me-2 rounded-3" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" id="uploadSubmitBtn" class="btn btn-info rounded-3 px-4 fw-bold text-white"><i class="fa-solid fa-cloud-arrow-up me-2"></i> Upload to Knowledge Hub</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+    <script src="app.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+name: ashwash_app
+description: "Ashwash (আশ্বাস) - AI-Assisted Mental Wellness App"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.2
+  google_fonts: ^6.1.0
+  shared_preferences: ^2.2.2
+  http: ^1.2.0
+  url_launcher: ^6.2.4
+  file_picker: ^8.0.0
+  pdf: ^3.10.8
+  printing: ^5.13.0
+
+  # Firebase & Auth Packages
+  google_sign_in: ^6.2.1
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.5.1
+  cloud_firestore: ^5.6.5
+  firebase_storage: ^12.4.4
+  firebase_messaging: ^15.2.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/images/logo.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
+    - assets/images/google_g_logo.jpg
+    - assets/images/knowledge_hub_icon.jpg
+    - assets/images/mind_games_icon.jpg
+    - assets/images/specialist_consult_icon.jpg
+    - assets/images/courses_browse_icon.jpg
+    - assets/images/breathing_exercise_icon.jpg
+    - assets/images/memory_match_icon.jpg
+    - assets/images/mood_match_icon.jpg
