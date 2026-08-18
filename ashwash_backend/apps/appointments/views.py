@@ -104,15 +104,17 @@ class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
                 )
 
             # Notify patient when meeting link is sent
-            if not old_meeting_link and appointment.meeting_link:
+            if appointment.meeting_link and (not old_meeting_link or old_meeting_link != appointment.meeting_link):
                 send_notification(
                     recipient=appointment.user,
                     sender=appointment.specialist.user if appointment.specialist else None,
                     title_en="Meeting Link Sent 🔗",
                     title_bn="মিটিং লিংক পাঠানো হয়েছে 🔗",
-                    message_en=f"Join your session with {spec_name} using the provided video link.",
-                    message_bn=f"{spec_name}-এর সাথে আপনার সেশনে যুক্ত হওয়ার ভিডিও লিংক দেওয়া হয়েছে।",
+                    message_en=f"Join your session with {spec_name}: {appointment.meeting_link}",
+                    message_bn=f"{spec_name}-এর সাথে সেশনের ভিডিও লিংক: {appointment.meeting_link}",
                     category='APPOINTMENT',
+                    related_object_id=appointment.meeting_link,
+                    related_object_type='MEETING_LINK',
                     extra_data={'meeting_link': appointment.meeting_link}
                 )
 
