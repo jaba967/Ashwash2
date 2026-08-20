@@ -32,7 +32,6 @@ INSTALLED_APPS = [
 
     # Local Apps
     'apps.authentication',
-    'apps.mood_tracker',
     'apps.assessment',
     'apps.knowledge_hub',
     'apps.courses',

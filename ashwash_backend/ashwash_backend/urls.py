@@ -22,7 +22,6 @@ urlpatterns = [
     path('firebase-messaging-sw.js', TemplateView.as_view(template_name="firebase-messaging-sw.js", content_type='application/javascript')),
 
     path('api/auth/', include('apps.authentication.urls')),
-    path('api/mood/', include('apps.mood_tracker.urls')),
     path('api/assessment/', include('apps.assessment.urls')),
     path('api/knowledge/', include('apps.knowledge_hub.urls')),
     path('api/courses/', include('apps.courses.urls')),

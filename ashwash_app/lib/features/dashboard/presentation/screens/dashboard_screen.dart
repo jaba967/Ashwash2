@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/providers/dashboard_provider.dart';
 import '../../../../core/providers/language_provider.dart';
-import '../widgets/mood_selector_widget.dart';
 import '../widgets/quick_actions_grid.dart';
 import '../widgets/my_courses_list.dart';
 import '../../../profile/my_enrolled_courses_screen.dart';
@@ -116,10 +115,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 8),
-
-                    // 1. Mood Tracker Sentiment Card
-                    const MoodSelectorWidget(),
-                    const SizedBox(height: 24),
 
                     // 2. Quick Actions 2x2 Grid
                     QuickActionsGrid(

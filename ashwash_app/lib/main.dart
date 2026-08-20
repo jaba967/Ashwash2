@@ -8,7 +8,6 @@ import 'core/providers/auth_provider.dart';
 import 'core/providers/dashboard_provider.dart';
 import 'core/providers/course_provider.dart';
 import 'core/providers/knowledge_hub_provider.dart';
-import 'core/providers/mood_progress_provider.dart';
 import 'core/providers/notification_provider.dart';
 import 'core/providers/specialist_provider.dart';
 import 'core/services/auth_service.dart';
@@ -48,7 +47,6 @@ class AshwashApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DashboardProvider()),
         ChangeNotifierProvider(create: (_) => CourseProvider()),
         ChangeNotifierProvider(create: (_) => KnowledgeHubProvider()),
-        ChangeNotifierProvider(create: (_) => MoodProgressProvider()),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
         ChangeNotifierProvider(create: (_) => SpecialistProvider()),
         Provider(create: (_) => AuthService()),

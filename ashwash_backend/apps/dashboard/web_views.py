@@ -115,34 +115,27 @@ def specialist_portal_view(request):
     return render(request, 'specialist/specialist_portal.html', context)
 
 def admin_login_view(request):
-    if request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser or request.user.role == 'ADMIN'):
+    if request.user.is_authenticated and request.user.username == 'admin':
         return redirect('admin_portal')
+    
     error = None
     if request.method == 'POST':
         u = request.POST.get('username', '').strip()
         p = request.POST.get('password', '').strip()
+        
         user = authenticate(request, username=u, password=p)
-        if not user:
-            user = User.objects.filter(email__iexact=u).first()
-            if user and user.check_password(p):
-                pass
-            else:
-                user = None
-
-        if user:
-            if user.is_staff or user.is_superuser or user.role == 'ADMIN':
-                login(request, user)
-                return redirect('admin_portal')
-            else:
-                error = 'Access Denied: Administrator privileges required.'
+        
+        if user and user.username == 'admin':
+            login(request, user)
+            return redirect('admin_portal')
         else:
-            error = 'Invalid admin credentials.'
-
+            error = 'Access Denied: Invalid admin credentials.'
+            
     return render(request, 'admin/admin_login.html', {'error': error})
 
 @login_required(login_url='admin_login')
 def admin_portal_view(request):
-    if not (request.user.is_staff or request.user.is_superuser or request.user.role == 'ADMIN'):
+    if request.user.username != 'admin':
         return redirect('admin_login')
 
     total_patients = User.objects.filter(role='PATIENT').count() or User.objects.filter(is_staff=False).count()

@@ -7,7 +7,6 @@ from apps.courses.models import Course, Lesson, Assignment, UserCourseProgress, 
 from apps.appointments.models import Appointment
 from apps.community.models import Post, Comment, Like, Report
 from apps.knowledge_hub.models import Resource
-from apps.mood_tracker.models import MoodLog
 from apps.authentication.models import SpecialistProfile
 from apps.payments.models import PaymentTransaction
 from .services import NotificationManager
@@ -587,18 +586,4 @@ def notify_payment_transaction(sender, instance, created, **kwargs):
     except Exception as e:
         logger.error(f"Error in notify_payment_transaction signal: {e}")
 
-# MOOD TRACKER NOTIFICATIONS
-@receiver(post_save, sender=MoodLog)
-def notify_mood_log(sender, instance, created, **kwargs):
-    try:
-        if created and instance.user:
-            NotificationManager.send_notification(
-                receiver=instance.user,
-                title="Mood Tracker Updated 🌟",
-                body=f"You logged your mood as '{instance.mood}'. Keep building your daily wellness habit!",
-                notif_type="GENERAL",
-                related_object_id=instance.id,
-                related_object_type="MoodLog"
-            )
-    except Exception as e:
-        logger.error(f"Error in notify_mood_log signal: {e}")
+
