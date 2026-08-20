@@ -2,7 +2,6 @@ from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from apps.courses.models import UserCourseProgress, Course
-from apps.mood_tracker.models import MoodLog
 from apps.appointments.models import Appointment
 
 class DashboardSummaryView(APIView):
@@ -46,8 +45,6 @@ class DashboardSummaryView(APIView):
                     'progress_percentage': c.progress_percentage
                 })
 
-        latest_mood = MoodLog.objects.filter(user=user).first() if user else None
-
         quote = {
             'quote_en': "Every step forward is progress. Keep going!",
             'quote_bn': "প্রতিটি পদক্ষেপই অগ্রগতি। এগিয়ে যান!"
@@ -71,7 +68,6 @@ class DashboardSummaryView(APIView):
                 'sessions_attended': sessions,
                 'tasks_completed': tasks,
             },
-            'latest_mood': latest_mood.mood if latest_mood else 'happy',
             'course_progress_percentage': overall_course_progress,
             'enrolled_courses': enrolled_courses_data,
             'upcoming_appointments_count': 0,
