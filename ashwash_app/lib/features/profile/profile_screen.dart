@@ -307,21 +307,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             _buildMenuItemCard(
               context,
-              title: isBn ? 'নোটিফিকেশন কেন্দ্র' : 'Notifications Center',
-              icon: Icons.notifications_none_rounded,
-              iconColor: Colors.orange,
-              isDark: isDark,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const NotificationScreen()),
-                );
-              },
-            ),
-            const SizedBox(height: 12),
-
-            _buildMenuItemCard(
-              context,
               title: isBn ? 'সেটিংস (অ্যাকাউন্ট পরিচালনা)' : 'Settings & Account',
               icon: Icons.settings_outlined,
               iconColor: const Color(0xFF64748B),
@@ -345,22 +330,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(isBn ? 'সাপোর্ট টিম শীঘ্রই আপনার সাথে যোগাযোগ করবে' : 'Support team will contact you shortly'),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 12),
-
-            _buildMenuItemCard(
-              context,
-              title: isBn ? 'গোপনীয়তা নীতি' : 'Privacy Policy',
-              icon: Icons.lock_outline_rounded,
-              iconColor: const Color(0xFF8B5CF6),
-              isDark: isDark,
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(isBn ? 'আশ্বাস প্ল্যাটফর্ম অত্যন্ত সুরক্ষিত' : 'Ashwash platform is end-to-end encrypted'),
                   ),
                 );
               },
