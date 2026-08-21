@@ -36,7 +36,7 @@ class AppColors {
 
   // Surface & Input Colors
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF1F2937);
-  static const Color emergency = Color(0xFFDC2626);
-  static const Color inputBgLight = Color(0xFFF3F4F6);
+  static const Color surfaceDark = Color(0xFF1E293B); // Slate 800
+  static const Color emergency = Color(0xFFEF4444);
+  static const Color inputBgLight = Color(0xFFF1F5F9); // Slate 100
 }

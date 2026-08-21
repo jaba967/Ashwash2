@@ -79,7 +79,7 @@ try:
     DATABASES = {
         'default': dj_database_url.config(
             default='mysql://root:@127.0.0.1:3306/ashwash_db',
-            conn_max_age=600,
+            conn_max_age=0,
             conn_health_checks=True,
         )
     }
