@@ -221,14 +221,17 @@ class SecretBackupView(APIView):
     permission_classes = [permissions.AllowAny]
     def get(self, request):
         from django.core.management import call_command
-        from io import StringIO
-        import json
-        from django.http import HttpResponse
-        out = StringIO()
+        import os
+        import subprocess
+        from django.http import FileResponse, HttpResponse
+        
+        filepath = '/tmp/backup.json'
         try:
-            call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], stdout=out)
-            response = HttpResponse(out.getvalue(), content_type='application/json')
-            response['Content-Disposition'] = 'attachment; filename=backup.json'
+            from django.core.management import call_command
+            call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], output=filepath)
+            
+            response = FileResponse(open(filepath, 'rb'), content_type='application/json')
+            response['Content-Disposition'] = 'attachment; filename="backup.json"'
             return response
         except Exception as e:
             import traceback
