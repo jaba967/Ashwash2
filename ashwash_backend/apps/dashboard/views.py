@@ -225,7 +225,11 @@ class SecretBackupView(APIView):
         import json
         from django.http import HttpResponse
         out = StringIO()
-        call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], stdout=out)
-        response = HttpResponse(out.getvalue(), content_type='application/json')
-        response['Content-Disposition'] = 'attachment; filename=backup.json'
-        return response
+        try:
+            call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], stdout=out)
+            response = HttpResponse(out.getvalue(), content_type='application/json')
+            response['Content-Disposition'] = 'attachment; filename=backup.json'
+            return response
+        except Exception as e:
+            import traceback
+            return HttpResponse(f"ERROR: {str(e)}\n\n{traceback.format_exc()}", status=500, content_type='text/plain')
