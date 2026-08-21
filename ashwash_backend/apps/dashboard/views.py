@@ -75,9 +75,7 @@ class DashboardSummaryView(APIView):
             'community_notifications_count': 0,
             'DEBUG_DB_URL': __import__('os').environ.get('DATABASE_URL', 'NOT_SET'),
             'daily_quote': quote
-        }
-        
-        return Response(data, status=status.HTTP_200_OK)
+        }, status=status.HTTP_200_OK)
 
 
 from django.utils import timezone
