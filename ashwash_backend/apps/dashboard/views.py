@@ -51,6 +51,7 @@ class DashboardSummaryView(APIView):
         }
 
         return Response({
+            'DEBUG_DB_URL': __import__('os').environ.get('DATABASE_URL', 'NOT_SET'),
             'user_name': user_name,
             'user_email': user_email,
             'category': user_category,
