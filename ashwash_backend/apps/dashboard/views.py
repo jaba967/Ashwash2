@@ -220,19 +220,21 @@ class PatientHealthReportDataView(APIView):
 class SecretBackupView(APIView):
     permission_classes = [permissions.AllowAny]
     def get(self, request):
-        from django.core.management import call_command
-        import os
-        import subprocess
-        from django.http import FileResponse, HttpResponse
+        from django.core import serializers
+        from django.apps import apps
+        from django.http import HttpResponse
+        import json
         
-        filepath = '/tmp/backup.json'
-        try:
-            from django.core.management import call_command
-            call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], output=filepath)
-            
-            response = FileResponse(open(filepath, 'rb'), content_type='application/json')
-            response['Content-Disposition'] = 'attachment; filename="backup.json"'
-            return response
-        except Exception as e:
-            import traceback
-            return HttpResponse(f"ERROR: {str(e)}\n\n{traceback.format_exc()}", status=500, content_type='text/plain')
+        data = []
+        for model in apps.get_models():
+            if model.__name__ in ['LogEntry', 'Permission', 'ContentType', 'Session']:
+                continue
+            try:
+                serialized = serializers.serialize('json', model.objects.all())
+                data.extend(json.loads(serialized))
+            except Exception as e:
+                pass
+                
+        response = HttpResponse(json.dumps(data), content_type='application/json')
+        response['Content-Disposition'] = 'attachment; filename="backup.json"'
+        return response
