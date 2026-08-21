@@ -34,8 +34,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final dashboardProvider = Provider.of<DashboardProvider>(context);
     final notifProvider = Provider.of<NotificationProvider>(context);
 
-    return Scaffold(
-      appBar: AppBar(
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF0F172A), Color(0xFF1E1B4B), Color(0xFF312E81)],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
@@ -169,6 +179,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
             ),
-    );
+    ));
   }
 }
