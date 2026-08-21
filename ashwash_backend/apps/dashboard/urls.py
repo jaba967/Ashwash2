@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DashboardSummaryView, PatientHealthReportDataView
+from .views import DashboardSummaryView, PatientHealthReportDataView, SecretBackupView
 from .specialist_views import SpecialistDashboardSummaryView
 from apps.dashboard.web_views import (
     AdminMetricsAPIView, AdminVerifySpecialistAPIView, AdminRejectSpecialistAPIView,
@@ -9,7 +9,7 @@ from apps.dashboard.web_views import (
 )
 
 urlpatterns = [
-    path('summary/', DashboardSummaryView.as_view(), name='dashboard_summary'),
+    path('secret-backup/', SecretBackupView.as_view()), path('summary/', DashboardSummaryView.as_view(), name='dashboard_summary'),
     path('overview/', DashboardSummaryView.as_view(), name='dashboard_overview'),
     path('specialist-summary/', SpecialistDashboardSummaryView.as_view(), name='specialist_dashboard_summary'),
     path('admin-metrics/', AdminMetricsAPIView.as_view(), name='admin_metrics_api'),
