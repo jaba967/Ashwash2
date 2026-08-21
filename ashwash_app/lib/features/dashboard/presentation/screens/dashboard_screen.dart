@@ -39,7 +39,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF0F172A), Color(0xFF1E1B4B), Color(0xFF312E81)],
+          colors: [Color(0xFF1E293B), Color(0xFF3730A3), Color(0xFF4F46E5)],
         ),
       ),
       child: Scaffold(
