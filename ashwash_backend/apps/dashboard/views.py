@@ -71,8 +71,12 @@ class DashboardSummaryView(APIView):
             'course_progress_percentage': overall_course_progress,
             'enrolled_courses': enrolled_courses_data,
             'upcoming_appointments_count': 0,
+            'community_notifications_count': 0,
+            'DEBUG_DB_URL': __import__('os').environ.get('DATABASE_URL', 'NOT_SET'),
             'daily_quote': quote
-        })
+        }
+        
+        return Response(data, status=status.HTTP_200_OK)
 
 
 from django.utils import timezone
