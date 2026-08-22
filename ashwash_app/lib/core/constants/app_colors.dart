@@ -8,9 +8,9 @@ class AppColors {
   static const Color warning = Color(0xFFF97316);
 
   static const Color bgLight = Color(0xFFF8FAFC); // Slate 50
-  static const Color bgDark = Color(0xFF0F172A); // Slate 900
+  static const Color bgDark = Color(0xFF1E293B); // Slate 800 (Lighter background)
   static const Color cardLight = Color(0xFFFFFFFF);
-  static const Color cardDark = Color(0xFF1E293B); // Slate 800
+  static const Color cardDark = Color(0xFF334155); // Slate 700 (Lighter cards)
 
   static const Color darkBackground = bgDark;
   static const Color darkSurface = cardDark;
@@ -36,7 +36,7 @@ class AppColors {
 
   // Surface & Input Colors
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF1E293B); // Slate 800
+  static const Color surfaceDark = Color(0xFF334155); // Slate 700
   static const Color emergency = Color(0xFFEF4444);
   static const Color inputBgLight = Color(0xFFF1F5F9); // Slate 100
 }
