@@ -5,7 +5,7 @@ import '../../core/constants/app_typography.dart';
 import '../../core/localization/app_language_provider.dart';
 import '../../core/services/api_service.dart';
 import '../../data/models/category_model.dart';
-import '../dashboard/main_navigation_screen.dart';
+import '../navigation/presentation/screens/main_navigation_screen.dart';
 
 class CategorySelectionScreen extends StatefulWidget {
   const CategorySelectionScreen({Key? key}) : super(key: key);
