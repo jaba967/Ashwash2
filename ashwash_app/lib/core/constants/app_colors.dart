@@ -23,10 +23,10 @@ class AppColors {
   static const Color darkBackground = bgDark;
   static const Color darkSurface = cardDark;
 
-  static const Color textPrimaryLight = Color(0xFF1F1F2E);
-  static const Color textSecondaryLight = Colors.white70;
-  static const Color textPrimaryDark = Color(0xFF1F1F2E); 
-  static const Color textSecondaryDark = Colors.white70;
+  static const Color textPrimaryLight = Colors.black;
+  static const Color textSecondaryLight = Colors.white;
+  static const Color textPrimaryDark = Colors.black; 
+  static const Color textSecondaryDark = Colors.white;
 
   static const Color categoryPink = deepPurple;
   static const Color categoryPurple = primaryPurple;
@@ -43,5 +43,5 @@ class AppColors {
   static const Color surfaceLight = glassSurface;
   static const Color surfaceDark = glassSurface; 
   static const Color emergency = Color(0xFFEF4444);
-  static const Color inputBgLight = deepPurple; // Use deep purple for input backgrounds
+  static const Color inputBgLight = deepPurple;
 }

@@ -567,17 +567,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const SizedBox(height: 20),
 
-          // APPEARANCE
-          _buildSectionHeader(isBn ? 'অ্যাপিয়ারেন্স' : 'APPEARANCE'),
-          SwitchListTile(
-            secondary: const Icon(Icons.wb_sunny_outlined, color: AppColors.primary),
-            title: Text(isBn ? 'ডার্ক মোড' : 'Dark Mode'),
-            subtitle: Text(themeProvider.isDarkMode ? 'Dark mode active' : 'Light mode active'),
-            activeColor: AppColors.primary,
-            value: themeProvider.isDarkMode,
-            onChanged: (val) => themeProvider.toggleTheme(val),
-          ),
-          const SizedBox(height: 20),
+          
 
           // LANGUAGE
           _buildSectionHeader(isBn ? 'ভাষা' : 'LANGUAGE'),

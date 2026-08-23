@@ -386,7 +386,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
       decoration: BoxDecoration(
         color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+        border: Border.all(color: AppColors.textSecondaryLight),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.02),
@@ -442,7 +442,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     const SizedBox(height: 2),
                     Text(
                       _formatCreatedAt(post['created_at']),
-                      style: TextStyle(fontSize: 11, color: isDark ? Colors.grey.shade400 : Colors.grey.shade500),
+                      style: TextStyle(fontSize: 11, color: AppColors.textSecondaryLight),
                     ),
                   ],
                 ),
@@ -516,7 +516,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       (authUser != null && !isAnon && post['author_alias'] == '${authUser.firstName} ${authUser.lastName}'.trim());
 
                   return PopupMenuButton<String>(
-                    icon: Icon(Icons.more_vert_rounded, size: 20, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                    icon: Icon(Icons.more_vert_rounded, size: 20, color: AppColors.textSecondaryLight),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     onSelected: (val) {
                       final pId = post['id'] is int ? post['id'] : (int.tryParse(post['id'].toString()) ?? 0);
@@ -607,7 +607,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -826,7 +826,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -1014,7 +1014,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),

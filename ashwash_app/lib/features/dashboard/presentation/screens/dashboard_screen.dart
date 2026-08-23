@@ -73,7 +73,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             icon: Stack(
               clipBehavior: Clip.none,
               children: [
-                const Icon(Icons.notifications_none_rounded, size: 28, color: AppColors.primary),
+                Icon(Icons.notifications_none_rounded, size: 28, color: AppColors.textPrimaryLight),
                 if (notifProvider.unreadCount > 0)
                   Positioned(
                     right: -2,
