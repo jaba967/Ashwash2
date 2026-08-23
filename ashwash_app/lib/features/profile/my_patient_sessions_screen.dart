@@ -43,7 +43,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
     }
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: AppColors.bgLight,
       appBar: AppBar(
         backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
         elevation: 0,

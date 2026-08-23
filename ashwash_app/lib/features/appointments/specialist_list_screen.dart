@@ -163,7 +163,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: AppColors.bgLight,
       appBar: AppBar(
         title: Text(isBn ? 'বিশেষজ্ঞ সেশন বুকিং' : 'Book Specialist Session', style: const TextStyle(fontWeight: FontWeight.bold)),
         elevation: 0,

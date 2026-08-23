@@ -258,7 +258,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: AppColors.bgLight,
       appBar: AppBar(
         backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
         elevation: 0,

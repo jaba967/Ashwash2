@@ -35,13 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final notifProvider = Provider.of<NotificationProvider>(context);
 
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF1E293B), Color(0xFF3730A3), Color(0xFF4F46E5)],
-        ),
-      ),
+      color: AppColors.bgLight, // Teal #008080
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
