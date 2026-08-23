@@ -7,11 +7,10 @@ class AppColors {
   static const Color success = Color(0xFF10B981);
   static const Color warning = Color(0xFFF97316);
 
-  static const Color teal = Color(0xFF008080); // Teal #008080 (0,128,128)
-  static const Color bgLight = Color(0xFF008080); // Teal #008080
-  static const Color bgDark = Color(0xFF008080); // Teal #008080
+  static const Color bgLight = Color(0xFFF8FAFC); // Slate 50
+  static const Color bgDark = Color(0xFF1E293B); // Slate 800 (Lighter background)
   static const Color cardLight = Color(0xFFFFFFFF);
-  static const Color cardDark = Color(0xFF006666); // Darker Teal for card surface
+  static const Color cardDark = Color(0xFF334155); // Slate 700 (Lighter cards)
 
   static const Color darkBackground = bgDark;
   static const Color darkSurface = cardDark;

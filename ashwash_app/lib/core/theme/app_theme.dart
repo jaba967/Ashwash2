@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
 class AppThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   ThemeMode get themeMode => _themeMode;
   bool get isDarkMode => _themeMode == ThemeMode.dark;
@@ -27,8 +27,7 @@ class AppThemeProvider extends ChangeNotifier {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.bgLight,
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.white),
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      iconTheme: IconThemeData(color: AppColors.textPrimaryLight),
     ),
     cardTheme: CardThemeData(
       color: AppColors.cardLight,
@@ -52,8 +51,7 @@ class AppThemeProvider extends ChangeNotifier {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.bgDark,
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.white),
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      iconTheme: IconThemeData(color: AppColors.textPrimaryDark),
     ),
     cardTheme: CardThemeData(
       color: AppColors.cardDark,
