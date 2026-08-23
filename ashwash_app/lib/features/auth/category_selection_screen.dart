@@ -150,7 +150,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.transparent,
                     foregroundColor: cat.color,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),

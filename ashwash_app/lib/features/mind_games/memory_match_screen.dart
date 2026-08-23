@@ -210,7 +210,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAFAFA),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey.shade200),
               ),
@@ -399,7 +399,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
       label: Text(label),
       selected: isSelected,
       selectedColor: AppColors.primary,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       labelStyle: TextStyle(
         color: isSelected ? Colors.white : Colors.black87,
         fontWeight: FontWeight.bold,
@@ -420,7 +420,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: color.withOpacity(0.3)),
       ),

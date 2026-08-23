@@ -1,42 +1,47 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFFA855F7); // Purple from Web
-  static const Color secondary = Color(0xFF6366F1); // Indigo from Web
+  static const Color primaryPurple = Color(0xFFB388FF);
+  static const Color deepPurple = Color(0xFF7C4DFF);
+  static const Color lavenderBlue = Color(0xFFA18FFF);
+  static const Color mintGreen = Color(0xFFB7F1E3);
+
+  static const Color primary = primaryPurple; 
+  static const Color secondary = lavenderBlue; 
   static const Color danger = Color(0xFFEF4444);
-  static const Color success = Color(0xFF10B981);
+  static const Color success = mintGreen;
   static const Color warning = Color(0xFFF97316);
 
-  static const Color bgLight = Color(0xFFF8FAFC); // Slate 50
-  static const Color bgDark = Color(0xFF1E293B); // Slate 800 (Lighter background)
-  static const Color cardLight = Color(0xFFFFFFFF);
-  static const Color cardDark = Color(0xFF334155); // Slate 700 (Lighter cards)
+  static const Color glassSurface = Color(0x26FFFFFF); 
+  static const Color glassBorder = Color(0x40FFFFFF); 
+  
+  static const Color bgLight = Colors.transparent; 
+  static const Color bgDark = Colors.transparent; 
+  static const Color cardLight = glassSurface;
+  static const Color cardDark = glassSurface;
 
   static const Color darkBackground = bgDark;
   static const Color darkSurface = cardDark;
 
-  static const Color textPrimaryLight = Color(0xFF111827);
-  static const Color textSecondaryLight = Color(0xFF6B7280);
-  static const Color textPrimaryDark = Color(0xFFF9FAFB);
-  static const Color textSecondaryDark = Color(0xFF9CA3AF);
+  static const Color textPrimaryLight = Color(0xFF1F1F2E);
+  static const Color textSecondaryLight = Colors.white70;
+  static const Color textPrimaryDark = Color(0xFF1F1F2E); 
+  static const Color textSecondaryDark = Colors.white70;
 
-  // Category Theme Colors from Figma
-  static const Color categoryPink = Color(0xFFEC4899);
-  static const Color categoryPurple = Color(0xFF8B5CF6);
-  static const Color categoryBlue = Color(0xFF3B82F6);
-  static const Color categoryOrange = Color(0xFFF97316);
-  static const Color categoryTeal = Color(0xFF14B8A6);
+  static const Color categoryPink = deepPurple;
+  static const Color categoryPurple = primaryPurple;
+  static const Color categoryBlue = lavenderBlue;
+  static const Color categoryOrange = mintGreen;
+  static const Color categoryTeal = mintGreen;
 
-  // Category Aliases
   static const Color categoryMother = categoryPink;
   static const Color categorySingleParent = categoryPurple;
   static const Color categorySpecialChild = categoryBlue;
   static const Color categoryCorporate = categoryOrange;
   static const Color categoryStudent = categoryTeal;
 
-  // Surface & Input Colors
-  static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF334155); // Slate 700
+  static const Color surfaceLight = glassSurface;
+  static const Color surfaceDark = glassSurface; 
   static const Color emergency = Color(0xFFEF4444);
-  static const Color inputBgLight = Color(0xFFF1F5F9); // Slate 100
+  static const Color inputBgLight = deepPurple; // Use deep purple for input backgrounds
 }

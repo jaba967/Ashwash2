@@ -59,6 +59,22 @@ class AshwashApp extends StatelessWidget {
             themeMode: themeProvider.themeMode,
             theme: AppThemeProvider.lightTheme,
             darkTheme: AppThemeProvider.darkTheme,
+            builder: (context, child) {
+              return Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFFB388FF),
+                      Color(0xFFA18FFF),
+                      Color(0xFFB7F1E3),
+                    ],
+                  ),
+                ),
+                child: child,
+              );
+            },
             home: const SplashScreen(),
           );
         },

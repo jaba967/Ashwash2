@@ -128,7 +128,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
       barrierDismissible: false,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         title: Column(
           children: [
             Container(
@@ -158,7 +158,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAFAFA),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey.shade200),
               ),
@@ -265,7 +265,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.glassSurface,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: Colors.purple.shade100),
                     ),
@@ -283,7 +283,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.glassSurface,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: Colors.blue.shade100),
                     ),

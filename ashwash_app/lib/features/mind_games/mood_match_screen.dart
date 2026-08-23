@@ -179,7 +179,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAFAFA),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey.shade200),
               ),
@@ -279,7 +279,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.glassSurface,
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(color: Colors.amber.shade200),
                     ),

@@ -296,9 +296,9 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           isBn ? 'নতুন কোর্স ও কন্টেন্ট তৈরি' : 'Create Course & Upload Content',
@@ -382,7 +382,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
                   margin: const EdgeInsets.only(bottom: 8),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.darkSurface : Colors.white,
+                    color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                   ),
@@ -442,7 +442,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
       labelText: label,
       prefixIcon: Icon(icon, color: AppColors.primary),
       filled: true,
-      fillColor: isDark ? AppColors.darkSurface : Colors.white,
+      fillColor: AppColors.glassSurface,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),

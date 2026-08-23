@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final selectedAccount = await showModalBottomSheet<Map<String, String>>(
         context: context,
         isScrollControlled: true,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.transparent,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
@@ -232,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 110,
                   height: 110,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.glassSurface,
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
@@ -419,7 +419,7 @@ class OfficialGoogleLogo extends StatelessWidget {
       width: size,
       height: size,
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.glassSurface,
         shape: BoxShape.circle,
       ),
       padding: const EdgeInsets.all(2),

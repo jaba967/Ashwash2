@@ -245,7 +245,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF111111) : Colors.white,
+        color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
           color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,

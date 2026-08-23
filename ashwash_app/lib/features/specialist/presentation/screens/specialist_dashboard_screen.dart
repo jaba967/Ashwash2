@@ -34,7 +34,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
   void _showRatingModal(BuildContext context, SpecialistProfileModel profile, bool isBn, bool isDark) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+      backgroundColor: Colors.transparent,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
       builder: (ctx) => Padding(
         padding: const EdgeInsets.all(24.0),
@@ -83,9 +83,9 @@ class SpecialistDashboardScreen extends StatelessWidget {
     final activeCourses = specProvider.createdCourses;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Row(
@@ -365,7 +365,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 12),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.darkSurface : Colors.white,
+                    color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                   ),
@@ -513,7 +513,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkSurface : Colors.white,
+          color: AppColors.glassSurface,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
           boxShadow: [

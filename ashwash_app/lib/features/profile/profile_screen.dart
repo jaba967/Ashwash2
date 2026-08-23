@@ -116,9 +116,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         titleSpacing: 20,
@@ -386,7 +386,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSurface : Colors.white,
+        color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade100, width: 1.5),
         boxShadow: [
@@ -426,7 +426,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSurface : Colors.white,
+        color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade100, width: 1.5),
         boxShadow: [

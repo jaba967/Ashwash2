@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
 class AppThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.dark;
+  ThemeMode _themeMode = ThemeMode.light; 
 
   ThemeMode get themeMode => _themeMode;
   bool get isDarkMode => _themeMode == ThemeMode.dark;
@@ -16,47 +16,69 @@ class AppThemeProvider extends ChangeNotifier {
     useMaterial3: true,
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.bgLight,
-    cardColor: AppColors.cardLight,
+    scaffoldBackgroundColor: Colors.transparent, 
+    cardColor: AppColors.glassSurface,
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary,
       secondary: AppColors.secondary,
       error: AppColors.danger,
-      surface: AppColors.cardLight,
+      surface: Colors.transparent,
+      onSurface: AppColors.textPrimaryLight,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.bgLight,
+      backgroundColor: Colors.transparent,
       elevation: 0,
+      centerTitle: true,
       iconTheme: IconThemeData(color: AppColors.textPrimaryLight),
+      titleTextStyle: TextStyle(color: AppColors.textPrimaryLight, fontSize: 18, fontWeight: FontWeight.bold),
     ),
     cardTheme: CardThemeData(
-      color: AppColors.cardLight,
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.glassSurface,
+      elevation: 0, 
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(color: AppColors.glassBorder, width: 1),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.deepPurple, // Deep purple background for text boxes
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(24),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(24),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(24),
+        borderSide: const BorderSide(color: Colors.white, width: 1.5),
+      ),
+      labelStyle: const TextStyle(color: Colors.white70), // White text for deep purple box
+      hintStyle: const TextStyle(color: Colors.white70),
+      prefixIconColor: Colors.white70,
+      suffixIconColor: Colors.white70,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.deepPurple, // Deep purple buttons
+        foregroundColor: Colors.white, // White text on buttons
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30), 
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        textStyle: const TextStyle(fontWeight: FontWeight.bold),
+      ),
+    ),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(color: AppColors.textPrimaryLight),
+      bodyMedium: TextStyle(color: AppColors.textPrimaryLight),
+      titleLarge: TextStyle(color: AppColors.textPrimaryLight, fontWeight: FontWeight.bold),
+      titleMedium: TextStyle(color: AppColors.textPrimaryLight, fontWeight: FontWeight.bold),
     ),
   );
 
-  static ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.bgDark,
-    cardColor: AppColors.cardDark,
-    colorScheme: const ColorScheme.dark(
-      primary: AppColors.primary,
-      secondary: AppColors.secondary,
-      error: AppColors.danger,
-      surface: AppColors.cardDark,
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.bgDark,
-      elevation: 0,
-      iconTheme: IconThemeData(color: AppColors.textPrimaryDark),
-    ),
-    cardTheme: CardThemeData(
-      color: AppColors.cardDark,
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    ),
-  );
+  static ThemeData darkTheme = lightTheme; 
 }

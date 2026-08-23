@@ -279,7 +279,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                                               : (type == 'AUDIO'
                                                   ? Icons.headphones_rounded
                                                   : (isPdf ? Icons.picture_as_pdf_rounded : Icons.menu_book_rounded))),
-                                      color: Colors.white,
+                                      color: AppColors.glassSurface,
                                       size: 18,
                                     ),
                                     label: Text(
@@ -348,7 +348,7 @@ class KnowledgeHubScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAFAFA),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.grey.shade300),
               ),
@@ -483,7 +483,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             foregroundColor: const Color(0xFF6D28D9),
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -523,7 +523,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             foregroundColor: const Color(0xFF0369A1),
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -563,7 +563,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             foregroundColor: const Color(0xFF991B1B),
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -603,7 +603,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             foregroundColor: const Color(0xFF047857),
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

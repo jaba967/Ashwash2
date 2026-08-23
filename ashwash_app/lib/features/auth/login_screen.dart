@@ -263,7 +263,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 26,
                         height: 26,
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.glassSurface,
                           shape: BoxShape.circle,
                         ),
                         child: ClipRRect(

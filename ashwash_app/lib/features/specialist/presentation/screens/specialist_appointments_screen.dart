@@ -58,9 +58,9 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
     }).toList();
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           isBn ? 'অ্যাপয়েন্টমেন্ট ও ভিডিও সেশন' : 'Appointments & Video Sessions',
@@ -76,7 +76,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
           Container(
             height: 50,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-            color: isDark ? AppColors.darkSurface : Colors.white,
+            color: AppColors.glassSurface,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: tabs.length,
@@ -115,7 +115,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                         margin: const EdgeInsets.only(bottom: 16),
                         padding: const EdgeInsets.all(18),
                         decoration: BoxDecoration(
-                          color: isDark ? AppColors.darkSurface : Colors.white,
+                          color: AppColors.glassSurface,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                         ),

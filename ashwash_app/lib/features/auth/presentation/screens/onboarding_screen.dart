@@ -88,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final isBn = langProvider.isBangla;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Column(
           children: [

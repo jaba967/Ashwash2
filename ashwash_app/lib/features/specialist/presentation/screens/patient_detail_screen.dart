@@ -48,9 +48,9 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
     final p = widget.patient;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           p.name,
@@ -69,7 +69,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurface : Colors.white,
+                color: AppColors.glassSurface,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
               ),
@@ -209,7 +209,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               decoration: InputDecoration(
                 hintText: 'Write patient observation notes, coping strategies, or session homework instructions...',
                 filled: true,
-                fillColor: isDark ? AppColors.darkSurface : Colors.white,
+                fillColor: AppColors.glassSurface,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),

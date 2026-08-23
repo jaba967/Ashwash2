@@ -17,9 +17,9 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
     final courses = specProvider.createdCourses;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           isBn ? 'আমার কোর্সসমূহ ও কন্টেন্ট ম্যানেজমেন্ট' : 'My Courses & Content Management',
@@ -58,7 +58,7 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
                 return Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.darkSurface : Colors.white,
+                    color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                     boxShadow: [

@@ -356,7 +356,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 bottom: MediaQuery.of(context).viewInsets.bottom + 24,
               ),
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: AppColors.glassSurface,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
               ),
               child: Column(

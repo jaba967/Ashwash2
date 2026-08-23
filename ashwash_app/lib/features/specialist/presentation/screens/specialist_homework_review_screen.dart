@@ -15,7 +15,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+      backgroundColor: Colors.transparent,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -127,7 +127,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'Write feedback for patient (e.g. Excellent reflection on self-care habits!)...',
                       filled: true,
-                      fillColor: isDark ? AppColors.darkSurface : Colors.white,
+                      fillColor: AppColors.glassSurface,
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -182,9 +182,9 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
     final hwList = specProvider.pendingHomeworkSubmissions;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           isBn ? 'পেন্ডিং হোমওয়ার্ক পর্যালোচনা' : 'Pending Homework Reviews',
@@ -217,7 +217,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 16),
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.darkSurface : Colors.white,
+                    color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                   ),

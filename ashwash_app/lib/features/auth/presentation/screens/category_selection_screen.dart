@@ -112,7 +112,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                         ),
                       ],
                       border: isSelected
-                          ? Border.all(color: Colors.white, width: 3.5)
+                          ? Border.all(color: AppColors.glassSurface, width: 3.5)
                           : null,
                     ),
                     child: Material(

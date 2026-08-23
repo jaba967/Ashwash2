@@ -53,7 +53,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
 
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-      backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+      backgroundColor: Colors.transparent,
       contentPadding: const EdgeInsets.all(24),
       content: SingleChildScrollView(
         child: Column(
@@ -181,7 +181,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                         Container(
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColors.glassSurface,
                             border: Border.all(color: Colors.black26),
                             borderRadius: BorderRadius.circular(6),
                           ),

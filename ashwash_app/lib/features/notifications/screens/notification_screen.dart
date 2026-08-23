@@ -131,26 +131,26 @@ class _NotificationScreenState extends State<NotificationScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Colors.black : const Color(0xFFF8FAFC),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Text(
           'Notifications',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: Colors.white,
           ),
         ),
         elevation: 0,
-        backgroundColor: isDark ? Colors.black : Colors.white,
-        foregroundColor: isDark ? Colors.white : const Color(0xFF0F172A),
-        iconTheme: IconThemeData(color: isDark ? Colors.white : const Color(0xFF0F172A)),
+        backgroundColor: Colors.transparent,
+        foregroundColor: isDark ? Colors.white : const Colors.white,
+        iconTheme: IconThemeData(color: isDark ? Colors.white : const Colors.white),
         actions: [
           if (provider.notifications.isNotEmpty)
             PopupMenuButton<String>(
               icon: Icon(Icons.more_vert_rounded,
-                  color: isDark ? Colors.white : const Color(0xFF0F172A)),
-              color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                  color: isDark ? Colors.white : const Colors.white),
+              color: AppColors.glassSurface,
               onSelected: (val) {
                 if (val == 'read_all') {
                   provider.markAllAsRead();
@@ -166,7 +166,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       const Icon(Icons.done_all_rounded, size: 18, color: AppColors.primary),
                       const SizedBox(width: 8),
                       Text('Mark all as read',
-                          style: TextStyle(color: isDark ? Colors.white : const Color(0xFF0F172A))),
+                          style: TextStyle(color: isDark ? Colors.white : const Colors.white)),
                     ],
                   ),
                 ),
@@ -223,7 +223,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: Colors.white,
               ),
             ),
             const SizedBox(height: 8),
@@ -232,7 +232,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Colors.grey.shade400 : const Color(0xFF64748B),
+                color: isDark ? Colors.grey.shade400 : const Colors.white70,
                 height: 1.4,
               ),
             ),
@@ -315,8 +315,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: isDark
-                ? (isUnread ? const Color(0xFF1A1A1A) : const Color(0xFF111111))
-                : (isUnread ? Colors.white : const Color(0xFFF1F5F9)),
+                AppColors.glassSurface,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: isUnread
@@ -384,7 +383,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: isUnread ? FontWeight.bold : FontWeight.w600,
-                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -443,7 +442,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           fontSize: 13,
           color: isDark
               ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-              : (isUnread ? const Color(0xFF334155) : const Color(0xFF64748B)),
+              : (isUnread ? const Colors.white70 : const Colors.white70),
           height: 1.35,
         ),
       );
@@ -460,7 +459,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             fontSize: 13,
             color: isDark
                 ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-                : (isUnread ? const Color(0xFF334155) : const Color(0xFF64748B)),
+                : (isUnread ? const Colors.white70 : const Colors.white70),
             height: 1.35,
           ),
         ));
@@ -492,7 +491,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           fontSize: 13,
           color: isDark
               ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-              : (isUnread ? const Color(0xFF334155) : const Color(0xFF64748B)),
+              : (isUnread ? const Colors.white70 : const Colors.white70),
           height: 1.35,
         ),
       ));
@@ -708,12 +707,12 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF0F172A),
+                              color: Colors.white,
                             ),
                           ),
                           Text(
                             'Your homework has been reviewed',
-                            style: TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+                            style: TextStyle(fontSize: 12, color: Colors.white70),
                           ),
                         ],
                       ),
@@ -746,7 +745,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                                   const SizedBox(height: 12),
                                   Text(_error!,
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(color: Color(0xFF64748B))),
+                                      style: const TextStyle(color: Colors.white70)),
                                   const SizedBox(height: 16),
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
@@ -796,7 +795,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFFF8FAFC),
+            color: AppColors.glassSurface,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(color: const Color(0xFFE2E8F0)),
           ),
@@ -835,7 +834,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -861,7 +860,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                     feedback,
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF334155),
+                      color: Colors.white70,
                       height: 1.55,
                     ),
                   )
@@ -895,7 +894,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -931,7 +930,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                     style: TextStyle(
                       fontSize: 13,
                       color: aText.isNotEmpty
-                          ? const Color(0xFF334155)
+                          ? const Colors.white70
                           : const Color(0xFF94A3B8),
                       fontStyle:
                           aText.isEmpty ? FontStyle.italic : FontStyle.normal,
@@ -959,13 +958,13 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
           style: const TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF475569),
+            color: Colors.white70,
           ),
         ),
         Expanded(
           child: Text(
             value.isNotEmpty ? value : '—',
-            style: const TextStyle(fontSize: 13, color: Color(0xFF0F172A)),
+            style: const TextStyle(fontSize: 13, color: Colors.white),
           ),
         ),
       ],

@@ -163,7 +163,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Text(isBn ? 'বিশেষজ্ঞ সেশন বুকিং' : 'Book Specialist Session', style: const TextStyle(fontWeight: FontWeight.bold)),
         elevation: 0,
@@ -189,7 +189,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                       )
                     : null,
                 filled: true,
-                fillColor: isDark ? AppColors.darkSurface : Colors.white,
+                fillColor: AppColors.glassSurface,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade300),
@@ -267,7 +267,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
       margin: const EdgeInsets.only(bottom: 18),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSurface : Colors.white,
+        color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
         boxShadow: const [

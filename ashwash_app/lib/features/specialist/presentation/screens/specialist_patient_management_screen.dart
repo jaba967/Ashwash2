@@ -38,9 +38,9 @@ class _SpecialistPatientManagementScreenState extends State<SpecialistPatientMan
     }).toList();
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : const Color(0xFFFAFAFA),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           isBn ? 'রোগী ডিরেক্টরি ও হিস্ট্রি' : 'Patient Directory & Chart',
@@ -62,7 +62,7 @@ class _SpecialistPatientManagementScreenState extends State<SpecialistPatientMan
                 hintText: isBn ? 'রোগীর নাম বা ক্যাটাগরি দিয়ে খুঁজুন...' : 'Search patient by name or category...',
                 prefixIcon: const Icon(Icons.search_rounded, color: AppColors.primary),
                 filled: true,
-                fillColor: isDark ? AppColors.darkSurface : Colors.white,
+                fillColor: AppColors.glassSurface,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -89,7 +89,7 @@ class _SpecialistPatientManagementScreenState extends State<SpecialistPatientMan
                       return Container(
                         margin: const EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
-                          color: isDark ? AppColors.darkSurface : Colors.white,
+                          color: AppColors.glassSurface,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                         ),
