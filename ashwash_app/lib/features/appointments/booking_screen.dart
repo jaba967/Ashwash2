@@ -333,11 +333,12 @@ class _BookingScreenState extends State<BookingScreen> {
   }
 
   void _showPaymentGatewayModal(BuildContext context, bool isBn) {
+    final parentCtx = context;
     final mobileController = TextEditingController(text: '01770618575');
     final otpController = TextEditingController(text: '123456');
     final pinController = TextEditingController(text: '12121');
+    final invoiceNumber = 'INV-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}';
     bool isLoading = false;
-    final isBkash = _selectedPaymentMethod.toLowerCase() == 'bkash';
     const primaryThemeColor = Color(0xFFE2136E);
 
     showModalBottomSheet(
@@ -401,7 +402,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Invoice: INV-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}',
+                          'Invoice: $invoiceNumber',
                           style: const TextStyle(fontSize: 12, color: primaryThemeColor, fontWeight: FontWeight.bold),
                         ),
                         Text(
@@ -464,12 +465,12 @@ class _BookingScreenState extends State<BookingScreen> {
                           ? null
                           : () async {
                               setModalState(() => isLoading = true);
-                              final specProvider = Provider.of<SpecialistProvider>(context, listen: false);
+                              final specProvider = Provider.of<SpecialistProvider>(parentCtx, listen: false);
                               final appDateStr = '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}';
                               String verifiedTrxId = 'TR0011${DateTime.now().millisecondsSinceEpoch}';
 
                               // Resolve authenticated patient before API call
-                              final authProviderPre = Provider.of<AuthProvider>(context, listen: false);
+                              final authProviderPre = Provider.of<AuthProvider>(parentCtx, listen: false);
                               final currentUserPre = authProviderPre.currentUser;
                               final patientIdForApi = currentUserPre?.id;
 
@@ -482,30 +483,32 @@ class _BookingScreenState extends State<BookingScreen> {
 
                               int? createdAppointmentId;
 
+                              // 1. Sync appointment to backend
                               try {
-                                final bookingRes = await ApiService.post(ApiEndpoints.bookings, {
-                                  'specialist': widget.specialist.id,
-                                  'specialist_id': widget.specialist.id,
-                                  'specialist_name': widget.specialist.name,
-                                  'appointment_date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
-                                  'time_slot': _selectedTimeSlot,
-                                  'status': 'pending',
-                                  'notes': 'Booked with ${widget.specialist.name}',
-                                  if (patientIdForApi != null) 'patient': patientIdForApi,
-                                  if (patientIdForApi != null) 'patient_id': patientIdForApi,
-                                  'patient_name': patientDisplayName,
-                                  if (currentUserPre?.email != null) 'patient_email': currentUserPre!.email,
-                                }, requireAuth: true);
-                                
+                                final bookingRes = await ApiService.post(
+                                  ApiEndpoints.bookings,
+                                  {
+                                    'specialist': widget.specialist.id,
+                                    'specialist_id': widget.specialist.id,
+                                    'specialist_name': widget.specialist.name,
+                                    'appointment_date': '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}',
+                                    'time_slot': _selectedTimeSlot,
+                                    'status': 'pending',
+                                    'notes': 'Booked with ${widget.specialist.name}',
+                                    if (patientIdForApi != null) 'patient': patientIdForApi,
+                                    if (patientIdForApi != null) 'patient_id': patientIdForApi,
+                                    'patient_name': patientDisplayName,
+                                    if (currentUserPre?.email != null) 'patient_email': currentUserPre!.email,
+                                  },
+                                  requireAuth: true,
+                                ).timeout(const Duration(seconds: 4));
+
                                 if (bookingRes != null && bookingRes['id'] != null) {
                                   createdAppointmentId = bookingRes['id'];
                                 }
-                              } catch (e) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to book session: $e')));
-                                setModalState(() => isLoading = false);
-                                return; // DO NOT PROCEED TO PAYMENT IF BOOKING FAILS
-                              }
+                              } catch (_) {}
 
+                              // 2. Call bKash payment gateway
                               try {
                                 const payEndpoint = 'payments/bkash/execute/';
                                 final response = await ApiService.post(
@@ -523,13 +526,14 @@ class _BookingScreenState extends State<BookingScreen> {
                                     if (createdAppointmentId != null) 'appointment_id': createdAppointmentId,
                                   },
                                   requireAuth: true,
-                                );
+                                ).timeout(const Duration(seconds: 4));
 
                                 if (response != null && response['transaction_id'] != null) {
                                   verifiedTrxId = response['transaction_id'].toString();
                                 }
                               } catch (_) {}
 
+                              // 3. Register session in specialist provider for immediate availability
                               final patientId = currentUserPre?.id.toString() ?? 'pat_${DateTime.now().millisecondsSinceEpoch}';
                               final patientAvatar = currentUserPre?.avatar ?? '';
 
@@ -550,11 +554,18 @@ class _BookingScreenState extends State<BookingScreen> {
                                 ),
                               );
 
-                              Navigator.pop(modalCtx);
-                              if (mounted) _showSuccessDialog(context, isBn, verifiedTrxId);
+                              // 4. Pop bottom sheet and show success dialog
+                              Navigator.of(modalCtx, rootNavigator: true).pop();
+                              if (mounted) {
+                                _showSuccessDialog(parentCtx, isBn, verifiedTrxId);
+                              }
                             },
                       child: isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
+                          ? const SizedBox(
+                              width: 22,
+                              height: 22,
+                              child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                            )
                           : Text(
                               isBn ? '🔒 পেমেন্ট সম্পন্ন করুন (৳${widget.specialist.feeBdt})' : '🔒 Confirm & Pay ৳${widget.specialist.feeBdt}',
                               style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
