@@ -555,7 +555,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               );
 
                               // 4. Pop bottom sheet and show success dialog
-                              Navigator.of(modalCtx, rootNavigator: true).pop();
+                              Navigator.pop(modalCtx);
                               if (mounted) {
                                 _showSuccessDialog(parentCtx, isBn, verifiedTrxId);
                               }
