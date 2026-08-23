@@ -143,13 +143,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: isDark ? Colors.white : const Colors.white,
-        iconTheme: IconThemeData(color: isDark ? Colors.white : const Colors.white),
+        foregroundColor: isDark ? Colors.white : Colors.white,
+        iconTheme: IconThemeData(color: isDark ? Colors.white : Colors.white),
         actions: [
           if (provider.notifications.isNotEmpty)
             PopupMenuButton<String>(
               icon: Icon(Icons.more_vert_rounded,
-                  color: isDark ? Colors.white : const Colors.white),
+                  color: isDark ? Colors.white : Colors.white),
               color: AppColors.glassSurface,
               onSelected: (val) {
                 if (val == 'read_all') {
@@ -166,7 +166,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       const Icon(Icons.done_all_rounded, size: 18, color: AppColors.primary),
                       const SizedBox(width: 8),
                       Text('Mark all as read',
-                          style: TextStyle(color: isDark ? Colors.white : const Colors.white)),
+                          style: TextStyle(color: isDark ? Colors.white : Colors.white)),
                     ],
                   ),
                 ),
@@ -232,7 +232,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Colors.grey.shade400 : const Colors.white70,
+                color: isDark ? Colors.grey.shade400 : Colors.white70,
                 height: 1.4,
               ),
             ),
@@ -314,8 +314,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           margin: const EdgeInsets.only(bottom: 10),
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: isDark
-                AppColors.glassSurface,
+            color: AppColors.glassSurface,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: isUnread
@@ -442,7 +441,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           fontSize: 13,
           color: isDark
               ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-              : (isUnread ? const Colors.white70 : const Colors.white70),
+              : (isUnread ? Colors.white70 : Colors.white70),
           height: 1.35,
         ),
       );
@@ -459,7 +458,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             fontSize: 13,
             color: isDark
                 ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-                : (isUnread ? const Colors.white70 : const Colors.white70),
+                : (isUnread ? Colors.white70 : Colors.white70),
             height: 1.35,
           ),
         ));
@@ -491,7 +490,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           fontSize: 13,
           color: isDark
               ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
-              : (isUnread ? const Colors.white70 : const Colors.white70),
+              : (isUnread ? Colors.white70 : Colors.white70),
           height: 1.35,
         ),
       ));
@@ -930,7 +929,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                     style: TextStyle(
                       fontSize: 13,
                       color: aText.isNotEmpty
-                          ? const Colors.white70
+                          ? Colors.white70
                           : const Color(0xFF94A3B8),
                       fontStyle:
                           aText.isEmpty ? FontStyle.italic : FontStyle.normal,
