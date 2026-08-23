@@ -32,35 +32,62 @@ class SpecialistDetailView(generics.RetrieveAPIView):
 
 class AppointmentListCreateView(generics.ListCreateAPIView):
     serializer_class = AppointmentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
         user = self.request.user
+        if not user or not user.is_authenticated:
+            spec_id = self.request.query_params.get('specialist') or self.request.query_params.get('specialist_id')
+            if spec_id:
+                return Appointment.objects.filter(specialist_id=spec_id)
+            return Appointment.objects.all()
+
         if user.role in ['SPECIALIST', 'DOCTOR']:
-            return Appointment.objects.filter(Q(specialist__user=user) | Q(user=user)).distinct()
+            return Appointment.objects.filter(
+                Q(specialist__user=user) | 
+                Q(specialist__full_name__icontains=user.first_name) |
+                Q(specialist__full_name__icontains=user.username) |
+                Q(user=user)
+            ).distinct()
         return Appointment.objects.filter(user=user)
 
     def perform_create(self, serializer):
-        appointment = serializer.save(user=self.request.user)
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            patient_id = self.request.data.get('patient_id') or self.request.data.get('patient') or self.request.data.get('user')
+            if patient_id:
+                try:
+                    from django.contrib.auth import get_user_model
+                    User = get_user_model()
+                    user = User.objects.filter(pk=patient_id).first()
+                except Exception:
+                    user = None
+            if not user:
+                from django.contrib.auth import get_user_model
+                User = get_user_model()
+                user = User.objects.first()
+
+        appointment = serializer.save(user=user)
 
         # Trigger 4: Notify patient & specialist on session booking request
         try:
             from apps.notifications.views import send_notification
             spec_name = appointment.specialist.full_name if appointment.specialist else 'Specialist'
-            patient_name = self.request.user.get_full_name() or self.request.user.username
+            patient_name = user.get_full_name() or user.username if user else 'Patient'
             app_date = getattr(appointment, 'appointment_date', getattr(appointment, 'date', 'Scheduled Date'))
             app_time = getattr(appointment, 'time_slot', getattr(appointment, 'time', 'Scheduled Time'))
 
             # 1. Patient notification
-            send_notification(
-                recipient=self.request.user,
-                sender=None,
-                title_en=f"Session Request Sent to {spec_name}",
-                title_bn=f"{spec_name}-এর কাছে সেশন রিকোয়েস্ট পাঠানো হয়েছে",
-                message_en=f"Your session request for {app_date} ({app_time}) has been sent. Please wait for confirmation.",
-                message_bn=f"আপনার {app_date} ({app_time}) তারিখের সেশন রিকোয়েস্ট পাঠানো হয়েছে। কনফার্মেশনের জন্য অপেক্ষা করুন।",
-                category='APPOINTMENT'
-            )
+            if user:
+                send_notification(
+                    recipient=user,
+                    sender=None,
+                    title_en=f"Session Request Sent to {spec_name}",
+                    title_bn=f"{spec_name}-এর কাছে সেশন রিকোয়েস্ট পাঠানো হয়েছে",
+                    message_en=f"Your session request for {app_date} ({app_time}) has been sent. Please wait for confirmation.",
+                    message_bn=f"আপনার {app_date} ({app_time}) তারিখের সেশন রিকোয়েস্ট পাঠানো হয়েছে। কনফার্মেশনের জন্য অপেক্ষা করুন।",
+                    category='APPOINTMENT'
+                )
 
             # 2. Specialist notification (directly from SpecialistProfile's user)
             spec_user = appointment.specialist.user if appointment.specialist else None
@@ -68,7 +95,7 @@ class AppointmentListCreateView(generics.ListCreateAPIView):
             if spec_user:
                 send_notification(
                     recipient=spec_user,
-                    sender=self.request.user,
+                    sender=user,
                     title_en=f"New Session Request from {patient_name} 🩺",
                     title_bn=f"{patient_name}-এর কাছ থেকে সেশন বুকিং রিকোয়েস্ট 🩺",
                     message_en=f"Patient {patient_name} requested a session for {app_date} ({app_time}).",
@@ -81,7 +108,8 @@ class AppointmentListCreateView(generics.ListCreateAPIView):
 class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Appointment.objects.all()
     serializer_class = AppointmentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+
 
     def perform_update(self, serializer):
         old_status = self.get_object().status

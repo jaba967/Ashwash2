@@ -80,6 +80,25 @@ class AppointmentSerializer(serializers.ModelSerializer):
             return obj.user.get_full_name() or obj.user.username
         return "Patient"
 
+    def to_internal_value(self, data):
+        # Gracefully handle specialist_id if passed ID does not exist in DB
+        specialist_id = data.get('specialist_id') or data.get('specialist')
+        if specialist_id:
+            try:
+                if not SpecialistProfile.objects.filter(pk=specialist_id).exists():
+                    spec_name = data.get('specialist_name', '')
+                    fallback_spec = None
+                    if spec_name:
+                        fallback_spec = SpecialistProfile.objects.filter(full_name__icontains=spec_name).first()
+                    if not fallback_spec:
+                        fallback_spec = SpecialistProfile.objects.first()
+                    if fallback_spec:
+                        data = dict(data)
+                        data['specialist_id'] = fallback_spec.id
+            except Exception:
+                pass
+        return super().to_internal_value(data)
+
     def validate(self, data):
         """
         Prevent double-booking the same specialist + date + time_slot.

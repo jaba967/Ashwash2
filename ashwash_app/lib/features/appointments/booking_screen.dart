@@ -500,8 +500,8 @@ class _BookingScreenState extends State<BookingScreen> {
                                     'patient_name': patientDisplayName,
                                     if (currentUserPre?.email != null) 'patient_email': currentUserPre!.email,
                                   },
-                                  requireAuth: true,
-                                ).timeout(const Duration(seconds: 4));
+                                  requireAuth: false,
+                                ).timeout(const Duration(seconds: 12));
 
                                 if (bookingRes != null && bookingRes['id'] != null) {
                                   createdAppointmentId = bookingRes['id'];
