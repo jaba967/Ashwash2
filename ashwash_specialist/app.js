@@ -802,11 +802,59 @@ async function handleSendDoctorReply(e) {
     }
 }
 
+/**
+ * Returns an HTML badge string for the real-time timing status of a session.
+ * Only shows badges for 'pending' and 'confirmed' sessions.
+ * - '🟢 Live Now' if current time is within the slot window
+ * - '⏰ Expired' if slot has ended but session is not yet completed/cancelled
+ * - '' (empty) for upcoming sessions or completed/cancelled
+ */
+function getSlotTimingBadge(appointmentDateStr, timeSlot, status) {
+    if (!appointmentDateStr || !timeSlot) return '';
+    if (status === 'completed' || status === 'cancelled') return '';
+
+    try {
+        const dateParts = appointmentDateStr.split('-');
+        if (dateParts.length !== 3) return '';
+        const year = parseInt(dateParts[0]);
+        const month = parseInt(dateParts[1]) - 1;
+        const day = parseInt(dateParts[2]);
+
+        const slotParts = timeSlot.split(' - ');
+        if (slotParts.length !== 2) return '';
+
+        function parseTime(timeStr) {
+            const t = timeStr.trim().toUpperCase();
+            const isPm = t.includes('PM');
+            const clean = t.replace('AM', '').replace('PM', '').trim();
+            const [h, m] = clean.split(':').map(Number);
+            let hour = h;
+            if (isPm && hour !== 12) hour += 12;
+            if (!isPm && hour === 12) hour = 0;
+            return new Date(year, month, day, hour, m, 0);
+        }
+
+        const startDt = parseTime(slotParts[0]);
+        const endDt = parseTime(slotParts[1]);
+        const now = new Date();
+
+        if (now >= startDt && now < endDt) {
+            return '<span class="badge" style="background:rgba(16,185,129,0.2);color:#10b981;border:1px solid #10b981;font-size:10px;">🟢 Live Now</span>';
+        } else if (now >= endDt) {
+            return '<span class="badge" style="background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid #ef4444;font-size:10px;">⏰ Expired</span>';
+        }
+        return '';
+    } catch (_) {
+        return '';
+    }
+}
+
 async function loadSpecialistDashboard() {
     const token = localStorage.getItem('access_token');
     if (!token) {
         window.location.href = 'index.html';
         return;
+
     }
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
@@ -933,15 +981,19 @@ async function loadSpecialistDashboard() {
                         statusBadge = `<span class="badge bg-danger">${b.status}</span>`;
                     }
 
+                    // Real-time timing badge
+                    const timingBadge = getSlotTimingBadge(b.appointment_date, b.time_slot, b.status);
+
                     return `
                     <tr>
                         <td>#${b.id}</td>
                         <td class="fw-bold text-white">${b.patient_name || 'Patient'}</td>
                         <td>${b.appointment_date} <span class="badge rounded-pill ms-1" ${badgeBg}>${(b.method || 'bKash').toUpperCase()} ৳${b.amount || 1500}</span><br><small class="text-secondary">${b.time_slot || ''}</small></td>
-                        <td>${statusBadge}</td>
+                        <td>${statusBadge}${timingBadge ? '<br><span class="mt-1 d-inline-block">' + timingBadge + '</span>' : ''}</td>
                         <td>${actionButtons}</td>
                     </tr>
-                `;}).join('');
+                `}).join('');
+
             } else {
                 tbody.innerHTML = `
                     <tr>

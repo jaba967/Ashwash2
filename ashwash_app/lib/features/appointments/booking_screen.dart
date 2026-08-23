@@ -23,6 +23,10 @@ class _BookingScreenState extends State<BookingScreen> {
   String _selectedTimeSlot = '10:00 AM - 11:00 AM';
   String _selectedPaymentMethod = 'bKash';
 
+  // Real-time slot availability tracking
+  Set<String> _bookedSlots = {};
+  bool _isFetchingSlots = false;
+
   final List<String> _timeSlots = [
     '09:00 AM - 10:00 AM',
     '10:00 AM - 11:00 AM',
@@ -35,9 +39,51 @@ class _BookingScreenState extends State<BookingScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _fetchBookedSlots();
+  }
+
+  /// Fetches currently-booked (non-expired) slots for this specialist+date.
+  /// When a slot's time window has ended on the server side, it is NOT returned,
+  /// making it automatically available again for new patients.
+  Future<void> _fetchBookedSlots() async {
+    if (!mounted) return;
+    setState(() => _isFetchingSlots = true);
+
+    final dateStr =
+        '${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}-${_selectedDate.day.toString().padLeft(2, '0')}';
+
+    try {
+      final result = await ApiService.get(
+        'appointments/booked-slots/?specialist_id=${widget.specialist.id}&date=$dateStr',
+        requireAuth: false,
+      );
+      if (mounted && result != null && result['booked_slots'] is List) {
+        setState(() {
+          _bookedSlots = Set<String>.from(result['booked_slots'] as List);
+          // If selected slot is now booked, reset to first available
+          if (_bookedSlots.contains(_selectedTimeSlot)) {
+            final available = _timeSlots.firstWhere(
+              (s) => !_bookedSlots.contains(s),
+              orElse: () => _selectedTimeSlot,
+            );
+            _selectedTimeSlot = available;
+          }
+        });
+      }
+    } catch (_) {
+      // Silently fail — all slots remain selectable if API unreachable
+    } finally {
+      if (mounted) setState(() => _isFetchingSlots = false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isBn = Provider.of<AppLanguageProvider>(context).isBangla;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
 
     return Scaffold(
       appBar: AppBar(
@@ -113,6 +159,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 );
                 if (picked != null) {
                   setState(() => _selectedDate = picked);
+                  _fetchBookedSlots(); // Reload availability for new date
                 }
               },
               child: Container(
@@ -141,36 +188,77 @@ class _BookingScreenState extends State<BookingScreen> {
             const SizedBox(height: 24),
 
             // Time Slot Selection
-            Text(isBn ? 'সময় নির্বাচন করুন' : 'Select Time Slot', style: AppTypography.heading2(context)),
+            Row(
+              children: [
+                Text(isBn ? 'সময় নির্বাচন করুন' : 'Select Time Slot', style: AppTypography.heading2(context)),
+                if (_isFetchingSlots) ...[
+                  const SizedBox(width: 10),
+                  const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.primary),
+                  ),
+                ],
+              ],
+            ),
             const SizedBox(height: 12),
             Wrap(
               spacing: 10,
               runSpacing: 10,
               children: _timeSlots.map((slot) {
-                final isSelected = _selectedTimeSlot == slot;
-                return ChoiceChip(
-                  label: Text(slot),
-                  selected: isSelected,
-                  selectedColor: AppColors.primary,
-                  backgroundColor: isDark ? const Color(0xFF1E293B) : Colors.grey.shade100,
-                  side: BorderSide(
-                    color: isSelected
-                        ? AppColors.primary
-                        : (isDark ? Colors.grey.shade700 : Colors.grey.shade300),
+                final isBooked = _bookedSlots.contains(slot);
+                final isSelected = _selectedTimeSlot == slot && !isBooked;
+                return Opacity(
+                  opacity: isBooked ? 0.45 : 1.0,
+                  child: ChoiceChip(
+                    label: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          slot,
+                          style: TextStyle(
+                            color: isBooked
+                                ? Colors.grey
+                                : (isSelected ? Colors.white : (isDark ? Colors.white : Colors.black87)),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            decoration: isBooked ? TextDecoration.lineThrough : null,
+                          ),
+                        ),
+                        if (isBooked)
+                          Text(
+                            isBn ? 'বুকড' : 'Booked',
+                            style: const TextStyle(
+                              color: Colors.redAccent,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                      ],
+                    ),
+                    selected: isSelected,
+                    selectedColor: AppColors.primary,
+                    backgroundColor: isBooked
+                        ? (isDark ? const Color(0xFF1A1A2E) : Colors.grey.shade200)
+                        : (isDark ? const Color(0xFF1E293B) : Colors.grey.shade100),
+                    side: BorderSide(
+                      color: isBooked
+                          ? Colors.grey.shade500
+                          : (isSelected
+                              ? AppColors.primary
+                              : (isDark ? Colors.grey.shade700 : Colors.grey.shade300)),
+                    ),
+                    onSelected: isBooked
+                        ? null // Cannot select a booked slot
+                        : (selected) {
+                            setState(() => _selectedTimeSlot = slot);
+                          },
                   ),
-                  labelStyle: TextStyle(
-                    color: isSelected
-                        ? Colors.white
-                        : (isDark ? Colors.white : Colors.black87),
-                    fontWeight: FontWeight.bold,
-                  ),
-                  onSelected: (selected) {
-                    setState(() => _selectedTimeSlot = slot);
-                  },
                 );
               }).toList(),
             ),
             const SizedBox(height: 24),
+
 
             // Payment Method Selection
             Text(isBn ? 'পেমেন্ট পদ্ধতি' : 'Select Payment Method', style: AppTypography.heading2(context)),

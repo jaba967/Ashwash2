@@ -1,8 +1,11 @@
 from rest_framework import generics, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Appointment
-from .serializers import SpecialistSerializer, AppointmentSerializer
+from .serializers import SpecialistSerializer, AppointmentSerializer, parse_slot_end_datetime
 from apps.authentication.models import SpecialistProfile
 from django.db.models import Q
+from django.utils import timezone
 
 class SpecialistListView(generics.ListAPIView):
     serializer_class = SpecialistSerializer
@@ -144,3 +147,47 @@ class AppointmentDetailView(generics.RetrieveUpdateDestroyAPIView):
 
         except Exception as e:
             print("Error in update appointment notification:", e)
+
+
+class BookedSlotsView(APIView):
+    """
+    GET /api/appointments/booked-slots/?specialist_id=<id>&date=<YYYY-MM-DD>
+
+    Returns the list of time slots that are currently booked (active/upcoming)
+    for the given specialist on the given date.
+
+    KEY RULE: If a slot's end time has already passed, it is NOT included in
+    the response — meaning it automatically becomes available again for booking.
+    """
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request):
+        specialist_id = request.query_params.get('specialist_id')
+        date_str = request.query_params.get('date')
+
+        if not specialist_id or not date_str:
+            return Response({'booked_slots': []})
+
+        try:
+            import datetime
+            appointment_date = datetime.date.fromisoformat(date_str)
+        except (ValueError, TypeError):
+            return Response({'booked_slots': [], 'error': 'Invalid date format. Use YYYY-MM-DD.'})
+
+        # Fetch all non-cancelled bookings for this specialist+date
+        bookings = Appointment.objects.filter(
+            specialist_id=specialist_id,
+            appointment_date=appointment_date,
+        ).exclude(status='cancelled')
+
+        now = timezone.now()
+        active_booked_slots = []
+
+        for b in bookings:
+            slot_end = parse_slot_end_datetime(b.appointment_date, b.time_slot)
+            # Include only if slot window has NOT expired yet
+            if slot_end is None or slot_end > now:
+                if b.time_slot not in active_booked_slots:
+                    active_booked_slots.append(b.time_slot)
+
+        return Response({'booked_slots': active_booked_slots})

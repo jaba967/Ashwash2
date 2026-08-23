@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import Appointment
 from apps.authentication.models import SpecialistProfile
+from django.utils import timezone
+import datetime
+
 
 class SpecialistSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='full_name')
@@ -41,6 +44,22 @@ class SpecialistSerializer(serializers.ModelSerializer):
                 pass
         return ''
 
+
+def parse_slot_end_datetime(appointment_date, time_slot):
+    """
+    Parse a time_slot string like '10:00 AM - 11:00 AM' and combine with
+    appointment_date to return a timezone-aware datetime for the slot END time.
+    Returns None if parsing fails.
+    """
+    try:
+        end_str = time_slot.split(' - ')[-1].strip()  # e.g. "11:00 AM"
+        end_time = datetime.datetime.strptime(end_str, '%I:%M %p').time()
+        slot_end = datetime.datetime.combine(appointment_date, end_time)
+        return timezone.make_aware(slot_end, timezone.get_current_timezone())
+    except Exception:
+        return None
+
+
 class AppointmentSerializer(serializers.ModelSerializer):
     specialist = SpecialistSerializer(read_only=True)
     specialist_id = serializers.PrimaryKeyRelatedField(
@@ -60,3 +79,38 @@ class AppointmentSerializer(serializers.ModelSerializer):
         if obj.user:
             return obj.user.get_full_name() or obj.user.username
         return "Patient"
+
+    def validate(self, data):
+        """
+        Prevent double-booking the same specialist + date + time_slot.
+        Key rule: if the slot's end time has already passed, the conflict is
+        ignored — the slot becomes available again for new patients automatically.
+        """
+        specialist = data.get('specialist')
+        appointment_date = data.get('appointment_date')
+        time_slot = data.get('time_slot')
+
+        if not (specialist and appointment_date and time_slot):
+            return data
+
+        # Fetch conflicting appointments (same specialist, date, slot, not cancelled)
+        conflicts = Appointment.objects.filter(
+            specialist=specialist,
+            appointment_date=appointment_date,
+            time_slot=time_slot,
+        ).exclude(status='cancelled')
+
+        # On update, exclude the current instance itself
+        if self.instance:
+            conflicts = conflicts.exclude(pk=self.instance.pk)
+
+        now = timezone.now()
+        for appt in conflicts:
+            slot_end = parse_slot_end_datetime(appt.appointment_date, appt.time_slot)
+            # Only block if the slot window has NOT expired yet
+            if slot_end is None or slot_end > now:
+                raise serializers.ValidationError(
+                    "This time slot is already booked. Please select another available slot."
+                )
+
+        return data

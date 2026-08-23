@@ -132,6 +132,60 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
     );
   }
 
+  /// Parses timeSlot string like "10:00 AM - 11:00 AM" with appointment date
+  /// to determine the real-time session window status.
+  /// Returns: 'live' | 'expired' | 'upcoming' | 'unknown'
+  String _getTimingStatus(String dateStr, String timeSlot) {
+    try {
+      // Parse appointment date (format: "d/M/yyyy" or "yyyy-MM-dd")
+      DateTime? appointmentDate;
+      if (dateStr.contains('-')) {
+        appointmentDate = DateTime.tryParse(dateStr);
+      } else {
+        final parts = dateStr.split('/');
+        if (parts.length == 3) {
+          appointmentDate = DateTime(
+            int.parse(parts[2]),
+            int.parse(parts[1]),
+            int.parse(parts[0]),
+          );
+        }
+      }
+      if (appointmentDate == null) return 'unknown';
+
+      final parts = timeSlot.split(' - ');
+      if (parts.length != 2) return 'unknown';
+
+      DateTime parseTime(String timeStr) {
+        final t = timeStr.trim().toUpperCase();
+        final isPm = t.endsWith('PM');
+        final timePart = t.replaceAll('AM', '').replaceAll('PM', '').trim();
+        final hm = timePart.split(':');
+        int hour = int.parse(hm[0]);
+        final minute = int.parse(hm[1]);
+        if (isPm && hour != 12) hour += 12;
+        if (!isPm && hour == 12) hour = 0;
+        return DateTime(
+          appointmentDate!.year,
+          appointmentDate.month,
+          appointmentDate.day,
+          hour,
+          minute,
+        );
+      }
+
+      final startDt = parseTime(parts[0]);
+      final endDt = parseTime(parts[1]);
+      final now = DateTime.now();
+
+      if (now.isAfter(startDt) && now.isBefore(endDt)) return 'live';
+      if (now.isAfter(endDt)) return 'expired';
+      return 'upcoming';
+    } catch (_) {
+      return 'unknown';
+    }
+  }
+
   Widget _buildAppointmentCard(BuildContext context, SpecialistAppointmentModel app, bool isBn, bool isDark) {
     Color statusColor;
     String statusText;
@@ -147,6 +201,12 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       statusColor = const Color(0xFFEF4444); // Red
       statusText = isBn ? 'মিসড / বাতিল' : 'Missed / Cancelled';
     }
+
+    // Real-time timing status (only show for pending/confirmed, not completed/cancelled)
+    final timingStatus = (statusLower == 'pending' || statusLower == 'confirmed')
+        ? _getTimingStatus(app.date, app.timeSlot)
+        : null;
+
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -218,6 +278,41 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
               ),
             ],
           ),
+          // Timing status badge row (shown below header for live/expired sessions)
+          if (timingStatus == 'live' || timingStatus == 'expired') ...[
+            const SizedBox(height: 8),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: timingStatus == 'live'
+                      ? const Color(0xFF10B981).withOpacity(0.15)
+                      : const Color(0xFFEF4444).withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: timingStatus == 'live'
+                        ? const Color(0xFF10B981)
+                        : const Color(0xFFEF4444),
+                    width: 1,
+                  ),
+                ),
+                child: Text(
+                  timingStatus == 'live'
+                      ? (isBn ? '🟢 সেশন চলছে' : '🟢 Live Now')
+                      : (isBn ? '⏰ মেয়াদ শেষ' : '⏰ Expired'),
+                  style: TextStyle(
+                    color: timingStatus == 'live'
+                        ? const Color(0xFF059669)
+                        : const Color(0xFFDC2626),
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+
           const SizedBox(height: 16),
           const Divider(height: 1),
           const SizedBox(height: 14),
