@@ -145,7 +145,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
 
                   pw.Text(
                     'THIS CERTIFICATE IS PROUDLY PRESENTED TO',
-                    style: pw.TextStyle(fontSize: 11, fontWeight: pw.FontWeight.bold, color: PdfColors.white700, letterSpacing: 1),
+                    style: pw.TextStyle(fontSize: 11, fontWeight: pw.FontWeight.bold, color: PdfColors.grey700, letterSpacing: 1),
                   ),
                   pw.SizedBox(height: 6),
                   pw.Text(
@@ -159,7 +159,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                   pw.SizedBox(height: 6),
                   pw.Text(
                     'FOR SUCCESSFUL AND DEDICATED COMPLETION OF THE',
-                    style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, color: PdfColors.white800, letterSpacing: 0.5),
+                    style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, color: PdfColors.grey800, letterSpacing: 0.5),
                   ),
                   pw.SizedBox(height: 6),
                   pw.Text(
@@ -199,7 +199,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                           pw.Text(
                             '"$recommendation"',
                             textAlign: pw.TextAlign.center,
-                            style: pw.TextStyle(fontSize: 9, fontStyle: pw.FontStyle.italic, color: PdfColors.white900),
+                            style: pw.TextStyle(fontSize: 9, fontStyle: pw.FontStyle.italic, color: PdfColors.grey900),
                           ),
                           pw.SizedBox(height: 4),
                           pw.Text(
@@ -223,12 +223,12 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                         children: [
                           pw.Text(
                             'CERTIFICATE ID: $certId',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white800),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey800),
                           ),
                           pw.SizedBox(height: 2),
                           pw.Text(
                             'DATE ISSUED: $issuedAt',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white700),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey700),
                           ),
                         ],
                       ),
@@ -271,16 +271,16 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                           pw.SizedBox(height: 2),
                           pw.Container(
                             width: 150,
-                            child: pw.Divider(color: PdfColors.white900, thickness: 1.2),
+                            child: pw.Divider(color: PdfColors.grey900, thickness: 1.2),
                           ),
                           pw.SizedBox(height: 3),
                           pw.Text(
                             'DR. ${specName.toUpperCase()}',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white900),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey900),
                           ),
                           pw.Text(
                             '$specTitle | $specClinic',
-                            style: const pw.TextStyle(fontSize: 7, color: PdfColors.white700),
+                            style: const pw.TextStyle(fontSize: 7, color: PdfColors.grey700),
                           ),
                         ],
                       ),

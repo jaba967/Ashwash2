@@ -98,7 +98,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Container(
                 padding: const pw.EdgeInsets.all(10),
                 decoration: pw.BoxDecoration(
-                  color: PdfColors.white100,
+                  color: PdfColors.grey100,
                   borderRadius: pw.BorderRadius.circular(6),
                   border: pw.Border.all(color: PdfColors.purple200),
                 ),
@@ -109,13 +109,13 @@ class _ReportScreenState extends State<ReportScreen> {
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
                         pw.Text('Patient Name: ${header['patient_name'] ?? 'Patient'}', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 11)),
-                        pw.Text('Patient ID: ${header['patient_id'] ?? '#ASH-PAT-001'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.white800)),
+                        pw.Text('Patient ID: ${header['patient_id'] ?? '#ASH-PAT-001'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey800)),
                       ],
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.end,
                       children: [
-                        pw.Text('Generated: ${header['generated_at'] ?? 'Today'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.white800)),
+                        pw.Text('Generated: ${header['generated_at'] ?? 'Today'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey800)),
                         pw.Text('Overall Progress: ${courseSum['overall_course_progress'] ?? 0}%', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 11, color: PdfColors.purple900)),
                       ],
                     ),
@@ -147,7 +147,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.SizedBox(height: 6),
               pw.Container(
                 padding: const pw.EdgeInsets.all(10),
-                decoration: pw.BoxDecoration(color: PdfColors.white100, borderRadius: pw.BorderRadius.circular(6)),
+                decoration: pw.BoxDecoration(color: PdfColors.grey100, borderRadius: pw.BorderRadius.circular(6)),
                 child: pw.Row(
                   mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                   children: [
@@ -165,7 +165,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('3. SPECIALIST & CONSULTATION SESSION HISTORY', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (sessions.isEmpty)
-                pw.Text('No specialist sessions attended yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
+                pw.Text('No specialist sessions attended yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
               else
                 pw.Table.fromTextArray(
                   headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9, color: PdfColors.white),
@@ -186,7 +186,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('4. INDIVIDUAL COURSE PERFORMANCE', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (performances.isEmpty)
-                pw.Text('No courses enrolled yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
+                pw.Text('No courses enrolled yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
               else
                 pw.Table.fromTextArray(
                   headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9, color: PdfColors.white),
@@ -209,12 +209,12 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('5. SPECIALIST FEEDBACK & EVALUATION NOTES', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (feedbacks.isEmpty)
-                pw.Text('No specialist feedback notes recorded yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
+                pw.Text('No specialist feedback notes recorded yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
               else
                 ...feedbacks.map((f) => pw.Container(
                   margin: const pw.EdgeInsets.only(bottom: 6),
                   padding: const pw.EdgeInsets.all(8),
-                  decoration: pw.BoxDecoration(color: PdfColors.white100, borderRadius: pw.BorderRadius.circular(4), border: pw.Border.all(color: PdfColors.white300)),
+                  decoration: pw.BoxDecoration(color: PdfColors.grey100, borderRadius: pw.BorderRadius.circular(4), border: pw.Border.all(color: PdfColors.grey300)),
                   child: pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
