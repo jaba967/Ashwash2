@@ -38,7 +38,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade400,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -49,7 +49,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -58,7 +58,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: isDark ? Colors.grey.shade800 : Colors.grey.shade100,
+                      color: isDark ? Colors.white : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Column(
@@ -71,7 +71,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           item.submissionText,
-                          style: TextStyle(fontSize: 13, color: isDark ? Colors.grey.shade300 : Colors.black87),
+                          style: TextStyle(fontSize: 13, color: isDark ? Colors.white : Colors.black),
                         ),
                       ],
                     ),
@@ -84,7 +84,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                   ),
                   Slider(
@@ -131,7 +131,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade300),
+                        borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
                       ),
                     ),
                   ),
@@ -189,7 +189,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
         title: Text(
           isBn ? 'পেন্ডিং হোমওয়ার্ক পর্যালোচনা' : 'Pending Homework Reviews',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -203,7 +203,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     isBn ? 'সকল হোমওয়ার্ক মূল্যায়ন সম্পন্ন হয়েছে!' : 'All homework submissions evaluated!',
-                    style: TextStyle(fontSize: 16, color: isDark ? Colors.grey.shade300 : Colors.grey.shade700),
+                    style: TextStyle(fontSize: 16, color: isDark ? Colors.white : Colors.white),
                   ),
                 ],
               ),
@@ -219,7 +219,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                    border: Border.all(color: isDark ? Colors.white : Colors.white),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -240,12 +240,12 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
-                                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                    color: isDark ? Colors.white : Colors.black,
                                   ),
                                 ),
                                 Text(
                                   'Submitted: ${item.submittedAt}',
-                                  style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                                  style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.white),
                                 ),
                               ],
                             ),
@@ -262,7 +262,7 @@ class SpecialistHomeworkReviewScreen extends StatelessWidget {
                         item.submissionText,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey.shade300 : Colors.black87),
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.white : Colors.black),
                       ),
                       const SizedBox(height: 16),
                       SizedBox(

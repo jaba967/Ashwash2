@@ -122,14 +122,14 @@ class _BookingScreenState extends State<BookingScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: isDark ? Colors.white : Colors.black87,
+                            color: isDark ? Colors.white : Colors.black,
                           ),
                         ),
                         const SizedBox(height: 2),
                         Text(
                           isBn ? widget.specialist.titleBn : widget.specialist.titleEn,
                           style: TextStyle(
-                            color: isDark ? Colors.grey.shade300 : Colors.grey.shade700,
+                            color: isDark ? Colors.white : Colors.white,
                             fontSize: 13,
                           ),
                         ),
@@ -167,7 +167,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
+                  border: Border.all(color: isDark ? Colors.white : Colors.white),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,10 +177,10 @@ class _BookingScreenState extends State<BookingScreen> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: isDark ? Colors.white : Colors.black87,
+                        color: isDark ? Colors.white : Colors.black,
                       ),
                     ),
-                    const Icon(Icons.calendar_today_rounded, color: AppColors.primary),
+                    const Icon(Icons.calendar_today_rounded, color: Colors.black),
                   ],
                 ),
               ),
@@ -218,8 +218,8 @@ class _BookingScreenState extends State<BookingScreen> {
                           slot,
                           style: TextStyle(
                             color: isBooked
-                                ? Colors.grey
-                                : (isSelected ? Colors.white : (isDark ? Colors.white : Colors.black87)),
+                                ? Colors.white
+                                : (isSelected ? Colors.white : (isDark ? Colors.white : Colors.black)),
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
                             decoration: isBooked ? TextDecoration.lineThrough : null,
@@ -239,14 +239,14 @@ class _BookingScreenState extends State<BookingScreen> {
                     selected: isSelected,
                     selectedColor: AppColors.primary,
                     backgroundColor: isBooked
-                        ? (isDark ? const Color(0xFF1A1A2E) : Colors.grey.shade200)
-                        : (isDark ? const Color(0xFF1E293B) : Colors.grey.shade100),
+                        ? (isDark ? const Color(0xFF1A1A2E) : Colors.white)
+                        : (isDark ? const Color(0xFF1E293B) : Colors.white),
                     side: BorderSide(
                       color: isBooked
-                          ? Colors.grey.shade500
+                          ? Colors.white
                           : (isSelected
                               ? AppColors.primary
-                              : (isDark ? Colors.grey.shade700 : Colors.grey.shade300)),
+                              : (isDark ? Colors.white : Colors.white)),
                     ),
                     onSelected: isBooked
                         ? null // Cannot select a booked slot
@@ -274,7 +274,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     border: Border.all(
                       color: isSelected
                           ? AppColors.primary
-                          : (isDark ? Colors.grey.shade700 : Colors.grey.shade200),
+                          : (isDark ? Colors.white : Colors.white),
                       width: isSelected ? 2 : 1,
                     ),
                   ),
@@ -291,7 +291,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             m['name']!,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: isDark ? Colors.white : Colors.black87,
+                              color: isDark ? Colors.white : Colors.black,
                             ),
                           ),
                         ],
@@ -368,7 +368,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       width: 44,
                       height: 5,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -407,7 +407,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         ),
                         Text(
                           'Amount: ৳${widget.specialist.feeBdt}',
-                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: Colors.black87),
+                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: Colors.black),
                         ),
                       ],
                     ),
@@ -616,7 +616,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     ? 'আপনার গুগল মিট লিংক নোটিফিকেশনে পাঠানো হয়েছে।'
                     : 'Google Meet link sent to your notifications drawer.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.grey, fontSize: 13),
+                style: const TextStyle(color: Colors.white, fontSize: 13),
               ),
               const SizedBox(height: 24),
               ElevatedButton(

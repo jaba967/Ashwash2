@@ -145,7 +145,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
 
                   pw.Text(
                     'THIS CERTIFICATE IS PROUDLY PRESENTED TO',
-                    style: pw.TextStyle(fontSize: 11, fontWeight: pw.FontWeight.bold, color: PdfColors.grey700, letterSpacing: 1),
+                    style: pw.TextStyle(fontSize: 11, fontWeight: pw.FontWeight.bold, color: PdfColors.white700, letterSpacing: 1),
                   ),
                   pw.SizedBox(height: 6),
                   pw.Text(
@@ -159,7 +159,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                   pw.SizedBox(height: 6),
                   pw.Text(
                     'FOR SUCCESSFUL AND DEDICATED COMPLETION OF THE',
-                    style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, color: PdfColors.grey800, letterSpacing: 0.5),
+                    style: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold, color: PdfColors.white800, letterSpacing: 0.5),
                   ),
                   pw.SizedBox(height: 6),
                   pw.Text(
@@ -199,7 +199,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                           pw.Text(
                             '"$recommendation"',
                             textAlign: pw.TextAlign.center,
-                            style: pw.TextStyle(fontSize: 9, fontStyle: pw.FontStyle.italic, color: PdfColors.grey900),
+                            style: pw.TextStyle(fontSize: 9, fontStyle: pw.FontStyle.italic, color: PdfColors.white900),
                           ),
                           pw.SizedBox(height: 4),
                           pw.Text(
@@ -223,12 +223,12 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                         children: [
                           pw.Text(
                             'CERTIFICATE ID: $certId',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey800),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white800),
                           ),
                           pw.SizedBox(height: 2),
                           pw.Text(
                             'DATE ISSUED: $issuedAt',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey700),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white700),
                           ),
                         ],
                       ),
@@ -271,16 +271,16 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                           pw.SizedBox(height: 2),
                           pw.Container(
                             width: 150,
-                            child: pw.Divider(color: PdfColors.grey900, thickness: 1.2),
+                            child: pw.Divider(color: PdfColors.white900, thickness: 1.2),
                           ),
                           pw.SizedBox(height: 3),
                           pw.Text(
                             'DR. ${specName.toUpperCase()}',
-                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.grey900),
+                            style: pw.TextStyle(fontSize: 9, fontWeight: pw.FontWeight.bold, color: PdfColors.white900),
                           ),
                           pw.Text(
                             '$specTitle | $specClinic',
-                            style: const pw.TextStyle(fontSize: 7, color: PdfColors.grey700),
+                            style: const pw.TextStyle(fontSize: 7, color: PdfColors.white700),
                           ),
                         ],
                       ),
@@ -344,7 +344,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                         Text(
                           _errorMessage!,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(color: Colors.grey),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         const SizedBox(height: 24),
                         ElevatedButton.icon(
@@ -421,7 +421,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
 
                               const Text(
                                 'This official certificate is proudly presented to',
-                                style: TextStyle(color: Colors.grey, fontSize: 13),
+                                style: TextStyle(color: Colors.white, fontSize: 13),
                               ),
                               const SizedBox(height: 8),
                               Text(
@@ -528,7 +528,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                                     ] else ...[
                                       const Text(
                                         '⏳ Your specialist has been notified to submit your personalized performance recommendation. Check back shortly!',
-                                        style: TextStyle(fontSize: 12, color: Colors.grey, fontStyle: FontStyle.italic),
+                                        style: TextStyle(fontSize: 12, color: Colors.white, fontStyle: FontStyle.italic),
                                       ),
                                     ],
                                   ],
@@ -544,13 +544,13 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text('Certificate ID', style: TextStyle(fontSize: 10, color: Colors.grey)),
+                                      const Text('Certificate ID', style: TextStyle(fontSize: 10, color: Colors.white)),
                                       Text(
                                         _certData!['certificate_id'] ?? 'ASH-CERT-000',
                                         style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, fontFamily: 'monospace'),
                                       ),
                                       const SizedBox(height: 4),
-                                      const Text('Date Issued', style: TextStyle(fontSize: 10, color: Colors.grey)),
+                                      const Text('Date Issued', style: TextStyle(fontSize: 10, color: Colors.white)),
                                       Text(
                                         _certData!['issued_at'] != null 
                                             ? DateTime.tryParse(_certData!['issued_at'])?.toLocal().toString().split(' ')[0] ?? 'Today'
@@ -584,7 +584,7 @@ class _CourseCertificateScreenState extends State<CourseCertificateScreen> {
                                       ),
                                       Text(
                                         '${_certData!['specialist_title'] ?? 'Clinical Psychologist'}',
-                                        style: const TextStyle(fontSize: 10, color: Colors.grey),
+                                        style: const TextStyle(fontSize: 10, color: Colors.white),
                                       ),
                                     ],
                                   ),

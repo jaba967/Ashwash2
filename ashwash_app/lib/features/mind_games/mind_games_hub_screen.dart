@@ -56,13 +56,13 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
         titleSpacing: 20,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new_rounded,
-              color: isDark ? Colors.white : const Color(0xFF0F172A)),
+              color: isDark ? Colors.white : Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           isBn ? 'মাইন্ড গেমসমূহ (Mind Games)' : 'Mind Games Hub',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -148,7 +148,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
+                      color: isDark ? Colors.white : Colors.white,
                       letterSpacing: 1.2,
                     ),
                   ),
@@ -248,7 +248,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
         color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+          color: isDark ? Colors.white : Colors.white,
           width: 1.2,
         ),
         boxShadow: [
@@ -299,7 +299,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
-                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          color: isDark ? Colors.white : Colors.black,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -308,8 +308,8 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                         style: TextStyle(
                           fontSize: 12,
                           color: isDark
-                              ? Colors.grey.shade400
-                              : Colors.grey.shade600,
+                              ? Colors.white
+                              : Colors.white,
                           height: 1.3,
                         ),
                       ),
@@ -370,7 +370,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 18,
-                  color: isDark ? Colors.grey.shade600 : Colors.grey,
+                  color: isDark ? Colors.white : Colors.white,
                 ),
               ],
             ),

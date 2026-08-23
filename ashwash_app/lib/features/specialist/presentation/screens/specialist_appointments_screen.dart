@@ -65,7 +65,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
         title: Text(
           isBn ? 'অ্যাপয়েন্টমেন্ট ও ভিডিও সেশন' : 'Appointments & Video Sessions',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -103,7 +103,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                 ? Center(
                     child: Text(
                       isBn ? 'কোনো সেশন নেই' : 'No sessions found',
-                      style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                      style: TextStyle(color: isDark ? Colors.white : Colors.white),
                     ),
                   )
                 : ListView.builder(
@@ -117,7 +117,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                         decoration: BoxDecoration(
                           color: AppColors.glassSurface,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                          border: Border.all(color: isDark ? Colors.white : Colors.white),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,13 +138,13 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
-                                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                          color: isDark ? Colors.white : Colors.black,
                                         ),
                                       ),
                                       const SizedBox(height: 2),
                                       Text(
                                         '${app.date} • ${app.timeSlot}',
-                                        style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                                        style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.white),
                                       ),
                                     ],
                                   ),
@@ -175,7 +175,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                               const SizedBox(height: 4),
                               Text(
                                 'Notes: ${app.notes}',
-                                style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade400 : Colors.grey.shade700),
+                                style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.white),
                               ),
                             ],
                             const SizedBox(height: 16),
@@ -207,7 +207,7 @@ class _SpecialistAppointmentsScreenState extends State<SpecialistAppointmentsScr
                                         const SnackBar(content: Text('Appointment Approved & Confirmed!')),
                                       );
                                     },
-                                    icon: const Icon(Icons.check_circle_rounded, color: AppColors.primary, size: 28),
+                                    icon: const Icon(Icons.check_circle_rounded, color: Colors.black, size: 28),
                                   ),
                               ],
                             ),

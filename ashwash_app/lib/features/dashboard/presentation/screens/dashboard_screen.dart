@@ -48,7 +48,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               width: 36,
               fit: BoxFit.contain,
               errorBuilder: (context, error, stackTrace) =>
-                  const Icon(Icons.health_and_safety, color: AppColors.primary, size: 36),
+                  const Icon(Icons.health_and_safety, color: Colors.black, size: 36),
             ),
             const SizedBox(width: 10),
             const Text(

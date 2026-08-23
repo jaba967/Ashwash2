@@ -214,11 +214,11 @@ class _InteractiveMemoryGameScreenState extends State<InteractiveMemoryGameScree
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.primary, size: 18),
+          Icon(icon, color: Colors.black, size: 18),
           const SizedBox(width: 8),
           Column(
             children: [
-              Text(title, style: TextStyle(fontSize: 11, color: Colors.grey.shade600)),
+              Text(title, style: TextStyle(fontSize: 11, color: Colors.white)),
               Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
             ],
           ),

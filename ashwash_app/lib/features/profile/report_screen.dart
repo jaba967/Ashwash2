@@ -98,7 +98,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Container(
                 padding: const pw.EdgeInsets.all(10),
                 decoration: pw.BoxDecoration(
-                  color: PdfColors.grey100,
+                  color: PdfColors.white100,
                   borderRadius: pw.BorderRadius.circular(6),
                   border: pw.Border.all(color: PdfColors.purple200),
                 ),
@@ -109,13 +109,13 @@ class _ReportScreenState extends State<ReportScreen> {
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
                         pw.Text('Patient Name: ${header['patient_name'] ?? 'Patient'}', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 11)),
-                        pw.Text('Patient ID: ${header['patient_id'] ?? '#ASH-PAT-001'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey800)),
+                        pw.Text('Patient ID: ${header['patient_id'] ?? '#ASH-PAT-001'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.white800)),
                       ],
                     ),
                     pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.end,
                       children: [
-                        pw.Text('Generated: ${header['generated_at'] ?? 'Today'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.grey800)),
+                        pw.Text('Generated: ${header['generated_at'] ?? 'Today'}', style: const pw.TextStyle(fontSize: 10, color: PdfColors.white800)),
                         pw.Text('Overall Progress: ${courseSum['overall_course_progress'] ?? 0}%', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 11, color: PdfColors.purple900)),
                       ],
                     ),
@@ -147,7 +147,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.SizedBox(height: 6),
               pw.Container(
                 padding: const pw.EdgeInsets.all(10),
-                decoration: pw.BoxDecoration(color: PdfColors.grey100, borderRadius: pw.BorderRadius.circular(6)),
+                decoration: pw.BoxDecoration(color: PdfColors.white100, borderRadius: pw.BorderRadius.circular(6)),
                 child: pw.Row(
                   mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
                   children: [
@@ -165,7 +165,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('3. SPECIALIST & CONSULTATION SESSION HISTORY', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (sessions.isEmpty)
-                pw.Text('No specialist sessions attended yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
+                pw.Text('No specialist sessions attended yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
               else
                 pw.Table.fromTextArray(
                   headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9, color: PdfColors.white),
@@ -186,7 +186,7 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('4. INDIVIDUAL COURSE PERFORMANCE', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (performances.isEmpty)
-                pw.Text('No courses enrolled yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
+                pw.Text('No courses enrolled yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
               else
                 pw.Table.fromTextArray(
                   headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9, color: PdfColors.white),
@@ -209,12 +209,12 @@ class _ReportScreenState extends State<ReportScreen> {
               pw.Text('5. SPECIALIST FEEDBACK & EVALUATION NOTES', style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12, color: PdfColors.purple900)),
               pw.SizedBox(height: 6),
               if (feedbacks.isEmpty)
-                pw.Text('No specialist feedback notes recorded yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.grey700))
+                pw.Text('No specialist feedback notes recorded yet.', style: const pw.TextStyle(fontSize: 9, color: PdfColors.white700))
               else
                 ...feedbacks.map((f) => pw.Container(
                   margin: const pw.EdgeInsets.only(bottom: 6),
                   padding: const pw.EdgeInsets.all(8),
-                  decoration: pw.BoxDecoration(color: PdfColors.grey100, borderRadius: pw.BorderRadius.circular(4), border: pw.Border.all(color: PdfColors.grey300)),
+                  decoration: pw.BoxDecoration(color: PdfColors.white100, borderRadius: pw.BorderRadius.circular(4), border: pw.Border.all(color: PdfColors.white300)),
                   child: pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
@@ -290,7 +290,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -304,7 +304,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
                 IconButton(
@@ -342,13 +342,13 @@ class _ReportScreenState extends State<ReportScreen> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14,
-                                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                    color: isDark ? Colors.white : Colors.black,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
                                   'ID: ${header['patient_id'] ?? '#ASH-PAT-001'} • ${header['generated_at'] ?? 'Today'}',
-                                  style: const TextStyle(fontSize: 11, color: Colors.grey),
+                                  style: const TextStyle(fontSize: 11, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -381,14 +381,14 @@ class _ReportScreenState extends State<ReportScreen> {
                     if (sessions.isEmpty)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text('No specialist sessions attended yet.', style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 12)),
+                        child: Text('No specialist sessions attended yet.', style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 12)),
                       )
                     else
                       ...sessions.map((s) => Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.grey.shade800 : Colors.grey.shade100,
+                          color: isDark ? Colors.white : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -397,15 +397,15 @@ class _ReportScreenState extends State<ReportScreen> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(s['specialist_name'] ?? 'Specialist', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: isDark ? Colors.white : Colors.black87)),
-                                Text(s['specialization'] ?? 'Specialist Doctor', style: const TextStyle(fontSize: 11, color: Colors.grey)),
+                                Text(s['specialist_name'] ?? 'Specialist', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: isDark ? Colors.white : Colors.black)),
+                                Text(s['specialization'] ?? 'Specialist Doctor', style: const TextStyle(fontSize: 11, color: Colors.white)),
                               ],
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text('${s['sessions_count'] ?? 0} Sessions', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.primary)),
-                                Text(s['last_session_date'] ?? 'N/A', style: const TextStyle(fontSize: 10, color: Colors.grey)),
+                                Text(s['last_session_date'] ?? 'N/A', style: const TextStyle(fontSize: 10, color: Colors.white)),
                               ],
                             ),
                           ],
@@ -417,14 +417,14 @@ class _ReportScreenState extends State<ReportScreen> {
                     if (performances.isEmpty)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text('No courses enrolled yet.', style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 12)),
+                        child: Text('No courses enrolled yet.', style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 12)),
                       )
                     else
                       ...performances.map((p) => Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.grey.shade800 : Colors.grey.shade100,
+                          color: isDark ? Colors.white : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -434,8 +434,8 @@ class _ReportScreenState extends State<ReportScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(p['course_name'] ?? 'Course', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: isDark ? Colors.white : Colors.black87)),
-                                  Text('Instructor: ${p['instructor']}', style: const TextStyle(fontSize: 11, color: Colors.grey)),
+                                  Text(p['course_name'] ?? 'Course', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: isDark ? Colors.white : Colors.black)),
+                                  Text('Instructor: ${p['instructor']}', style: const TextStyle(fontSize: 11, color: Colors.white)),
                                 ],
                               ),
                             ),
@@ -453,14 +453,14 @@ class _ReportScreenState extends State<ReportScreen> {
                     if (feedbacks.isEmpty)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text('No specialist feedback notes recorded yet.', style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 12)),
+                        child: Text('No specialist feedback notes recorded yet.', style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 12)),
                       )
                     else
                       ...feedbacks.map((f) => Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.grey.shade800 : Colors.grey.shade100,
+                          color: isDark ? Colors.white : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: AppColors.primary.withOpacity(0.2)),
                         ),
@@ -469,9 +469,9 @@ class _ReportScreenState extends State<ReportScreen> {
                           children: [
                             Text('${f['lesson_title']} • ${f['submitted_at']}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.primary)),
                             const SizedBox(height: 4),
-                            Text('Feedback: "${f['feedback']}"', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: isDark ? Colors.grey.shade300 : Colors.grey.shade800)),
+                            Text('Feedback: "${f['feedback']}"', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: isDark ? Colors.white : Colors.white)),
                             const SizedBox(height: 2),
-                            Text('- ${f['specialist_name']}', style: const TextStyle(fontSize: 11, color: Colors.grey, fontWeight: FontWeight.bold)),
+                            Text('- ${f['specialist_name']}', style: const TextStyle(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold)),
                           ],
                         ),
                       )).toList(),
@@ -502,7 +502,7 @@ class _ReportScreenState extends State<ReportScreen> {
         style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.bold,
-          color: isDark ? Colors.white : const Color(0xFF0F172A),
+          color: isDark ? Colors.white : Colors.black,
         ),
       ),
     );
@@ -522,7 +522,7 @@ class _ReportScreenState extends State<ReportScreen> {
         children: [
           Text(line1, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: color)),
           const SizedBox(height: 2),
-          Text(line2, style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade300 : Colors.black87)),
+          Text(line2, style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.black)),
         ],
       ),
     );
@@ -546,7 +546,7 @@ class _ReportScreenState extends State<ReportScreen> {
         title: Text(
           isBn ? 'মানসিক স্বাস্থ্য রিপোর্ট' : 'Mental Health Report',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -690,7 +690,7 @@ class _ReportScreenState extends State<ReportScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         child: Text(
                           isBn ? 'এখনো কোনো টাইমলাইন কার্যকলাপ নেই।' : 'No treatment timeline activities recorded yet.',
-                          style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 13),
+                          style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 13),
                         ),
                       ),
                     ] else ...[
@@ -712,16 +712,16 @@ class _ReportScreenState extends State<ReportScreen> {
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSurface : AppColors.primary.withOpacity(0.08),
           borderRadius: BorderRadius.circular(16),
-          border: isDark ? Border.all(color: Colors.grey.shade800) : Border.all(color: AppColors.primary.withOpacity(0.15)),
+          border: isDark ? Border.all(color: Colors.white) : Border.all(color: AppColors.primary.withOpacity(0.15)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: AppColors.primary, size: 24),
+            Icon(icon, color: Colors.black, size: 24),
             const SizedBox(height: 6),
             Text(
               label,
-              style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 10),
+              style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 10),
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -753,7 +753,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: isDark ? Colors.white : Colors.black87,
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
               ],

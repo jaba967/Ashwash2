@@ -194,7 +194,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
             const SizedBox(height: 10),
             Text(
               isBn ? 'অভিনন্দন!' : 'Congratulations!',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Color(0xFF0F172A)),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
             ),
           ],
         ),
@@ -204,7 +204,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
             Text(
               isBn ? 'আপনি সব কার্ড সঠিকভাবে মেলাতে পেরেছেন!' : 'You matched all wellness cards successfully!',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+              style: TextStyle(color: Colors.white, fontSize: 13),
             ),
             const SizedBox(height: 18),
             Container(
@@ -212,7 +212,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.grey.shade200),
+                border: Border.all(color: Colors.white),
               ),
               child: Column(
                 children: [
@@ -237,7 +237,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
                     Navigator.pop(ctx);
                     Navigator.pop(context);
                   },
-                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
               Expanded(
@@ -264,8 +264,8 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-        Text(val, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A))),
+        Text(label, style: TextStyle(color: Colors.white, fontSize: 13)),
+        Text(val, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.black)),
       ],
     );
   }
@@ -286,16 +286,16 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFF0F172A)),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           isBn ? 'মেমোরি ম্যাচ' : 'Memory Match',
-          style: const TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded, color: AppColors.primary, size: 26),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.black, size: 26),
             onPressed: _startNewGame,
           ),
         ],
@@ -401,7 +401,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
       selectedColor: AppColors.primary,
       backgroundColor: Colors.transparent,
       labelStyle: TextStyle(
-        color: isSelected ? Colors.white : Colors.black87,
+        color: isSelected ? Colors.white : Colors.black,
         fontWeight: FontWeight.bold,
         fontSize: 12,
       ),
@@ -430,7 +430,7 @@ class _MemoryMatchScreenState extends State<MemoryMatchScreen> {
           const SizedBox(width: 6),
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A)),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.black),
           ),
         ],
       ),

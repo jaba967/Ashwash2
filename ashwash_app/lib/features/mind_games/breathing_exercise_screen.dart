@@ -142,7 +142,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
             const SizedBox(height: 12),
             Text(
               rating,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF0F172A)),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
             ),
           ],
         ),
@@ -152,7 +152,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
             Text(
               isBn ? 'আপনার মন এখন প্রশান্ত ও শান্ত!' : 'Your mind is now calm and relaxed!',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             const SizedBox(height: 20),
             Container(
@@ -160,7 +160,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.grey.shade200),
+                border: Border.all(color: Colors.white),
               ),
               child: Column(
                 children: [
@@ -183,7 +183,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
                     Navigator.pop(ctx);
                     Navigator.pop(context);
                   },
-                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
               Expanded(
@@ -218,8 +218,8 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-        Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Color(0xFF0F172A))),
+        Text(label, style: TextStyle(color: Colors.white, fontSize: 13)),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black)),
       ],
     );
   }
@@ -244,12 +244,12 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFF0F172A)),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           isBn ? 'শ্বাসের ব্যায়াম' : 'Breathing Exercise',
-          style: const TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
       body: SafeArea(
@@ -275,7 +275,7 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
                         const SizedBox(width: 6),
                         Text(
                           '${_completedCycles * 10} Score',
-                          style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ],
                     ),
@@ -289,11 +289,11 @@ class _BreathingExerciseScreenState extends State<BreathingExerciseScreen> with 
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.loop_rounded, color: AppColors.primary, size: 20),
+                        const Icon(Icons.loop_rounded, color: Colors.black, size: 20),
                         const SizedBox(width: 6),
                         Text(
                           '$_completedCycles ${isBn ? "সাইকেল" : "Cycles"}',
-                          style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ],
                     ),

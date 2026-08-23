@@ -54,7 +54,7 @@ class CoursesScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.grey.shade200),
+                  border: Border.all(color: Colors.white),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,12 +66,12 @@ class CoursesScreen extends StatelessWidget {
                         color: AppColors.primary.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Icon(Icons.school_rounded, size: 50, color: AppColors.primary),
+                      child: const Icon(Icons.school_rounded, size: 50, color: Colors.black),
                     ),
                     const SizedBox(height: 12),
                     Text(isBn ? c.titleBn : c.titleEn, style: AppTypography.heading3(context)),
                     const SizedBox(height: 4),
-                    Text(isBn ? c.descriptionBn : c.descriptionEn, style: const TextStyle(color: Colors.grey, fontSize: 13)),
+                    Text(isBn ? c.descriptionBn : c.descriptionEn, style: const TextStyle(color: Colors.white, fontSize: 13)),
                     const SizedBox(height: 14),
                     Row(
                       children: [
@@ -79,7 +79,7 @@ class CoursesScreen extends StatelessWidget {
                         const SizedBox(width: 4),
                         Text('${c.rating}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                         const SizedBox(width: 12),
-                        Text('${c.durationWeeks} weeks', style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                        Text('${c.durationWeeks} weeks', style: const TextStyle(color: Colors.white, fontSize: 12)),
                         const Spacer(),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(

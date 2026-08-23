@@ -119,7 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
-                              color: !isBn ? Colors.white : Colors.black87,
+                              color: !isBn ? Colors.white : Colors.black,
                             ),
                           ),
                         ),
@@ -137,7 +137,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
-                              color: isBn ? Colors.white : Colors.black87,
+                              color: isBn ? Colors.white : Colors.black,
                             ),
                           ),
                         ),
@@ -195,7 +195,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: const TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -207,7 +207,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             height: 1.5,
-                            color: Colors.grey.shade600,
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -228,7 +228,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 8,
                   width: _currentIndex == index ? 24 : 8,
                   decoration: BoxDecoration(
-                    color: _currentIndex == index ? AppColors.primary : Colors.grey.shade300,
+                    color: _currentIndex == index ? AppColors.primary : Colors.white,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -249,7 +249,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       isBn ? 'এড়িয়ে যান' : 'Skip',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.grey.shade600,
+                        color: Colors.white,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

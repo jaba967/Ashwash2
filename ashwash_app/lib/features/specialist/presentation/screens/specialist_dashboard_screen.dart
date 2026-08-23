@@ -45,11 +45,11 @@ class SpecialistDashboardScreen extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               '${profile.rating} / 5.0 Rating',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black87),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black),
             ),
             Text(
               'Based on ${profile.totalReviews} verified patient reviews',
-              style: const TextStyle(fontSize: 13, color: Colors.grey),
+              style: const TextStyle(fontSize: 13, color: Colors.white),
             ),
             const SizedBox(height: 16),
             Text(
@@ -100,7 +100,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                   width: 36,
                   height: 36,
                   color: AppColors.primary.withOpacity(0.15),
-                  child: const Icon(Icons.person_rounded, size: 20, color: AppColors.primary),
+                  child: const Icon(Icons.person_rounded, size: 20, color: Colors.black),
                 ),
               ),
             ),
@@ -113,7 +113,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
@@ -126,11 +126,11 @@ class SpecialistDashboardScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings_outlined, color: AppColors.primary),
+            icon: const Icon(Icons.settings_outlined, color: Colors.black),
             onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CompleteSpecialistProfileScreen())),
           ),
           IconButton(
-            icon: Icon(Icons.logout_rounded, color: isDark ? Colors.white : Colors.black87),
+            icon: Icon(Icons.logout_rounded, color: isDark ? Colors.white : Colors.black),
             onPressed: () async {
               final authProvider = Provider.of<AuthProvider>(context, listen: false);
               await authProvider.logout();
@@ -201,7 +201,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
             const SizedBox(height: 12),
@@ -269,7 +269,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
             const SizedBox(height: 12),
@@ -350,7 +350,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
                 TextButton(
@@ -367,7 +367,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                    border: Border.all(color: isDark ? Colors.white : Colors.white),
                   ),
                   child: Column(
                     children: [
@@ -383,7 +383,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                                 width: 44,
                                 height: 44,
                                 color: AppColors.primary.withOpacity(0.15),
-                                child: const Icon(Icons.person_rounded, size: 24, color: AppColors.primary),
+                                child: const Icon(Icons.person_rounded, size: 24, color: Colors.black),
                               ),
                             ),
                           ),
@@ -397,12 +397,12 @@ class SpecialistDashboardScreen extends StatelessWidget {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
-                                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                    color: isDark ? Colors.white : Colors.black,
                                   ),
                                 ),
                                 Text(
                                   '${app.timeSlot} • ${app.category}',
-                                  style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                                  style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.white),
                                 ),
                               ],
                             ),
@@ -471,7 +471,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSurface : color.withOpacity(0.08),
           borderRadius: BorderRadius.circular(16),
-          border: isDark ? Border.all(color: Colors.grey.shade800) : null,
+          border: isDark ? Border.all(color: Colors.white) : null,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -483,12 +483,12 @@ class SpecialistDashboardScreen extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: isDark ? Colors.white : Colors.black87,
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
             Text(
               label,
-              style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade700, fontSize: 10),
+              style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 10),
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -515,7 +515,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.glassSurface,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+          border: Border.all(color: isDark ? Colors.white : Colors.white),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.02),
@@ -545,7 +545,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -555,7 +555,7 @@ class SpecialistDashboardScreen extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 10,
-                      color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                      color: isDark ? Colors.white : Colors.white,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

@@ -163,7 +163,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   value: 'read_all',
                   child: Row(
                     children: [
-                      const Icon(Icons.done_all_rounded, size: 18, color: AppColors.primary),
+                      const Icon(Icons.done_all_rounded, size: 18, color: Colors.black),
                       const SizedBox(width: 8),
                       Text('Mark all as read',
                           style: TextStyle(color: isDark ? Colors.white : Colors.white)),
@@ -214,7 +214,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               child: const Icon(
                 Icons.notifications_off_outlined,
                 size: 40,
-                color: AppColors.primary,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 20),
@@ -232,7 +232,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Colors.grey.shade400 : Colors.white70,
+                color: isDark ? Colors.white : Colors.white70,
                 height: 1.4,
               ),
             ),
@@ -266,7 +266,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.8,
-                  color: isDark ? Colors.grey.shade600 : const Color(0xFF94A3B8),
+                  color: isDark ? Colors.white : Colors.white,
                 ),
               ),
             ),
@@ -319,7 +319,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             border: Border.all(
               color: isUnread
                   ? color.withOpacity(0.4)
-                  : (isDark ? Colors.grey.shade800 : const Color(0xFFE2E8F0)),
+                  : (isDark ? Colors.white : const Color(0xFFE2E8F0)),
               width: isUnread ? 1.5 : 1.0,
             ),
             boxShadow: isUnread
@@ -371,7 +371,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           _formatTime(notif.createdAt),
                           style: const TextStyle(
                             fontSize: 11,
-                            color: Color(0xFF94A3B8),
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -440,7 +440,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         style: TextStyle(
           fontSize: 13,
           color: isDark
-              ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
+              ? (isUnread ? Colors.white : Colors.white)
               : (isUnread ? Colors.white70 : Colors.white70),
           height: 1.35,
         ),
@@ -457,7 +457,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           style: TextStyle(
             fontSize: 13,
             color: isDark
-                ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
+                ? (isUnread ? Colors.white : Colors.white)
                 : (isUnread ? Colors.white70 : Colors.white70),
             height: 1.35,
           ),
@@ -489,7 +489,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         style: TextStyle(
           fontSize: 13,
           color: isDark
-              ? (isUnread ? Colors.grey.shade300 : Colors.grey.shade500)
+              ? (isUnread ? Colors.white : Colors.white)
               : (isUnread ? Colors.white70 : Colors.white70),
           height: 1.35,
         ),
@@ -718,7 +718,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.close_rounded, color: Color(0xFF94A3B8)),
+                      icon: const Icon(Icons.close_rounded, color: Colors.white),
                     ),
                   ],
                 ),
@@ -867,7 +867,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                     'No written feedback was provided.',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Color(0xFF94A3B8),
+                      color: Colors.white,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -930,7 +930,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
                       fontSize: 13,
                       color: aText.isNotEmpty
                           ? Colors.white70
-                          : const Color(0xFF94A3B8),
+                          : Colors.white,
                       fontStyle:
                           aText.isEmpty ? FontStyle.italic : FontStyle.normal,
                       height: 1.4,
@@ -946,7 +946,7 @@ class _HomeworkFeedbackSheetState extends State<_HomeworkFeedbackSheet> {
   }
 
   Widget _infoRow(IconData icon, String label, String value,
-      {Color iconColor = const Color(0xFF94A3B8)}) {
+      {Color iconColor = Colors.white}) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

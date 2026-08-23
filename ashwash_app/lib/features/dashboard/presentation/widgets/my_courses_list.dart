@@ -330,12 +330,12 @@ class MyCoursesList extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Icon(Icons.school_outlined, size: 48, color: Colors.grey.shade400),
+                Icon(Icons.school_outlined, size: 48, color: Colors.white),
                 const SizedBox(height: 12),
                 Text(
                   isBn ? 'আপনি এখনো কোনো কোর্সে এনরোল করেননি।' : 'You are not enrolled in any courses yet.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+                  style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ],
             ),
@@ -387,7 +387,7 @@ class MyCoursesList extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                        color: isDark ? Colors.white : Colors.white,
                       ),
                     ),
                     const SizedBox(height: 14),
@@ -421,7 +421,7 @@ class MyCoursesList extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 4),
-                            const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: AppColors.primary),
+                            const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: Colors.black),
                           ],
                         ),
                       ],

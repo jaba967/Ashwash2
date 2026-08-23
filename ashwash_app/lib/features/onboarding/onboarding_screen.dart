@@ -59,7 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 alignment: Alignment.topRight,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
@@ -76,7 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Text(
                             'English',
                             style: TextStyle(
-                              color: !isBn ? Colors.white : Colors.black87,
+                              color: !isBn ? Colors.white : Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
@@ -94,7 +94,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: Text(
                             'বাংলা',
                             style: TextStyle(
-                              color: isBn ? Colors.white : Colors.black87,
+                              color: isBn ? Colors.white : Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
@@ -147,7 +147,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Text(
                           isBn ? item['descBn'] : item['descEn'],
                           textAlign: TextAlign.center,
-                          style: AppTypography.body(context, fontSize: 15, color: Colors.grey.shade600),
+                          style: AppTypography.body(context, fontSize: 15, color: Colors.white),
                         ),
                       ],
                     ),
@@ -166,7 +166,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   width: _currentIndex == index ? 24 : 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: _currentIndex == index ? AppColors.primary : Colors.grey.shade300,
+                    color: _currentIndex == index ? AppColors.primary : Colors.white,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 );
@@ -189,7 +189,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     child: Text(
                       isBn ? 'এড়িয়ে যান' : 'Skip',
-                      style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
                     ),
                   ),
                   ElevatedButton(

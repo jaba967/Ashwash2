@@ -299,7 +299,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -346,14 +346,14 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                             ),
                             Text(
                               'Fee: ৳${course.price.toStringAsFixed(0)}',
-                              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: Colors.black87),
+                              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: Colors.black),
                             ),
                           ],
                         ),
                         const SizedBox(height: 4),
                         Text(
                           course.titleEn,
-                          style: TextStyle(fontSize: 12, color: Colors.grey.shade700, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -525,13 +525,13 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                     ? 'আপনি সফলতা সহ "${course.titleBn}" কোর্সে এনরোল হয়েছেন। আপনার স্পেশালিস্ট ${course.specialistName}-এর কাছে নোটিফিকেশন সিঙ্ক হয়েছে।'
                     : 'You have successfully enrolled in "${course.titleEn}". Notification synced to specialist ${course.specialistName} & Admin Portal.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
+                style: const TextStyle(fontSize: 13, color: Colors.white),
               ),
               const SizedBox(height: 14),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: SelectableText(
@@ -732,7 +732,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                                 color: AppColors.primary.withValues(alpha: 0.12),
                                 shape: BoxShape.circle,
                               ),
-                              child: const Icon(Icons.psychology_rounded, color: AppColors.primary, size: 28),
+                              child: const Icon(Icons.psychology_rounded, color: Colors.black, size: 28),
                             ),
                             const SizedBox(width: 14),
                             Expanded(
@@ -822,7 +822,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       child: ExpansionTile(
                         title: Text(module.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                        subtitle: Text('${module.lessons.length} Lessons', style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
+                        subtitle: Text('${module.lessons.length} Lessons', style: TextStyle(color: Colors.white, fontSize: 12)),
                         children: module.lessons.map((lesson) {
                           final isCompleted = _completedLessonIds.contains(lesson.id);
                           return ListTile(
@@ -834,13 +834,13 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                                       : lesson.type == 'pdf'
                                           ? Icons.picture_as_pdf_rounded
                                           : Icons.article_rounded,
-                              color: AppColors.primary,
+                              color: Colors.black,
                             ),
                             title: Text(lesson.title, style: TextStyle(fontWeight: isCompleted ? FontWeight.bold : FontWeight.normal, fontSize: 14)),
                             subtitle: Text('${lesson.duration} • ${lesson.type.toUpperCase()}'),
                             trailing: Icon(
                               isCompleted ? Icons.check_circle_rounded : Icons.arrow_forward_ios_rounded,
-                              color: isCompleted ? Colors.green : Colors.grey,
+                              color: isCompleted ? Colors.green : Colors.white,
                               size: isCompleted ? 22 : 16,
                             ),
                             onTap: () {
@@ -941,14 +941,14 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.quiz_rounded, size: 44, color: AppColors.primary),
+                          const Icon(Icons.quiz_rounded, size: 44, color: Colors.black),
                           const SizedBox(width: 14),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('Final Course Quiz', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                                Text('${course.quizQuestions.length} Questions • Passing Score 70%', style: TextStyle(color: Colors.grey.shade700, fontSize: 12)),
+                                Text('${course.quizQuestions.length} Questions • Passing Score 70%', style: TextStyle(color: Colors.white, fontSize: 12)),
                                 if (_quizPassed)
                                   const Text('Passed with 70%+ score! 🎉', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12)),
                               ],
@@ -1050,7 +1050,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                         ElevatedButton(
                           onPressed: _isCertificateUnlocked ? _showCertificateDialog : null,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: _isCertificateUnlocked ? Colors.amber.shade700 : Colors.grey,
+                            backgroundColor: _isCertificateUnlocked ? Colors.amber.shade700 : Colors.white,
                           ),
                           child: const Text('View Certificate', style: TextStyle(color: Colors.white, fontSize: 12)),
                         ),
@@ -1178,7 +1178,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(isBn ? 'কোর্স ফি' : 'Course Price', style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
+                Text(isBn ? 'কোর্স ফি' : 'Course Price', style: TextStyle(color: Colors.white, fontSize: 12)),
                 Text(
                   course.isFree ? (isBn ? 'বিনামূল্যে' : 'FREE') : '৳${course.price.toStringAsFixed(0)}',
                   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),
@@ -1252,15 +1252,15 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: color ?? Colors.grey.shade700),
+          Icon(icon, size: 16, color: color ?? Colors.white),
           const SizedBox(width: 4),
-          Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: color ?? Colors.black87)),
+          Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: color ?? Colors.black)),
         ],
       ),
     );
@@ -1345,7 +1345,7 @@ class _RateReviewBottomSheetState extends State<RateReviewBottomSheet> {
           Center(
             child: Container(
               width: 40, height: 4,
-              decoration: BoxDecoration(color: Colors.grey.shade400, borderRadius: BorderRadius.circular(2)),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(2)),
             ),
           ),
           const SizedBox(height: 24),

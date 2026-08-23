@@ -56,7 +56,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
           isBn
               ? 'ব্যক্তিগতকৃত কোর্স এবং সহায়তা পেতে আপনার বিভাগ বেছে নিন'
               : 'Choose your category to get personalized courses and support',
-          style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+          style: TextStyle(color: Colors.white, fontSize: 14),
         ),
         const SizedBox(height: 24),
         ...categories.map((cat) => _buildCategoryCard(cat, isBn)).toList(),
@@ -70,7 +70,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
           },
           child: Text(
             isBn ? 'এখনই নয় (Skip for now)' : 'Skip for now',
-            style: const TextStyle(color: Colors.grey, fontSize: 15),
+            style: const TextStyle(color: Colors.white, fontSize: 15),
           ),
         ),
       ],
@@ -178,7 +178,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.grey.shade200),
+              border: Border.all(color: Colors.white),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,15 +195,15 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                 const SizedBox(height: 12),
                 Text('New Mother Wellness Program', style: AppTypography.heading3(context)),
                 const SizedBox(height: 4),
-                const Text('Comprehensive support covering postpartum care & bonding.', style: TextStyle(color: Colors.grey, fontSize: 13)),
+                const Text('Comprehensive support covering postpartum care & bonding.', style: TextStyle(color: Colors.white, fontSize: 13)),
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    const Icon(Icons.schedule, size: 16, color: AppColors.primary),
+                    const Icon(Icons.schedule, size: 16, color: Colors.black),
                     const SizedBox(width: 4),
                     const Text('8 weeks', style: TextStyle(fontSize: 12)),
                     const SizedBox(width: 16),
-                    const Icon(Icons.task_alt, size: 16, color: AppColors.primary),
+                    const Icon(Icons.task_alt, size: 16, color: Colors.black),
                     const SizedBox(width: 4),
                     const Text('12 tasks', style: TextStyle(fontSize: 12)),
                     const Spacer(),
@@ -223,7 +223,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.grey.shade200),
+              border: Border.all(color: Colors.white),
             ),
             child: Row(
               children: [
@@ -238,7 +238,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text('Dr. Ayesha Rahman', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text('Clinical Psychologist', style: TextStyle(color: Colors.grey, fontSize: 13)),
+                      Text('Clinical Psychologist', style: TextStyle(color: Colors.white, fontSize: 13)),
                       SizedBox(height: 4),
                       Text('⭐ 4.9 • 12 years exp', style: TextStyle(fontSize: 12, color: AppColors.warning)),
                     ],

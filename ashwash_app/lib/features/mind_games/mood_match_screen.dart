@@ -55,7 +55,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
     EmotionItem(id: 'calm', emoji: '🧘', nameEn: 'Calm', nameBn: 'প্রশান্ত', color: const Color(0xFF10B981)),
     EmotionItem(id: 'excited', emoji: '🥳', nameEn: 'Excited', nameBn: 'উত্তেজিত', color: const Color(0xFFA855F7)),
     EmotionItem(id: 'anxious', emoji: '😰', nameEn: 'Anxious', nameBn: 'উদ্বিগ্ন', color: const Color(0xFF3B82F6)),
-    EmotionItem(id: 'sad', emoji: '😢', nameEn: 'Sad', nameBn: 'দুঃখিত', color: const Color(0xFF64748B)),
+    EmotionItem(id: 'sad', emoji: '😢', nameEn: 'Sad', nameBn: 'দুঃখিত', color: Colors.white),
     EmotionItem(id: 'angry', emoji: '😡', nameEn: 'Angry', nameBn: 'রাগান্বিত', color: const Color(0xFFEF4444)),
   ];
 
@@ -161,7 +161,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
             const SizedBox(height: 10),
             Text(
               isBn ? 'দুর্দান্ত মানসিক ম্যাচ!' : 'Awesome Emotion Match!',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF0F172A)),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
             ),
           ],
         ),
@@ -173,7 +173,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                   ? 'আপনি অনুভূতির সঠিক বোধগম্যতা অর্জন করেছেন। নিজের আবেগকে চেনা মানসিক সুস্থতার প্রথম ধাপ!'
                   : 'You successfully matched all emotional states! Understanding your feelings is the first step to mental wellness.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 13, height: 1.4),
+              style: TextStyle(color: Colors.white, fontSize: 13, height: 1.4),
             ),
             const SizedBox(height: 18),
             Container(
@@ -181,7 +181,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.grey.shade200),
+                border: Border.all(color: Colors.white),
               ),
               child: Column(
                 children: [
@@ -204,7 +204,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                     Navigator.pop(ctx);
                     Navigator.pop(context);
                   },
-                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+                  child: Text(isBn ? 'হোম পেজ' : 'Exit', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
               ),
               Expanded(
@@ -231,8 +231,8 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-        Text(val, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A))),
+        Text(label, style: TextStyle(color: Colors.white, fontSize: 13)),
+        Text(val, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.black)),
       ],
     );
   }
@@ -253,16 +253,16 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFF0F172A)),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           isBn ? 'মুড ম্যাচ (Drag & Drop)' : 'Mood Match',
-          style: const TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded, color: AppColors.primary, size: 26),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.black, size: 26),
             onPressed: _initGame,
           ),
         ],
@@ -289,14 +289,14 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                         const SizedBox(width: 6),
                         Text(
                           '$_score Points',
-                          style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       ],
                     ),
                   ),
                   Text(
                     isBn ? 'উপযুক্ত ইমোজিটি টেনে নিচের বাক্সে বসান' : 'Drag emotion badge into matching scenario',
-                    style: TextStyle(color: Colors.grey.shade500, fontSize: 12, fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -397,7 +397,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                           border: Border.all(
                             color: isMatched
                                 ? target.matchedEmotion!.color
-                                : (candidateData.isNotEmpty ? AppColors.primary : Colors.grey.shade200),
+                                : (candidateData.isNotEmpty ? AppColors.primary : Colors.white),
                             width: isMatched || candidateData.isNotEmpty ? 2 : 1,
                           ),
                           boxShadow: [
@@ -413,7 +413,7 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                             Expanded(
                               child: Text(
                                 isBn ? target.situationBn : target.situationEn,
-                                style: const TextStyle(fontSize: 14, height: 1.4, color: Color(0xFF334155)),
+                                style: const TextStyle(fontSize: 14, height: 1.4, color: Colors.white),
                               ),
                             ),
                             const SizedBox(width: 12),
@@ -440,14 +440,14 @@ class _MoodMatchScreenState extends State<MoodMatchScreen> {
                                 width: 90,
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  color: Colors.grey.shade100,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(14),
-                                  border: Border.all(color: Colors.grey.shade300, style: BorderStyle.solid),
+                                  border: Border.all(color: Colors.white, style: BorderStyle.solid),
                                 ),
                                 child: Center(
                                   child: Text(
                                     isBn ? 'ড্রপ করুন' : 'Drop here',
-                                    style: TextStyle(color: Colors.grey.shade400, fontSize: 11, fontWeight: FontWeight.bold),
+                                    style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),

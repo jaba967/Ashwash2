@@ -62,7 +62,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
           children: [
             Row(
               children: [
-                const Icon(Icons.card_membership_rounded, color: AppColors.primary, size: 28),
+                const Icon(Icons.card_membership_rounded, color: Colors.black, size: 28),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
@@ -70,7 +70,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                   ),
                 ),
@@ -152,7 +152,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                       style: TextStyle(letterSpacing: 1.2, fontWeight: FontWeight.bold, color: Color(0xFF78350F), fontSize: 13),
                     ),
                     const SizedBox(height: 4),
-                    const Text('Ashwash Mental Health & Emotional Wellness Platform', style: TextStyle(fontSize: 10, color: Colors.grey)),
+                    const Text('Ashwash Mental Health & Emotional Wellness Platform', style: TextStyle(fontSize: 10, color: Colors.white)),
                     const SizedBox(height: 14),
                     const Text('This is proudly presented to:', style: TextStyle(fontSize: 11, fontStyle: FontStyle.italic)),
                     const SizedBox(height: 4),
@@ -173,7 +173,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            Text('Date: Aug 1, 2026', style: TextStyle(fontSize: 10, color: Colors.grey)),
+                            Text('Date: Aug 1, 2026', style: TextStyle(fontSize: 10, color: Colors.white)),
                             Text('Instructor: Dr. Mekhala Sarkar', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -182,7 +182,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
                             color: AppColors.glassSurface,
-                            border: Border.all(color: Colors.black26),
+                            border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: const Icon(Icons.qr_code_2_rounded, size: 36, color: Colors.black),
@@ -190,7 +190,7 @@ class _SpecialistCertificateGeneratorDialogState extends State<SpecialistCertifi
                       ],
                     ),
                     const SizedBox(height: 8),
-                    Text('ID: $_certId', style: const TextStyle(fontSize: 9, color: Colors.grey, fontFamily: 'monospace')),
+                    Text('ID: $_certId', style: const TextStyle(fontSize: 9, color: Colors.white, fontFamily: 'monospace')),
                   ],
                 ),
               ),
@@ -236,7 +236,7 @@ class _MetricRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: const TextStyle(fontSize: 12, color: Colors.black87)),
+          Text(label, style: const TextStyle(fontSize: 12, color: Colors.black)),
           Text(val, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.primary)),
         ],
       ),

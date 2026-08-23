@@ -130,7 +130,7 @@ class _LessonPlayerDialogState extends State<LessonPlayerDialog> {
                         child: Container(
                           height: 200,
                           decoration: BoxDecoration(
-                            color: Colors.black87,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Stack(
@@ -139,7 +139,7 @@ class _LessonPlayerDialogState extends State<LessonPlayerDialog> {
                               const Icon(
                                 Icons.play_circle_fill_rounded,
                                 size: 64,
-                                color: AppColors.primary,
+                                color: Colors.black,
                               ),
                               Positioned(
                                 bottom: 12,
@@ -194,7 +194,7 @@ class _LessonPlayerDialogState extends State<LessonPlayerDialog> {
                         ),
                         child: Column(
                           children: [
-                            const Icon(Icons.graphic_eq_rounded, size: 48, color: AppColors.primary),
+                            const Icon(Icons.graphic_eq_rounded, size: 48, color: Colors.black),
                             const SizedBox(height: 12),
                             Slider(
                               value: _audioProgress,
@@ -204,8 +204,8 @@ class _LessonPlayerDialogState extends State<LessonPlayerDialog> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('04:12', style: TextStyle(fontSize: 12, color: Colors.grey)),
-                                Text(lesson.duration, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                                const Text('04:12', style: TextStyle(fontSize: 12, color: Colors.white)),
+                                Text(lesson.duration, style: const TextStyle(fontSize: 12, color: Colors.white)),
                               ],
                             ),
                             const SizedBox(height: 8),
@@ -213,7 +213,7 @@ class _LessonPlayerDialogState extends State<LessonPlayerDialog> {
                               iconSize: 52,
                               icon: Icon(
                                 _isPlaying ? Icons.pause_circle_filled_rounded : Icons.play_circle_filled_rounded,
-                                color: AppColors.primary,
+                                color: Colors.black,
                               ),
                               onPressed: () {
                                 setState(() => _isPlaying = !_isPlaying);
@@ -603,16 +603,16 @@ class _HomeworkTaskWidgetState extends State<HomeworkTaskWidget> {
           ),
           child: Text(
             widget.lesson.description.isNotEmpty ? widget.lesson.description : 'Please complete the assigned task.',
-            style: const TextStyle(fontSize: 15, height: 1.5, color: Colors.black87),
+            style: const TextStyle(fontSize: 15, height: 1.5, color: Colors.black),
           ),
         ),
         const SizedBox(height: 16),
-        const Text('Your Answer:', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey)),
+        const Text('Your Answer:', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white)),
         const SizedBox(height: 8),
         TextField(
           controller: _controllers[0],
           maxLines: 4,
-          style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w500),
+          style: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
           decoration: _inputDeco('Type your answer here...'),
         ),
         const SizedBox(height: 20),
@@ -653,7 +653,7 @@ class _HomeworkTaskWidgetState extends State<HomeworkTaskWidget> {
                   TextField(
                     controller: _controllers[idx],
                     maxLines: qType == 'long' ? 4 : 1,
-                    style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w500),
+                    style: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                     decoration: _inputDeco('Your answer...'),
                   )
                 else if (qType == 'yes_no')
@@ -704,12 +704,12 @@ class _HomeworkTaskWidgetState extends State<HomeworkTaskWidget> {
   InputDecoration _inputDeco(String hint) {
     return InputDecoration(
       hintText: hint,
-      hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+      hintStyle: TextStyle(color: Colors.white, fontSize: 14),
       filled: true,
       fillColor: Colors.white,
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade300)),
-      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade300)),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.white)),
+      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.white)),
       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.primary, width: 2)),
     );
   }

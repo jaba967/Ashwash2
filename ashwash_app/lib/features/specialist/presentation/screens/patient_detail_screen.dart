@@ -55,7 +55,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
         title: Text(
           p.name,
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -71,7 +71,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               decoration: BoxDecoration(
                 color: AppColors.glassSurface,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                border: Border.all(color: isDark ? Colors.white : Colors.white),
               ),
               child: Row(
                 children: [
@@ -89,11 +89,11 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: isDark ? Colors.white : const Color(0xFF0F172A),
+                            color: isDark ? Colors.white : Colors.black,
                           ),
                         ),
                         const SizedBox(height: 2),
-                        Text(p.email, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                        Text(p.email, style: const TextStyle(fontSize: 12, color: Colors.white)),
                         const SizedBox(height: 6),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -120,7 +120,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
             const SizedBox(height: 10),
@@ -165,12 +165,12 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: isDark ? Colors.white : Colors.black87,
+                            color: isDark ? Colors.white : Colors.black,
                           ),
                         ),
                         Text(
                           p.courseProgress >= 80 ? 'Click to generate verifiable certificate document.' : 'Requires >= 80% completion to issue certificate.',
-                          style: const TextStyle(fontSize: 11, color: Colors.grey),
+                          style: const TextStyle(fontSize: 11, color: Colors.white),
                         ),
                       ],
                     ),
@@ -199,7 +199,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: isDark ? Colors.white : Colors.black,
               ),
             ),
             const SizedBox(height: 10),
@@ -213,7 +213,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                  borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
                 ),
               ),
             ),
@@ -247,7 +247,7 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : color.withOpacity(0.08),
         borderRadius: BorderRadius.circular(16),
-        border: isDark ? Border.all(color: Colors.grey.shade800) : null,
+        border: isDark ? Border.all(color: Colors.white) : null,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -259,13 +259,13 @@ class _PatientDetailScreenState extends State<PatientDetailScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 13,
-              color: isDark ? Colors.white : Colors.black87,
+              color: isDark ? Colors.white : Colors.black,
             ),
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          Text(label, style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade600, fontSize: 10)),
+          Text(label, style: TextStyle(color: isDark ? Colors.white : Colors.white, fontSize: 10)),
         ],
       ),
     );

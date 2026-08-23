@@ -90,7 +90,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
               if (isUploading) ...[
                 LinearProgressIndicator(
                   value: uploadProgress,
-                  backgroundColor: Colors.grey.shade200,
+                  backgroundColor: Colors.white,
                   color: AppColors.primary,
                 ),
                 const SizedBox(height: 6),
@@ -147,13 +147,13 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
                 child: Container(
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: mediaUrl != null ? AppColors.success.withOpacity(0.1) : Colors.grey.shade100,
+                    color: mediaUrl != null ? AppColors.success.withOpacity(0.1) : Colors.white,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: mediaUrl != null ? AppColors.success : Colors.grey.shade300),
+                    border: Border.all(color: mediaUrl != null ? AppColors.success : Colors.white),
                   ),
                   child: Row(
                     children: [
-                      Icon(mediaUrl != null ? Icons.check_circle : Icons.upload_file, color: AppColors.primary),
+                      Icon(mediaUrl != null ? Icons.check_circle : Icons.upload_file, color: Colors.black),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
@@ -303,7 +303,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
         title: Text(
           isBn ? 'নতুন কোর্স ও কন্টেন্ট তৈরি' : 'Create Course & Upload Content',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -359,7 +359,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      color: isDark ? Colors.white : Colors.black,
                     ),
                   ),
                   ElevatedButton.icon(
@@ -384,7 +384,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
                   decoration: BoxDecoration(
                     color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                    border: Border.all(color: isDark ? Colors.white : Colors.white),
                   ),
                   child: Row(
                     children: [
@@ -399,7 +399,7 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(l['title']!, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                            Text('Type: ${l['type']} • File: ${l['file']}', style: const TextStyle(fontSize: 11, color: Colors.grey)),
+                            Text('Type: ${l['type']} • File: ${l['file']}', style: const TextStyle(fontSize: 11, color: Colors.white)),
                           ],
                         ),
                       ),
@@ -440,13 +440,13 @@ class _SpecialistCourseCreatorScreenState extends State<SpecialistCourseCreatorS
   InputDecoration _inputDecoration(String label, IconData icon, bool isDark) {
     return InputDecoration(
       labelText: label,
-      prefixIcon: Icon(icon, color: AppColors.primary),
+      prefixIcon: Icon(icon, color: Colors.black),
       filled: true,
       fillColor: AppColors.glassSurface,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
-        borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+        borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
       ),
     );
   }

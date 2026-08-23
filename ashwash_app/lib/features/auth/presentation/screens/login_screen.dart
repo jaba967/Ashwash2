@@ -262,7 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   letterSpacing: -0.5,
-                  color: isDark ? Colors.white : Colors.black87,
+                  color: isDark ? Colors.white : Colors.black,
                 ),
               ),
               const SizedBox(height: 6),
@@ -286,7 +286,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
-                        color: isDark ? Colors.white70 : Colors.black87,
+                        color: isDark ? Colors.white70 : Colors.black,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -317,7 +317,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
-                        color: isDark ? Colors.white70 : Colors.black87,
+                        color: isDark ? Colors.white70 : Colors.black,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -381,7 +381,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     isBn ? 'একাউন্ট নেই? ' : "Don't have an account? ",
-                    style: TextStyle(color: isDark ? Colors.grey.shade400 : Colors.grey.shade700),
+                    style: TextStyle(color: isDark ? Colors.white : Colors.white),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -486,7 +486,7 @@ class _GoogleAccountPickerSheetState extends State<_GoogleAccountPickerSheet> {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: Colors.grey.shade400,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -502,7 +502,7 @@ class _GoogleAccountPickerSheetState extends State<_GoogleAccountPickerSheet> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: isDark ? Colors.white : Colors.black87,
+                    color: isDark ? Colors.white : Colors.black,
                   ),
                 ),
               ),
@@ -515,7 +515,7 @@ class _GoogleAccountPickerSheetState extends State<_GoogleAccountPickerSheet> {
               backgroundColor: Color(0xFF4285F4),
               child: Text('G', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
             ),
-            title: Text('Google User', style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : Colors.black87)),
+            title: Text('Google User', style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : Colors.black)),
             subtitle: const Text('user@gmail.com'),
             onTap: () => Navigator.pop(context, {'email': 'user@gmail.com', 'name': 'Google User'}),
           ),
@@ -524,7 +524,7 @@ class _GoogleAccountPickerSheetState extends State<_GoogleAccountPickerSheet> {
               backgroundColor: AppColors.primary,
               child: Text('A', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
             ),
-            title: Text('Ashwash Patient', style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : Colors.black87)),
+            title: Text('Ashwash Patient', style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : Colors.black)),
             subtitle: const Text('ashwash.patient@gmail.com'),
             onTap: () => Navigator.pop(context, {'email': 'ashwash.patient@gmail.com', 'name': 'Ashwash Patient'}),
           ),

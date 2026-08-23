@@ -24,7 +24,7 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
         title: Text(
           isBn ? 'আমার কোর্সসমূহ ও কন্টেন্ট ম্যানেজমেন্ট' : 'My Courses & Content Management',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -34,11 +34,11 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.school_outlined, size: 64, color: AppColors.primary),
+                  const Icon(Icons.school_outlined, size: 64, color: Colors.black),
                   const SizedBox(height: 12),
                   Text(
                     isBn ? 'আপনার তৈরি কোনো কোর্স নেই' : 'No courses created yet',
-                    style: TextStyle(fontSize: 16, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                    style: TextStyle(fontSize: 16, color: isDark ? Colors.white : Colors.white),
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton.icon(
@@ -60,7 +60,7 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.glassSurface,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                    border: Border.all(color: isDark ? Colors.white : Colors.white),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.02),
@@ -128,13 +128,13 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                color: isDark ? Colors.white : Colors.black,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               course.subtitle,
-                              style: TextStyle(fontSize: 12, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                              style: TextStyle(fontSize: 12, color: isDark ? Colors.white : Colors.white),
                             ),
                             const SizedBox(height: 14),
 
@@ -147,7 +147,7 @@ class SpecialistCourseManagementScreen extends StatelessWidget {
                                       side: const BorderSide(color: AppColors.primary),
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                     ),
-                                    icon: const Icon(Icons.edit_rounded, size: 16, color: AppColors.primary),
+                                    icon: const Icon(Icons.edit_rounded, size: 16, color: Colors.black),
                                     label: Text(
                                       isBn ? 'লেসন পরিবর্তন' : 'Edit Lessons',
                                       style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12),

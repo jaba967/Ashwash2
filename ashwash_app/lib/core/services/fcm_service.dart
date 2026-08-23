@@ -92,7 +92,7 @@ class FCMService {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+                child: const Text('Cancel', style: TextStyle(color: Colors.white)),
               ),
               ElevatedButton(
                 onPressed: () async {

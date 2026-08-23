@@ -88,10 +88,10 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                       onChanged: (val) => setState(() => _searchQuery = val),
                       decoration: InputDecoration(
                         hintText: isBn ? 'কোর্সের নাম বা শিক্ষক দিয়ে খুঁজুন...' : 'Search course by title or instructor...',
-                        prefixIcon: const Icon(Icons.search_rounded, color: AppColors.primary),
+                        prefixIcon: const Icon(Icons.search_rounded, color: Colors.black),
                         suffixIcon: _searchQuery.isNotEmpty
                             ? IconButton(
-                                icon: const Icon(Icons.clear_rounded, color: Colors.grey),
+                                icon: const Icon(Icons.clear_rounded, color: Colors.white),
                                 onPressed: () {
                                   _searchCtrl.clear();
                                   setState(() => _searchQuery = '');
@@ -99,14 +99,14 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                               )
                             : null,
                         filled: true,
-                        fillColor: isDark ? AppColors.surfaceDark : Colors.grey.shade100,
+                        fillColor: isDark ? AppColors.surfaceDark : Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade300),
+                          borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                          borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
                         ),
                       ),
                     ),
@@ -125,11 +125,11 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                         padding: const EdgeInsets.all(32.0),
                         child: Column(
                           children: [
-                            const Icon(Icons.search_off_rounded, size: 48, color: Colors.grey),
+                            const Icon(Icons.search_off_rounded, size: 48, color: Colors.white),
                             const SizedBox(height: 8),
                             Text(
                               isBn ? 'কোনো কোর্স পাওয়া যায়নি' : 'No courses found',
-                              style: TextStyle(color: isDark ? Colors.white70 : Colors.grey.shade600),
+                              style: TextStyle(color: isDark ? Colors.white70 : Colors.white),
                             ),
                           ],
                         ),
@@ -389,7 +389,7 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                                   const SizedBox(height: 4),
                                   Row(
                                     children: [
-                                      const Icon(Icons.person_rounded, size: 14, color: AppColors.primary),
+                                      const Icon(Icons.person_rounded, size: 14, color: Colors.black),
                                       const SizedBox(width: 4),
                                       Text(
                                         instructorName,
@@ -404,7 +404,7 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                                      color: isDark ? Colors.white : Colors.white,
                                     ),
                                   ),
                                   const SizedBox(height: 14),
@@ -483,7 +483,7 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                             children: [
                               const Text('Dr. Ayesha Rahman', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                               const SizedBox(height: 2),
-                              Text('Clinical Psychologist', style: TextStyle(fontSize: 13, color: Colors.grey.shade600)),
+                              Text('Clinical Psychologist', style: TextStyle(fontSize: 13, color: Colors.white)),
                               const SizedBox(height: 6),
                               Row(
                                 children: [
@@ -491,9 +491,9 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
                                   const SizedBox(width: 4),
                                   const Text('4.9', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                                   const SizedBox(width: 10),
-                                  Icon(Icons.history_rounded, size: 14, color: Colors.grey.shade500),
+                                  Icon(Icons.history_rounded, size: 14, color: Colors.white),
                                   const SizedBox(width: 4),
-                                  Text('12 years', style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
+                                  Text('12 years', style: TextStyle(fontSize: 12, color: Colors.white)),
                                 ],
                               ),
                             ],
@@ -525,9 +525,9 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
   Widget _buildMetaItem(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, size: 14, color: Colors.grey.shade600),
+        Icon(icon, size: 14, color: Colors.white),
         const SizedBox(width: 4),
-        Text(text, style: TextStyle(fontSize: 12, color: Colors.grey.shade700, fontWeight: FontWeight.w500)),
+        Text(text, style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500)),
       ],
     );
   }

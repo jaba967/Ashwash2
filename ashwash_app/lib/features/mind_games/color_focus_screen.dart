@@ -123,7 +123,7 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: const BoxDecoration(color: Color(0xFFEDE9FE), shape: BoxShape.circle),
-                child: const Icon(Icons.psychology_rounded, color: AppColors.primary, size: 48),
+                child: const Icon(Icons.psychology_rounded, color: Colors.black, size: 48),
               ),
               const SizedBox(height: 16),
               Text(
@@ -133,7 +133,7 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
               const SizedBox(height: 8),
               Text(
                 isBn ? 'আপনার একাগ্রতা পরীক্ষা সম্পন্ন হয়েছে' : 'Great mental concentration workout!',
-                style: const TextStyle(color: Colors.grey, fontSize: 14),
+                style: const TextStyle(color: Colors.white, fontSize: 14),
               ),
               const SizedBox(height: 16),
               Container(
@@ -160,7 +160,7 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
                         Navigator.pop(context);
                         _startGame();
                       },
-                      icon: const Icon(Icons.refresh_rounded, color: AppColors.primary),
+                      icon: const Icon(Icons.refresh_rounded, color: Colors.black),
                       label: Text(isBn ? 'আবার খেলুন' : 'Play Again', style: const TextStyle(color: AppColors.primary)),
                     ),
                   ),
@@ -216,7 +216,7 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
               Text(
                 isBn ? 'লেখাটির কালার (রং) ম্যাচ করুন, লেখার অর্থ নয়!' : 'Select the COLOR of the word, not the text meaning!',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 13, fontWeight: FontWeight.w500),
+                style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 24),
 
@@ -226,7 +226,7 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: Colors.grey.shade200),
+                  border: Border.all(color: Colors.white),
                 ),
                 child: Center(
                   child: Text(
@@ -301,11 +301,11 @@ class _ColorFocusScreenState extends State<ColorFocusScreen> {
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: Colors.white),
       ),
       child: Column(
         children: [
-          Text(label, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+          Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
           const SizedBox(height: 2),
           Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.primary)),
         ],

@@ -150,7 +150,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
         title: Text(
           isBn ? 'সেটিংস ও প্রোফাইল' : 'Settings & Profile',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -167,7 +167,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                 decoration: BoxDecoration(
                   color: AppColors.glassSurface,
                   border: Border(
-                    bottom: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                    bottom: BorderSide(color: isDark ? Colors.white : Colors.white),
                   ),
                 ),
                 child: Row(
@@ -192,7 +192,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: isDark ? Colors.white : const Color(0xFF0F172A),
+                                  color: isDark ? Colors.white : Colors.black,
                                 ),
                               ),
                               const SizedBox(width: 4),
@@ -206,7 +206,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                           ),
                           Text(
                             _emailCtrl.text.isEmpty ? 'doctor@ashwash.com' : _emailCtrl.text,
-                            style: TextStyle(fontSize: 11, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                            style: TextStyle(fontSize: 11, color: isDark ? Colors.white : Colors.white),
                           ),
                         ],
                       ),
@@ -224,7 +224,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                     // SECTION 1: APPEARANCE
                     _buildSectionHeader(isBn ? 'অ্যাপিয়ারেন্স (APPEARANCE)' : 'APPEARANCE'),
                     SwitchListTile(
-                      secondary: const Icon(Icons.wb_sunny_outlined, color: AppColors.primary),
+                      secondary: const Icon(Icons.wb_sunny_outlined, color: Colors.black),
                       title: Text(isBn ? 'ডার্ক মোড' : 'Dark Mode'),
                       subtitle: Text(themeProvider.isDarkMode ? 'Dark mode active' : 'Light mode active'),
                       activeColor: AppColors.primary,
@@ -242,8 +242,8 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: !isBn ? AppColors.primary : Colors.grey.shade200,
-                                foregroundColor: !isBn ? Colors.white : Colors.black87,
+                                backgroundColor: !isBn ? AppColors.primary : Colors.white,
+                                foregroundColor: !isBn ? Colors.white : Colors.black,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                               ),
                               onPressed: () => langProvider.setLanguage('en'),
@@ -254,8 +254,8 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                           Expanded(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: isBn ? AppColors.primary : Colors.grey.shade200,
-                                foregroundColor: isBn ? Colors.white : Colors.black87,
+                                backgroundColor: isBn ? AppColors.primary : Colors.white,
+                                foregroundColor: isBn ? Colors.white : Colors.black,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                               ),
                               onPressed: () => langProvider.setLanguage('bn'),
@@ -270,7 +270,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                     // SECTION 3: NOTIFICATIONS
                     _buildSectionHeader(isBn ? 'নোটিফিকেশন (NOTIFICATIONS)' : 'NOTIFICATIONS'),
                     SwitchListTile(
-                      secondary: const Icon(Icons.notifications_active_outlined, color: AppColors.primary),
+                      secondary: const Icon(Icons.notifications_active_outlined, color: Colors.black),
                       title: Text(isBn ? 'পুশ নোটিফিকেশন' : 'Push Notifications'),
                       subtitle: Text(isBn ? 'রোগীদের অ্যাপয়েন্টমেন্ট ও মেসেজের আপডেট পান' : 'Get notified about patient sessions'),
                       activeColor: AppColors.primary,
@@ -287,7 +287,7 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
                       decoration: BoxDecoration(
                         color: AppColors.glassSurface,
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+                        border: Border.all(color: isDark ? Colors.white : Colors.white),
                       ),
                       child: Column(
                         children: [
@@ -431,13 +431,13 @@ class _CompleteSpecialistProfileScreenState extends State<CompleteSpecialistProf
   InputDecoration _inputDecoration(String label, IconData icon, bool isDark) {
     return InputDecoration(
       labelText: label,
-      prefixIcon: Icon(icon, color: AppColors.primary, size: 20),
+      prefixIcon: Icon(icon, color: Colors.black, size: 20),
       filled: true,
-      fillColor: isDark ? AppColors.darkSurface : Colors.grey.shade50,
+      fillColor: isDark ? AppColors.darkSurface : Colors.white,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
+        borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
       ),
     );
   }

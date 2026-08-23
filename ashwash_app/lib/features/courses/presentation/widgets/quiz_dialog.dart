@@ -70,7 +70,7 @@ class _QuizDialogState extends State<QuizDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
-              Icon(Icons.quiz_rounded, size: 48, color: AppColors.primary),
+              Icon(Icons.quiz_rounded, size: 48, color: Colors.black),
               SizedBox(height: 12),
               Text('No quiz questions available for this course.'),
             ],
@@ -117,7 +117,7 @@ class _QuizDialogState extends State<QuizDialog> {
                         ? 'Passing score is 70%. You passed the course quiz!'
                         : 'Passing score is 70%. Please review course materials and retake.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey.shade600),
+                    style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -168,7 +168,7 @@ class _QuizDialogState extends State<QuizDialog> {
                     ),
                     LinearProgressIndicator(
                       value: (_currentQuestionIndex + 1) / widget.quizQuestions.length,
-                      backgroundColor: Colors.grey.shade200,
+                      backgroundColor: Colors.white,
                       color: AppColors.primary,
                     ),
                     const SizedBox(height: 16),
@@ -193,10 +193,10 @@ class _QuizDialogState extends State<QuizDialog> {
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              color: isSelected ? AppColors.primary.withOpacity(0.12) : Colors.grey.shade50,
+                              color: isSelected ? AppColors.primary.withOpacity(0.12) : Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: isSelected ? AppColors.primary : Colors.grey.shade300,
+                                color: isSelected ? AppColors.primary : Colors.white,
                                 width: isSelected ? 2 : 1,
                               ),
                             ),
@@ -204,11 +204,11 @@ class _QuizDialogState extends State<QuizDialog> {
                               children: [
                                 CircleAvatar(
                                   radius: 14,
-                                  backgroundColor: isSelected ? AppColors.primary : Colors.grey.shade300,
+                                  backgroundColor: isSelected ? AppColors.primary : Colors.white,
                                   child: Text(
                                     String.fromCharCode(65 + optIdx),
                                     style: TextStyle(
-                                      color: isSelected ? Colors.white : Colors.black87,
+                                      color: isSelected ? Colors.white : Colors.black,
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -220,7 +220,7 @@ class _QuizDialogState extends State<QuizDialog> {
                                     currentQuestion.options[optIdx],
                                     style: TextStyle(
                                       fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                                      color: isSelected ? AppColors.primary : Colors.black87,
+                                      color: isSelected ? AppColors.primary : Colors.black,
                                     ),
                                   ),
                                 ),

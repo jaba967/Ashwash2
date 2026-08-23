@@ -99,12 +99,12 @@ class MindGamesScreen extends StatelessWidget {
                     label: Text(
                       isBn ? tab['labelBn']! : tab['labelEn']!,
                       style: TextStyle(
-                        color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                        color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black),
                         fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
                       ),
                     ),
                     selectedColor: AppColors.primary,
-                    backgroundColor: isDark ? AppColors.surfaceDark : Colors.grey.shade200,
+                    backgroundColor: isDark ? AppColors.surfaceDark : Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     onSelected: (selected) {
                       hubProvider.setGameDifficulty(tab['key']!);
@@ -148,7 +148,7 @@ class MindGamesScreen extends StatelessWidget {
                               color: AppColors.primary.withOpacity(0.12),
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(Icons.psychology_rounded, color: AppColors.primary, size: 28),
+                            child: const Icon(Icons.psychology_rounded, color: Colors.black, size: 28),
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -178,14 +178,14 @@ class MindGamesScreen extends StatelessWidget {
                       const SizedBox(height: 6),
                       Text(
                         game['description'] ?? '',
-                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.white : Colors.white),
                       ),
                       const SizedBox(height: 12),
 
                       // Time & Category Metadata
                       Row(
                         children: [
-                          Icon(Icons.access_time_rounded, size: 14, color: Colors.grey.shade500),
+                          Icon(Icons.access_time_rounded, size: 14, color: Colors.white),
                           const SizedBox(width: 4),
                           Text('${game['duration_mins']} min', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
                           const SizedBox(width: 16),

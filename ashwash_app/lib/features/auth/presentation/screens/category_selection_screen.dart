@@ -75,7 +75,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.grey.shade500,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -216,7 +216,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                       },
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        side: BorderSide(color: Colors.grey.shade400),
+                        side: BorderSide(color: Colors.white),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -226,7 +226,7 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Colors.grey,
+                          color: Colors.white,
                         ),
                       ),
                     ),

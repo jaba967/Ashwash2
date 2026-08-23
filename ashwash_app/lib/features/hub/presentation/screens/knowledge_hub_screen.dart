@@ -100,12 +100,12 @@ class KnowledgeHubScreen extends StatelessWidget {
                     label: Text(
                       isBn ? tab['labelBn']! : tab['labelEn']!,
                       style: TextStyle(
-                        color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                        color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black),
                         fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
                       ),
                     ),
                     selectedColor: AppColors.primary,
-                    backgroundColor: isDark ? AppColors.surfaceDark : Colors.grey.shade200,
+                    backgroundColor: isDark ? AppColors.surfaceDark : Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     onSelected: (selected) {
                       hubProvider.setResourceFilter(tab['key']!);
@@ -124,7 +124,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                     ? Center(
                         child: Text(
                           isBn ? 'কোন রিসোর্স পাওয়া যায়নি' : 'No resources found in this section',
-                          style: TextStyle(color: Colors.grey.shade600),
+                          style: TextStyle(color: Colors.white),
                         ),
                       )
                     : ListView.builder(
@@ -162,7 +162,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                               color: isDark ? AppColors.cardDark : AppColors.cardLight,
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
-                                color: isPremium ? Colors.amber.shade300 : Colors.grey.shade200,
+                                color: isPremium ? Colors.amber.shade300 : Colors.white,
                                 width: isPremium ? 1.5 : 1,
                               ),
                               boxShadow: const [
@@ -254,7 +254,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                                    color: isDark ? Colors.white : Colors.white,
                                   ),
                                 ),
                                 const SizedBox(height: 14),
@@ -350,7 +350,7 @@ class KnowledgeHubScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade300),
+                border: Border.all(color: Colors.white),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -367,14 +367,14 @@ class KnowledgeHubScreen extends StatelessWidget {
             Text(
               isBn ? 'মাত্র ৫০ টাকায় কন্টেন্টটি আনলক করে ব্যবহার করুন।' : 'Complete payment of ৳50 to access this premium resource.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text(isBn ? 'বাতিল' : 'Cancel', style: const TextStyle(color: Colors.grey)),
+            child: Text(isBn ? 'বাতিল' : 'Cancel', style: const TextStyle(color: Colors.white)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -428,7 +428,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -451,7 +451,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                     const SizedBox(width: 10),
                     Text(
                       item['duration_display'] ?? '',
-                      style: TextStyle(color: Colors.grey.shade600, fontSize: 13, fontWeight: FontWeight.w500),
+                      style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -628,7 +628,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   item['description'] ?? '',
-                  style: TextStyle(fontSize: 14, height: 1.5, color: Colors.grey.shade700),
+                  style: TextStyle(fontSize: 14, height: 1.5, color: Colors.white),
                 ),
 
                 if (contentText.isNotEmpty) ...[
@@ -638,14 +638,14 @@ class KnowledgeHubScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: const Color(0xFFF8FAFC),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.grey.shade300),
+                      border: Border.all(color: Colors.white),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: const [
-                            Icon(Icons.menu_book_rounded, color: AppColors.primary, size: 20),
+                            Icon(Icons.menu_book_rounded, color: Colors.black, size: 20),
                             SizedBox(width: 8),
                             Text('Book Chapters & Core Content:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                           ],
@@ -653,7 +653,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                         const Divider(height: 20),
                         SelectableText(
                           contentText,
-                          style: const TextStyle(fontSize: 13, height: 1.6, color: Color(0xFF0F172A)),
+                          style: const TextStyle(fontSize: 13, height: 1.6, color: Colors.black),
                         ),
                       ],
                     ),
@@ -664,7 +664,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey.shade800,
+                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                   ),
                   child: Text(isBn ? 'বন্ধ করুন' : 'Close Resource', style: const TextStyle(color: Colors.white)),

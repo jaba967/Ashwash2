@@ -121,7 +121,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         width: 40,
                         height: 4,
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -129,14 +129,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        const Icon(Icons.manage_accounts_outlined, color: AppColors.primary, size: 28),
+                        const Icon(Icons.manage_accounts_outlined, color: Colors.black, size: 28),
                         const SizedBox(width: 12),
                         Text(
                           isBn ? 'অ্যাকাউন্ট পরিচালনা (Manage Account)' : 'Manage Account',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: isDark ? Colors.white : Colors.black87,
+                            color: isDark ? Colors.white : Colors.black,
                           ),
                         ),
                       ],
@@ -160,7 +160,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 ),
                                 child: CircleAvatar(
                                   radius: 48,
-                                  backgroundColor: isDark ? AppColors.darkSurface : Colors.grey.shade200,
+                                  backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
                                   backgroundImage: avatarImage,
                                   child: isUploadingImage
                                       ? const CircularProgressIndicator(color: AppColors.primary, strokeWidth: 3)
@@ -182,7 +182,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     decoration: const BoxDecoration(
                                       color: AppColors.primary,
                                       shape: BoxShape.circle,
-                                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4)],
+                                      boxShadow: [BoxShadow(color: Colors.black, blurRadius: 4)],
                                     ),
                                     child: const Icon(Icons.camera_alt_rounded, color: Colors.white, size: 18),
                                   ),
@@ -208,7 +208,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     // SECTION 2: CHANGE USERNAME (INDEPENDENT LOADING STATE)
                     Text(
                       isBn ? 'ইউজারনেম পরিবর্তন করুন' : 'Change Username',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : Colors.black87),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : Colors.black),
                     ),
                     const SizedBox(height: 8),
                     Row(
@@ -270,7 +270,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     // SECTION 3: CHANGE PASSWORD
                     Text(
                       isBn ? 'পাসওয়ার্ড পরিবর্তন করুন' : 'Change Password',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : Colors.black87),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : Colors.black),
                     ),
                     const SizedBox(height: 12),
                     if (passwordError != null) ...[
@@ -441,7 +441,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -449,7 +449,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      const Icon(Icons.privacy_tip_outlined, color: AppColors.primary, size: 28),
+                      const Icon(Icons.privacy_tip_outlined, color: Colors.black, size: 28),
                       const SizedBox(width: 12),
                       Text(
                         isBn ? 'গোপনীয়তা সেটিংস' : 'Privacy Settings',
@@ -560,7 +560,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // ACCOUNT MANAGEMENT
           _buildSectionHeader(isBn ? 'অ্যাকাউন্ট পরিচালনা' : 'ACCOUNT MANAGEMENT'),
           ListTile(
-            leading: const Icon(Icons.manage_accounts_outlined, color: AppColors.primary),
+            leading: const Icon(Icons.manage_accounts_outlined, color: Colors.black),
             title: Text(isBn ? 'অ্যাকাউন্ট পরিচালনা করুন' : 'Manage Account'),
             subtitle: Text(isBn ? 'ছবি, ইউজারনেম ও পাসওয়ার্ড আপডেট' : 'Profile photo, username & password'),
             onTap: () => _showManageAccountSheet(context, isBn),
@@ -578,8 +578,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: !isBn ? AppColors.primary : Colors.grey.shade200,
-                      foregroundColor: !isBn ? Colors.white : Colors.black87,
+                      backgroundColor: !isBn ? AppColors.primary : Colors.white,
+                      foregroundColor: !isBn ? Colors.white : Colors.black,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     ),
                     onPressed: () => langProvider.setLanguage('en'),
@@ -590,8 +590,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: isBn ? AppColors.primary : Colors.grey.shade200,
-                      foregroundColor: isBn ? Colors.white : Colors.black87,
+                      backgroundColor: isBn ? AppColors.primary : Colors.white,
+                      foregroundColor: isBn ? Colors.white : Colors.black,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     ),
                     onPressed: () => langProvider.setLanguage('bn'),
@@ -606,7 +606,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // NOTIFICATIONS
           _buildSectionHeader(isBn ? 'নোটিফিকেশন' : 'NOTIFICATIONS'),
           SwitchListTile(
-            secondary: const Icon(Icons.notifications_active_outlined, color: AppColors.primary),
+            secondary: const Icon(Icons.notifications_active_outlined, color: Colors.black),
             title: Text(isBn ? 'পুশ নোটিফিকেশন' : 'Push Notifications'),
             subtitle: Text(isBn ? 'টাস্ক এবং সেশনের খবর পান' : 'Get notified about tasks and sessions'),
             activeColor: AppColors.primary,
@@ -618,7 +618,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // PRIVACY & SECURITY
           _buildSectionHeader(isBn ? 'গোপনীয়তা ও নিরাপত্তা' : 'PRIVACY & SECURITY'),
           ListTile(
-            leading: const Icon(Icons.privacy_tip_outlined, color: AppColors.primary),
+            leading: const Icon(Icons.privacy_tip_outlined, color: Colors.black),
             title: Text(isBn ? 'গোপনীয়তা সেটিংস' : 'Privacy Settings'),
             subtitle: Text(isBn ? 'আপনার তথ্য ও ডেটা পরিচালনা করুন' : 'Manage your data and privacy'),
             onTap: () => _showPrivacySettingsSheet(context, isBn),
@@ -628,7 +628,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // ABOUT
           _buildSectionHeader(isBn ? 'সম্পর্কে' : 'ABOUT'),
           ListTile(
-            leading: const Icon(Icons.info_outline_rounded, color: AppColors.primary),
+            leading: const Icon(Icons.info_outline_rounded, color: Colors.black),
             title: const Text('Ashwash v1.0.0'),
             subtitle: const Text('Mental Wellness Support Platform'),
           ),
@@ -642,7 +642,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey, letterSpacing: 1.1),
+        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1.1),
       ),
     );
   }

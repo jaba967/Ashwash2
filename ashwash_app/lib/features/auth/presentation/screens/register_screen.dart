@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 8),
                 Text(
                   isBn ? 'আপনার মানসিক সুস্থতার যাত্রায় অংশ নিন' : 'Join our supportive mental wellness community',
-                  style: const TextStyle(color: Colors.grey, fontSize: 14),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 const SizedBox(height: 24),
 

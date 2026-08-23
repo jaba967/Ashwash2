@@ -44,7 +44,7 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: AppColors.primary.withOpacity(0.15),
-                      child: const Icon(Icons.auto_awesome_rounded, color: AppColors.primary, size: 20),
+                      child: const Icon(Icons.auto_awesome_rounded, color: Colors.black, size: 20),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -59,7 +59,7 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade100,
+                              color: Colors.white,
                               borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(16),
                                 bottomLeft: Radius.circular(16),
@@ -76,7 +76,7 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             '02:28 PM',
-                            style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
+                            style: TextStyle(color: Colors.white, fontSize: 11),
                           ),
                         ],
                       ),
@@ -95,7 +95,7 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.info_outline_rounded, color: AppColors.primary, size: 20),
+                      const Icon(Icons.info_outline_rounded, color: Colors.black, size: 20),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
@@ -113,7 +113,7 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                 // Suggested Topics Header
                 Text(
                   isBn ? 'পরামর্শকৃত বিষয়সমূহ:' : 'Suggested topics:',
-                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.w600, fontSize: 13),
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13),
                 ),
                 const SizedBox(height: 12),
 
@@ -155,9 +155,9 @@ class AIChatPlaceholderScreen extends StatelessWidget {
                     enabled: false,
                     decoration: InputDecoration(
                       hintText: isBn ? 'আপনার বার্তা লিখুন...' : 'Type your message...',
-                      hintStyle: TextStyle(color: Colors.grey.shade400),
+                      hintStyle: TextStyle(color: Colors.white),
                       filled: true,
-                      fillColor: Colors.grey.shade100,
+                      fillColor: Colors.white,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(24),

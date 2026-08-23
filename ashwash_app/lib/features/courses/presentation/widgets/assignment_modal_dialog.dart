@@ -218,7 +218,7 @@ class _AssignmentModalDialogState extends State<AssignmentModalDialog> {
               const SizedBox(height: 4),
               Text(
                 assignment.description,
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                style: TextStyle(color: Colors.white, fontSize: 13),
               ),
               const Divider(height: 24),
 
@@ -277,17 +277,17 @@ class _AssignmentModalDialogState extends State<AssignmentModalDialog> {
                 TextField(
                   controller: _journalCtrl,
                   maxLines: 4,
-                  style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w500),
+                  style: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
                     hintText: 'Share your thoughts, challenges, or small wins...',
-                    hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+                    hintStyle: TextStyle(color: Colors.white, fontSize: 14),
                     filled: true,
                     fillColor: Colors.white,
                     border: const OutlineInputBorder(),
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text('Word count: ${_countWords(_journalCtrl.text)} / 30 words', style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
+                Text('Word count: ${_countWords(_journalCtrl.text)} / 30 words', style: TextStyle(color: Colors.white, fontSize: 12)),
               ]
 
               // 2. Sleep Tracker Form

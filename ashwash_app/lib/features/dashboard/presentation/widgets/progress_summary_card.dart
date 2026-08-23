@@ -56,7 +56,7 @@ class ProgressSummaryCard extends StatelessWidget {
                 subtitle: isBn ? 'কোর্স অগ্রগতি' : 'Course Progress',
                 icon: Icons.menu_book_rounded,
                 iconBgColor: AppColors.primary.withOpacity(0.12),
-                iconColor: AppColors.primary,
+                iconColor: Colors.black,
               ),
             ),
             const SizedBox(width: 12),
@@ -138,7 +138,7 @@ class ProgressSummaryCard extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 11,
-              color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+              color: isDark ? Colors.white : Colors.white,
             ),
           ),
         ],

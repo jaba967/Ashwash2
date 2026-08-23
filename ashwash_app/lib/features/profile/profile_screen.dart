@@ -125,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(
           isBn ? 'প্রোফাইল' : 'Profile',
           style: TextStyle(
-            color: isDark ? Colors.white : const Color(0xFF0F172A),
+            color: isDark ? Colors.white : Colors.black,
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
@@ -139,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 IconButton(
                   icon: Icon(
                     Icons.notifications_none_rounded,
-                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    color: isDark ? Colors.white : Colors.black,
                     size: 26,
                   ),
                   onPressed: () {
@@ -169,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
           child: Container(
-            color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+            color: isDark ? Colors.white : Colors.white,
             height: 1,
           ),
         ),
@@ -226,7 +226,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF0F172A),
+                color: isDark ? Colors.white : Colors.black,
                 letterSpacing: -0.3,
               ),
             ),
@@ -237,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               email,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                color: isDark ? Colors.white : Colors.white,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -309,7 +309,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               context,
               title: isBn ? 'সেটিংস (অ্যাকাউন্ট পরিচালনা)' : 'Settings & Account',
               icon: Icons.settings_outlined,
-              iconColor: const Color(0xFF64748B),
+              iconColor: Colors.white,
               isDark: isDark,
               onTap: () {
                 Navigator.push(
@@ -388,7 +388,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       decoration: BoxDecoration(
         color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade100, width: 1.5),
+        border: Border.all(color: isDark ? Colors.white : Colors.white, width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.02),
@@ -405,7 +405,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Text(
             label,
             style: TextStyle(
-              color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
+              color: isDark ? Colors.white : Colors.white,
               fontSize: 13,
               fontWeight: FontWeight.w600,
             ),
@@ -428,7 +428,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       decoration: BoxDecoration(
         color: AppColors.glassSurface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade100, width: 1.5),
+        border: Border.all(color: isDark ? Colors.white : Colors.white, width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.015),
@@ -450,12 +450,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 15,
-              color: isDark ? Colors.white : const Color(0xFF0F172A),
+              color: isDark ? Colors.white : Colors.black,
             ),
           ),
           trailing: Icon(
             Icons.chevron_right_rounded,
-            color: isDark ? Colors.grey.shade500 : Colors.grey.shade400,
+            color: isDark ? Colors.white : Colors.white,
             size: 20,
           ),
         ),

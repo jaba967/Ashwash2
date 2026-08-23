@@ -129,13 +129,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.language_rounded, color: AppColors.primary),
+                    icon: const Icon(Icons.language_rounded, color: Colors.black),
                     onPressed: () => langProvider.toggleLanguage(),
                   ),
                   IconButton(
                     icon: Icon(
                       themeProvider.isDarkMode ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-                      color: AppColors.primary,
+                      color: Colors.black,
                     ),
                     onPressed: () {
                       themeProvider.toggleTheme(!themeProvider.isDarkMode);
@@ -161,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 8),
               Text(
                 isBn ? 'মানসিক সুস্থতায় আপনার নিরাপদ স্থান' : 'Your Safe Space for Mental Wellness',
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+                style: TextStyle(color: Colors.white, fontSize: 14),
               ),
               const SizedBox(height: 36),
 
@@ -236,15 +236,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.grey.shade300)),
+                  Expanded(child: Divider(color: Colors.white)),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       isBn ? 'অথবা চালু রাখুন' : 'Or continue with',
-                      style: TextStyle(color: Colors.grey.shade500, fontSize: 12),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),
-                  Expanded(child: Divider(color: Colors.grey.shade300)),
+                  Expanded(child: Divider(color: Colors.white)),
                 ],
               ),
               const SizedBox(height: 20),
@@ -278,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      label: const Text('Google', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+                      label: const Text('Google', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -290,7 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: () => _handleFacebookLogin(),
                       icon: const Icon(Icons.facebook, color: Colors.blue, size: 22),
-                      label: const Text('Facebook', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold)),
+                      label: const Text('Facebook', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ],
@@ -302,7 +302,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     isBn ? 'একাউন্ট নেই? ' : "Don't have an account? ",
-                    style: TextStyle(color: Colors.grey.shade600),
+                    style: TextStyle(color: Colors.white),
                   ),
                   GestureDetector(
                     onTap: () {
