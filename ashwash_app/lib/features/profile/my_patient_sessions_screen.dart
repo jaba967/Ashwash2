@@ -118,14 +118,15 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       label: Text(
         label,
         style: TextStyle(
-          color: isSelected ? Colors.white : AppColors.secondary,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          color: isSelected ? Colors.white : AppColors.charcoalGray,
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
           fontSize: 13,
         ),
       ),
       selected: isSelected,
-      selectedColor: AppColors.accent,
-      backgroundColor: const Color(0xFFF8F9FA),
+      selectedColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Selected
+      backgroundColor: AppColors.paleGreen, // #E0EEE0 Pale Green Unselected
+      side: BorderSide(color: isSelected ? AppColors.deepForestGreen : AppColors.sageGreen),
       onSelected: (_) => setState(() => _selectedFilter = filterKey),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -212,9 +213,9 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSurface : Colors.white,
+        color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200, width: 1.5),
+        border: Border.all(color: AppColors.sageGreen.withOpacity(0.5), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.02),

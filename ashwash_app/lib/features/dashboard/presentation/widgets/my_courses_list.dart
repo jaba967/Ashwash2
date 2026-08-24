@@ -364,7 +364,7 @@ class MyCoursesList extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.sageGreen.withOpacity(0.5)),
+                    border: Border.all(color: AppColors.deepForestGreen.withOpacity(0.4), width: 1.5),
                     boxShadow: const [
                       BoxShadow(
                         color: Color(0x06000000),
@@ -381,7 +381,7 @@ class MyCoursesList extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
+                          color: AppColors.charcoalGray,
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -391,7 +391,7 @@ class MyCoursesList extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontSize: 13,
-                          color: AppColors.secondary, // #3E3E75 Dark Indigo
+                          color: AppColors.charcoalGray,
                         ),
                       ),
                       const SizedBox(height: 14),
@@ -400,9 +400,9 @@ class MyCoursesList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                             decoration: BoxDecoration(
-                              color: AppColors.accent.withOpacity(0.15),
+                              color: AppColors.goldenrod, // #DAA520 Distinct Goldenrod Badge
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
@@ -410,7 +410,7 @@ class MyCoursesList extends StatelessWidget {
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.primary,
+                                color: Colors.white,
                               ),
                             ),
                           ),
