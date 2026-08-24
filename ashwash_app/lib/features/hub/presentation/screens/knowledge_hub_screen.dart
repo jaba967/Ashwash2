@@ -42,9 +42,9 @@ class KnowledgeHubScreen extends StatelessWidget {
     final resources = hubProvider.resources;
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       appBar: AppBar(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         title: Text(isBn ? 'নলেজ হাব' : 'Knowledge Hub', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         elevation: 0,
       ),
@@ -56,11 +56,11 @@ class KnowledgeHubScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColors.primary, // #4E1F6E Deep Purple Highlight Header Card
+              color: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Card
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withOpacity(0.3),
+                  color: AppColors.deepForestGreen.withOpacity(0.3),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -81,7 +81,7 @@ class KnowledgeHubScreen extends StatelessWidget {
                   isBn ? 'অডিও, ভিডিও ও বিষয়ভিত্তিক PDF বইসমূহ' : 'Audio, video & PDF psychological books',
                   style: const TextStyle(
                     fontSize: 13,
-                    color: AppColors.mint,
+                    color: AppColors.goldenrod, // #DAA520 Goldenrod Subtitle Accent
                   ),
                 ),
               ],

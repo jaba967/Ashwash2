@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final isBn = langProvider.isBangla;
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -130,13 +130,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.language_rounded, color: AppColors.primary),
+                    icon: const Icon(Icons.language_rounded, color: AppColors.deepForestGreen),
                     onPressed: () => langProvider.toggleLanguage(),
                   ),
                   IconButton(
                     icon: Icon(
                       themeProvider.isDarkMode ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-                      color: AppColors.primary,
+                      color: AppColors.deepForestGreen,
                     ),
                     onPressed: () {
                       themeProvider.toggleTheme(!themeProvider.isDarkMode);

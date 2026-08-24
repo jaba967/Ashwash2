@@ -258,9 +258,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       appBar: AppBar(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text(
@@ -277,15 +277,15 @@ class _CommunityScreenState extends State<CommunityScreen> {
               return Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                color: AppColors.secondary, // #3E3E75 Dark Indigo Supporting Header
+                color: AppColors.sageGreen, // #8FBC8F Sage Green Banner
                 child: Row(
                   children: [
-                    const Icon(Icons.verified_user_rounded, color: AppColors.accent, size: 20),
+                    const Icon(Icons.verified_user_rounded, color: AppColors.goldenrod, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         isBn ? 'ভেরিফাইড স্পেশালিস্ট মোড: আপনার মন্তব্য ডক্টর ব্যাজসহ দেখা যাবে' : 'Verified Specialist Mode: Replying with Official Doctor Badge',
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                        style: const TextStyle(color: AppColors.charcoalGray, fontWeight: FontWeight.bold, fontSize: 12),
                       ),
                     ),
                   ],

@@ -131,7 +131,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       appBar: AppBar(
         title: const Text(
           'Notifications',
@@ -142,7 +142,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
         ),
         elevation: 0,
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         foregroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [

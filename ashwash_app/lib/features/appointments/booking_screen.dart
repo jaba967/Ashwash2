@@ -86,9 +86,9 @@ class _BookingScreenState extends State<BookingScreen> {
 
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       appBar: AppBar(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
         title: Text(isBn ? 'সেশন বুকিং' : 'Book Session', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
@@ -101,9 +101,9 @@ class _BookingScreenState extends State<BookingScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.lightMint.withOpacity(0.4), // #98E8DE Information Highlight Area
+                color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                border: Border.all(color: AppColors.sageGreen.withOpacity(0.5)),
               ),
               child: Row(
                 children: [

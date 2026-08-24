@@ -49,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final isBn = langProvider.isBangla;
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       body: SafeArea(
         child: Column(
           children: [

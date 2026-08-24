@@ -18,28 +18,28 @@ class QuickActionsGrid extends StatelessWidget {
         'id': 'knowledge_hub',
         'title': isBn ? 'নলেজ হাব' : 'Knowledge Hub',
         'imageAsset': 'assets/images/knowledge_hub_icon.jpg',
-        'bgColor': AppColors.deepPurple, // #4E1F6E
+        'bgColor': AppColors.deepForestGreen, // #2E8B57
         'textColor': Colors.white,
       },
       {
         'id': 'mind_game',
         'title': isBn ? 'মাইন্ড গেম' : 'Mind Game',
         'imageAsset': 'assets/images/mind_games_icon.jpg',
-        'bgColor': AppColors.darkIndigo, // #3E3E75
-        'textColor': Colors.white,
+        'bgColor': AppColors.sageGreen, // #8FBC8F
+        'textColor': AppColors.charcoalGray,
       },
       {
         'id': 'browse_courses',
         'title': isBn ? 'কোর্স ব্রাউজ' : 'Browse Courses',
         'imageAsset': 'assets/images/courses_browse_icon.jpg',
-        'bgColor': AppColors.teal, // #45A9A9
+        'bgColor': AppColors.goldenrod, // #DAA520
         'textColor': Colors.white,
       },
       {
         'id': 'book_session',
         'title': isBn ? 'সেশন বুকিং' : 'Book Session',
         'imageAsset': 'assets/images/specialist_consult_icon.jpg',
-        'bgColor': AppColors.deepPurple, // #4E1F6E
+        'bgColor': AppColors.deepForestGreen, // #2E8B57
         'textColor': Colors.white,
       },
     ];

@@ -326,18 +326,18 @@ class MyCoursesList extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             decoration: BoxDecoration(
-              color: AppColors.lightMint.withOpacity(0.4), // #98E8DE Light Mint card bg
+              color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.accent.withOpacity(0.2)),
+              border: Border.all(color: AppColors.sageGreen.withOpacity(0.5)),
             ),
             child: Column(
               children: [
-                const Icon(Icons.school_outlined, size: 48, color: AppColors.secondary),
+                const Icon(Icons.school_outlined, size: 48, color: AppColors.deepForestGreen),
                 const SizedBox(height: 12),
                 Text(
                   isBn ? 'আপনি এখনো কোনো কোর্সে এনরোল করেননি।' : 'You are not enrolled in any courses yet.',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: AppColors.secondary, fontSize: 14, fontWeight: FontWeight.w500),
+                  style: const TextStyle(color: AppColors.charcoalGray, fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -362,9 +362,9 @@ class MyCoursesList extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 14),
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
-                    color: AppColors.lightMint.withOpacity(0.35), // #98E8DE Light Mint card bg
+                    color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.sageGreen.withOpacity(0.5)),
                     boxShadow: const [
                       BoxShadow(
                         color: Color(0x06000000),

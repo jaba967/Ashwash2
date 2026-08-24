@@ -15,47 +15,47 @@ class AppThemeProvider extends ChangeNotifier {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    primaryColor: AppColors.primary, // #4E1F6E Deep Purple
-    scaffoldBackgroundColor: AppColors.lightMint, // #98E8DE Light Mint Background
-    cardColor: Colors.white,
+    primaryColor: AppColors.primary, // #2E8B57 Deep Forest Green
+    scaffoldBackgroundColor: AppColors.bgLight, // #F0F8F0 Light Grayish Green
+    cardColor: AppColors.cardLight, // #E0EEE0 Pale Green Cards
     colorScheme: const ColorScheme.light(
-      primary: AppColors.primary, // #4E1F6E Deep Purple
-      secondary: AppColors.secondary, // #3E3E75 Dark Indigo
-      tertiary: AppColors.accent, // #45A9A9 Teal
+      primary: AppColors.primary, // #2E8B57 Deep Forest Green
+      secondary: AppColors.secondary, // #8FBC8F Sage Green
+      tertiary: AppColors.accent, // #DAA520 Goldenrod Accent
       error: AppColors.danger,
-      surface: Colors.white,
-      background: AppColors.lightMint,
+      surface: AppColors.cardLight, // #E0EEE0 Pale Green
+      background: AppColors.bgLight, // #F0F8F0 Light Grayish Green
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+      backgroundColor: AppColors.primary, // #2E8B57 Deep Forest Green Header
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
       actionsIconTheme: IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.lightMint, // #98E8DE
-      selectedItemColor: AppColors.primary, // #4E1F6E Deep Purple
-      unselectedItemColor: AppColors.secondary, // #3E3E75 Dark Indigo
+      backgroundColor: AppColors.cardLight, // #E0EEE0 Pale Green
+      selectedItemColor: AppColors.primary, // #2E8B57 Deep Forest Green
+      unselectedItemColor: AppColors.charcoalGray, // #36454F Charcoal Gray
       elevation: 8,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Primary Button
+        backgroundColor: AppColors.primary, // #2E8B57 Deep Forest Green Primary Button
         foregroundColor: Colors.white,
         textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.secondary, // #3E3E75 Dark Indigo Secondary Button
-        side: const BorderSide(color: AppColors.secondary, width: 1.5),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+        foregroundColor: AppColors.primary, // #2E8B57
+        side: const BorderSide(color: AppColors.primary, width: 1.5),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
       ),
     ),
     cardTheme: CardThemeData(
-      color: Colors.white,
+      color: AppColors.cardLight, // #E0EEE0 Pale Green
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
@@ -63,4 +63,5 @@ class AppThemeProvider extends ChangeNotifier {
 
   static ThemeData darkTheme = lightTheme;
 }
+
 

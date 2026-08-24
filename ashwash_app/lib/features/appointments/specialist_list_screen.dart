@@ -163,9 +163,9 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
+      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
       appBar: AppBar(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
         title: Text(
           isBn ? 'বিশেষজ্ঞ সেশন বুকিং' : 'Book Specialist Session',
