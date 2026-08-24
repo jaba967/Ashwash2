@@ -362,14 +362,14 @@ class MyCoursesList extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 14),
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
-                    color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
+                    color: isDark ? AppColors.darkForestSurface : AppColors.paleGreen, // #2C3E3F in Dark, #E0EEE0 in Light
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.deepForestGreen.withOpacity(0.4), width: 1.5),
-                    boxShadow: const [
+                    border: Border.all(color: isDark ? AppColors.sageGreen.withOpacity(0.4) : AppColors.deepForestGreen.withOpacity(0.4), width: 1.5),
+                    boxShadow: [
                       BoxShadow(
-                        color: Color(0x06000000),
+                        color: isDark ? Colors.black.withOpacity(0.2) : const Color(0x06000000),
                         blurRadius: 10,
-                        offset: Offset(0, 4),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
@@ -378,10 +378,10 @@ class MyCoursesList extends StatelessWidget {
                     children: [
                       Text(
                         _getCourseTitle(course),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.charcoalGray,
+                          color: isDark ? AppColors.lightText : AppColors.charcoalGray,
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -389,9 +389,9 @@ class MyCoursesList extends StatelessWidget {
                         _getCourseDescription(course),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
-                          color: AppColors.charcoalGray,
+                          color: isDark ? AppColors.sageGreen : AppColors.charcoalGray,
                         ),
                       ),
                       const SizedBox(height: 14),

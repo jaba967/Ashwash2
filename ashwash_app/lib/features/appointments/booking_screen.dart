@@ -86,7 +86,7 @@ class _BookingScreenState extends State<BookingScreen> {
 
 
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       appBar: AppBar(
         backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
@@ -101,9 +101,9 @@ class _BookingScreenState extends State<BookingScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
+                color: isDark ? AppColors.darkForestSurface : AppColors.paleGreen, // #2C3E3F in Dark, #E0EEE0 in Light
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.sageGreen.withOpacity(0.5)),
+                border: Border.all(color: isDark ? AppColors.sageGreen.withOpacity(0.4) : AppColors.sageGreen.withOpacity(0.5)),
               ),
               child: Row(
                 children: [

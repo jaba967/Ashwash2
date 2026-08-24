@@ -48,8 +48,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final langProvider = Provider.of<AppLanguageProvider>(context);
     final isBn = langProvider.isBangla;
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       body: SafeArea(
         child: Column(
           children: [

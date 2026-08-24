@@ -118,8 +118,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final themeProvider = Provider.of<AppThemeProvider>(context);
     final isBn = langProvider.isBangla;
 
+    final isDark = themeProvider.isDarkMode;
+
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),

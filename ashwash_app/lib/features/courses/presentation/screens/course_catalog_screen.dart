@@ -69,7 +69,7 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
     final filteredCourses = courseProvider.getFilteredCourses(widget.categoryId, _searchQuery);
 
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       appBar: AppBar(
         backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,

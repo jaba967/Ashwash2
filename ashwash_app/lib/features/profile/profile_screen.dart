@@ -9,6 +9,7 @@ import '../../core/providers/dashboard_provider.dart';
 import '../../core/providers/language_provider.dart';
 import '../../core/providers/notification_provider.dart';
 import '../../core/providers/specialist_provider.dart';
+import '../../core/theme/app_theme.dart';
 import '../auth/presentation/screens/login_screen.dart';
 import '../notifications/screens/notification_screen.dart';
 import 'my_enrolled_courses_screen.dart';
@@ -116,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       appBar: AppBar(
         backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
@@ -308,6 +309,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const SettingsScreen()),
+                );
+              },
+            ),
+            const SizedBox(height: 12),
+
+            Consumer<AppThemeProvider>(
+              builder: (context, themeProvider, _) {
+                return _buildMenuItemCard(
+                  context,
+                  title: isBn
+                      ? (themeProvider.isDarkMode ? 'থিম পরিবর্তন করুন (লাইট মোড)' : 'থিম পরিবর্তন করুন (ডার্ক মোড)')
+                      : (themeProvider.isDarkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'),
+                  icon: themeProvider.isDarkMode ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+                  iconColor: AppColors.goldenrod,
+                  isDark: isDark,
+                  onTap: () {
+                    themeProvider.toggleTheme(!themeProvider.isDarkMode);
+                  },
                 );
               },
             ),

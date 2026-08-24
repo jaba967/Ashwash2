@@ -567,7 +567,43 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const SizedBox(height: 20),
 
-          
+          // APPEARANCE & THEME
+          _buildSectionHeader(isBn ? 'অ্যাপিয়ারেন্স ও থিম (Appearance & Theme)' : 'APPEARANCE & THEME'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: !themeProvider.isDarkMode ? AppColors.deepForestGreen : AppColors.darkForestSurface,
+                      foregroundColor: !themeProvider.isDarkMode ? Colors.white : AppColors.lightText,
+                      side: BorderSide(color: !themeProvider.isDarkMode ? AppColors.deepForestGreen : AppColors.sageGreen),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    ),
+                    onPressed: () => themeProvider.toggleTheme(false),
+                    icon: const Icon(Icons.light_mode_outlined, size: 18),
+                    label: Text(isBn ? 'লাইট থিম' : 'Light Theme', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: themeProvider.isDarkMode ? AppColors.deepForestGreen : AppColors.cardLight,
+                      foregroundColor: themeProvider.isDarkMode ? Colors.white : AppColors.charcoalGray,
+                      side: BorderSide(color: themeProvider.isDarkMode ? AppColors.deepForestGreen : AppColors.sageGreen),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    ),
+                    onPressed: () => themeProvider.toggleTheme(true),
+                    icon: const Icon(Icons.dark_mode_outlined, size: 18),
+                    label: Text(isBn ? 'ডার্ক থিম' : 'Dark Theme', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
 
           // LANGUAGE
           _buildSectionHeader(isBn ? 'ভাষা' : 'LANGUAGE'),

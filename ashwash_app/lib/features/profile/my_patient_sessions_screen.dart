@@ -43,7 +43,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.lightGrayishGreen, // #F0F8F0 Light Grayish Green Canvas
+      backgroundColor: isDark ? AppColors.darkForestBg : AppColors.lightGrayishGreen, // #1A2B2C in Dark, #F0F8F0 in Light
       appBar: AppBar(
         backgroundColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Header
         elevation: 0,
@@ -62,7 +62,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
           // Filter Tabs (All, Confirmed, Pending, Missed)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Container
+            color: isDark ? AppColors.darkForestSurface : AppColors.paleGreen, // #2C3E3F in Dark, #E0EEE0 in Light
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -213,7 +213,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.paleGreen, // #E0EEE0 Pale Green Surface Card
+        color: isDark ? AppColors.darkForestSurface : AppColors.paleGreen, // #2C3E3F in Dark, #E0EEE0 in Light
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: AppColors.sageGreen.withOpacity(0.5), width: 1.5),
         boxShadow: [

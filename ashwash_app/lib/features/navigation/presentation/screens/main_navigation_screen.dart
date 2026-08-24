@@ -46,10 +46,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: AppColors.paleGreen, // #E0EEE0 Pale Green Bottom Nav Surface
+          color: isDark ? AppColors.darkForestSurface : AppColors.paleGreen, // #2C3E3F in Dark, #E0EEE0 in Light
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withOpacity(0.12),
+              color: isDark ? Colors.black.withOpacity(0.3) : AppColors.primary.withOpacity(0.12),
               blurRadius: 16,
               offset: const Offset(0, -4),
             ),
@@ -57,7 +57,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: AppColors.goldenrod.withOpacity(0.4), // #DAA520 Goldenrod Active Indicator
+            indicatorColor: isDark
+                ? AppColors.deepForestGreen.withOpacity(0.5)
+                : AppColors.goldenrod.withOpacity(0.4),
           ),
           child: BottomNavigationBar(
             currentIndex: _currentIndex,
@@ -70,11 +72,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               }
             },
             type: BottomNavigationBarType.fixed,
-            backgroundColor: AppColors.paleGreen, // #E0EEE0 Pale Green Surface
-            selectedItemColor: AppColors.deepForestGreen, // #2E8B57 Deep Forest Green Selected
-            unselectedItemColor: AppColors.charcoalGray, // #36454F Charcoal Gray Unselected
-            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.deepForestGreen),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: AppColors.charcoalGray),
+            backgroundColor: isDark ? AppColors.darkForestSurface : AppColors.paleGreen,
+            selectedItemColor: isDark ? AppColors.sageGreen : AppColors.deepForestGreen,
+            unselectedItemColor: isDark ? AppColors.sageGreen.withOpacity(0.7) : AppColors.charcoalGray,
+            selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              color: isDark ? AppColors.sageGreen : AppColors.deepForestGreen,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
+              color: isDark ? AppColors.sageGreen.withOpacity(0.7) : AppColors.charcoalGray,
+            ),
             elevation: 0,
             items: const [
               BottomNavigationBarItem(

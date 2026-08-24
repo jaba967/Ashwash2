@@ -61,7 +61,55 @@ class AppThemeProvider extends ChangeNotifier {
     ),
   );
 
-  static ThemeData darkTheme = lightTheme;
+  static ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    primaryColor: AppColors.deepForestGreen, // #2E8B57 Primary Deep Forest Green
+    scaffoldBackgroundColor: AppColors.darkForestBg, // #1A2B2C Dark Forest Canvas
+    cardColor: AppColors.darkForestSurface, // #2C3E3F Dark Forest Surface
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.deepForestGreen, // #2E8B57
+      secondary: AppColors.sageGreen, // #8FBC8F
+      tertiary: AppColors.accentGold, // #DAA520 Accent Gold
+      error: AppColors.danger,
+      surface: AppColors.darkForestSurface, // #2C3E3F
+      background: AppColors.darkForestBg, // #1A2B2C
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.deepForestGreen, // #2E8B57 Header
+      elevation: 0,
+      iconTheme: IconThemeData(color: AppColors.lightText),
+      actionsIconTheme: IconThemeData(color: AppColors.lightText),
+      titleTextStyle: TextStyle(color: AppColors.lightText, fontSize: 20, fontWeight: FontWeight.bold),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.darkForestSurface, // #2C3E3F Surface
+      selectedItemColor: AppColors.sageGreen, // #8FBC8F
+      unselectedItemColor: AppColors.sageGreen, // #8FBC8F
+      elevation: 8,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.deepForestGreen, // #2E8B57
+        foregroundColor: AppColors.lightText, // #E0EEE0
+        textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: AppColors.darkForestSurface, // #2C3E3F
+        foregroundColor: AppColors.lightText, // #E0EEE0
+        side: const BorderSide(color: AppColors.sageGreen, width: 1.5),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+      ),
+    ),
+    cardTheme: CardThemeData(
+      color: AppColors.darkForestSurface, // #2C3E3F Surface
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    ),
+  );
 }
 
 

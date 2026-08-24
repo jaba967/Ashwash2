@@ -13,20 +13,22 @@ class QuickActionsGrid extends StatelessWidget {
     final langProvider = Provider.of<LanguageProvider>(context);
     final isBn = langProvider.isBangla;
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     final List<Map<String, dynamic>> actions = [
       {
         'id': 'knowledge_hub',
         'title': isBn ? 'নলেজ হাব' : 'Knowledge Hub',
         'imageAsset': 'assets/images/knowledge_hub_icon.jpg',
         'bgColor': AppColors.deepForestGreen, // #2E8B57
-        'textColor': Colors.white,
+        'textColor': AppColors.lightText,
       },
       {
         'id': 'mind_game',
         'title': isBn ? 'মাইন্ড গেম' : 'Mind Game',
         'imageAsset': 'assets/images/mind_games_icon.jpg',
-        'bgColor': AppColors.sageGreen, // #8FBC8F
-        'textColor': AppColors.charcoalGray,
+        'bgColor': isDark ? AppColors.darkForestSurface : AppColors.sageGreen,
+        'textColor': isDark ? AppColors.lightText : AppColors.charcoalGray,
       },
       {
         'id': 'browse_courses',
@@ -39,8 +41,8 @@ class QuickActionsGrid extends StatelessWidget {
         'id': 'book_session',
         'title': isBn ? 'সেশন বুকিং' : 'Book Session',
         'imageAsset': 'assets/images/specialist_consult_icon.jpg',
-        'bgColor': AppColors.paleGreen, // #E0EEE0 Distinct Pale Green Surface Card
-        'textColor': AppColors.deepForestGreen,
+        'bgColor': isDark ? AppColors.darkForestSurface : AppColors.paleGreen,
+        'textColor': isDark ? AppColors.sageGreen : AppColors.deepForestGreen,
       },
     ];
 
@@ -49,11 +51,11 @@ class QuickActionsGrid extends StatelessWidget {
       children: [
         Text(
           isBn ? 'দ্রুত সেবা' : 'Quick Actions',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             letterSpacing: -0.3,
-            color: AppColors.textPrimary,
+            color: isDark ? AppColors.lightText : AppColors.charcoalGray,
           ),
         ),
         const SizedBox(height: 14),
