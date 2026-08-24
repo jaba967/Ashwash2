@@ -42,8 +42,10 @@ class KnowledgeHubScreen extends StatelessWidget {
     final resources = hubProvider.resources;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(isBn ? 'নলেজ হাব' : 'Knowledge Hub'),
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        title: Text(isBn ? 'নলেজ হাব' : 'Knowledge Hub', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         elevation: 0,
       ),
       body: Column(
@@ -54,13 +56,14 @@ class KnowledgeHubScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColors.primary,
+              color: AppColors.lightMint, // #98E8DE Information Card Background
               borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.accent.withOpacity(0.3)),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withOpacity(0.3),
-                  blurRadius: 16,
-                  offset: const Offset(0, 6),
+                  color: AppColors.accent.withOpacity(0.2),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
@@ -72,14 +75,14 @@ class KnowledgeHubScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: AppColors.textPrimary,
                         ),
                       ),
                       Text(
                         isBn ? 'অডিও, ভিডিও ও বিষয়ভিত্তিক PDF বইসমূহ' : 'Audio, video & PDF psychological books',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 13,
-                          color: Colors.white.withOpacity(0.9),
+                          color: AppColors.secondary,
                         ),
                       ),
                     ],

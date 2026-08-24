@@ -18,25 +18,29 @@ class QuickActionsGrid extends StatelessWidget {
         'id': 'knowledge_hub',
         'title': isBn ? 'নলেজ হাব' : 'Knowledge Hub',
         'imageAsset': 'assets/images/knowledge_hub_icon.jpg',
-        'bgColor': const Color(0xFF6366F1), // Indigo
+        'bgColor': AppColors.deepPurple, // #4E1F6E
+        'textColor': Colors.white,
       },
       {
         'id': 'mind_game',
         'title': isBn ? 'মাইন্ড গেম' : 'Mind Game',
         'imageAsset': 'assets/images/mind_games_icon.jpg',
-        'bgColor': const Color(0xFF8B5CF6), // Purple
+        'bgColor': AppColors.darkIndigo, // #3E3E75
+        'textColor': Colors.white,
       },
       {
         'id': 'browse_courses',
         'title': isBn ? 'কোর্স ব্রাউজ' : 'Browse Courses',
         'imageAsset': 'assets/images/courses_browse_icon.jpg',
-        'bgColor': const Color(0xFF0284C7), // Blue/Cyan
+        'bgColor': AppColors.teal, // #45A9A9
+        'textColor': Colors.white,
       },
       {
         'id': 'book_session',
         'title': isBn ? 'সেশন বুকিং' : 'Book Session',
         'imageAsset': 'assets/images/specialist_consult_icon.jpg',
-        'bgColor': const Color(0xFFEC4899), // Pink
+        'bgColor': AppColors.lightMint, // #98E8DE
+        'textColor': AppColors.textPrimary, // #1F1F1F
       },
     ];
 
@@ -49,6 +53,7 @@ class QuickActionsGrid extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
             letterSpacing: -0.3,
+            color: AppColors.textPrimary,
           ),
         ),
         const SizedBox(height: 14),
@@ -70,8 +75,8 @@ class QuickActionsGrid extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: (action['bgColor'] as Color).withOpacity(0.3),
-                    blurRadius: 10,
+                    color: (action['bgColor'] as Color).withOpacity(0.25),
+                    blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
                 ],
@@ -112,10 +117,10 @@ class QuickActionsGrid extends StatelessWidget {
                         Expanded(
                           child: Text(
                             action['title'],
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: action['textColor'],
                             ),
                           ),
                         ),

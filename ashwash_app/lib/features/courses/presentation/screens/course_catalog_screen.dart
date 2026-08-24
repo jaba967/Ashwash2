@@ -69,9 +69,11 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
     final filteredCourses = courseProvider.getFilteredCourses(widget.categoryId, _searchQuery);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.categoryTitle),
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         elevation: 0,
+        title: Text(widget.categoryTitle, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       body: courseProvider.isLoading
           ? const Center(child: CircularProgressIndicator(color: AppColors.primary))

@@ -258,14 +258,14 @@ class _CommunityScreenState extends State<CommunityScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.primary,
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text(
           isBn ? 'কমিউনিটি ফোরাম' : 'Community Forum',
-          style: TextStyle(color: isDark ? Colors.white : Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
       ),
       body: Column(
@@ -277,15 +277,15 @@ class _CommunityScreenState extends State<CommunityScreen> {
               return Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                color: AppColors.primary.withOpacity(0.15),
+                color: AppColors.lightMint,
                 child: Row(
                   children: [
-                    const Icon(Icons.verified_user_rounded, color: Colors.black, size: 20),
+                    const Icon(Icons.verified_user_rounded, color: AppColors.primary, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         isBn ? 'ভেরিফাইড স্পেশালিস্ট মোড: আপনার মন্তব্য ডক্টর ব্যাজসহ দেখা যাবে' : 'Verified Specialist Mode: Replying with Official Doctor Badge',
-                        style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12),
+                        style: const TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 12),
                       ),
                     ),
                   ],
@@ -308,10 +308,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   child: ChoiceChip(
                     label: Text(tag),
                     selected: isSelected,
-                    selectedColor: AppColors.primary,
-                    backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+                    selectedColor: AppColors.accent,
+                    backgroundColor: const Color(0xFFF8F9FA),
                     labelStyle: TextStyle(
-                      color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black),
+                      color: isSelected ? Colors.white : AppColors.secondary,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -335,7 +335,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     ? Center(
                         child: Text(
                           isBn ? 'কোনো পোস্ট পাওয়া যায়নি' : 'No community posts found',
-                          style: TextStyle(color: isDark ? Colors.white70 : Colors.white),
+                          style: const TextStyle(color: AppColors.secondary),
                         ),
                       )
                     : RefreshIndicator(
@@ -384,9 +384,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.glassSurface,
+        color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.textSecondaryLight),
+        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.02),
@@ -423,7 +423,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       children: [
                         Text(
                           authorAlias,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : Colors.black),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: isDark ? Colors.white : const Color(0xFF0F172A)),
                         ),
                         if (isAnon)
                           Container(
@@ -442,7 +442,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     const SizedBox(height: 2),
                     Text(
                       _formatCreatedAt(post['created_at']),
-                      style: TextStyle(fontSize: 11, color: AppColors.textSecondaryLight),
+                      style: TextStyle(fontSize: 11, color: isDark ? Colors.grey.shade400 : Colors.grey.shade500),
                     ),
                   ],
                 ),
@@ -466,7 +466,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
           // Post Body Text
           Text(
             post['content'] ?? '',
-            style: TextStyle(fontSize: 15, height: 1.5, color: isDark ? Colors.white : Colors.white),
+            style: TextStyle(fontSize: 15, height: 1.5, color: isDark ? Colors.grey.shade200 : const Color(0xFF334155)),
           ),
           const SizedBox(height: 16),
           const Divider(height: 1),
@@ -479,11 +479,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 icon: Icon(
                   isLiked ? Icons.favorite_rounded : Icons.favorite_border_rounded,
                   size: 22,
-                  color: isLiked ? Colors.redAccent : Colors.white,
+                  color: isLiked ? Colors.redAccent : Colors.grey.shade500,
                 ),
                 onPressed: () => _toggleLike(post['id'] ?? 0, index),
               ),
-              Text('$likesCount', style: TextStyle(color: isDark ? Colors.white70 : Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
+              Text('$likesCount', style: TextStyle(color: isDark ? Colors.white70 : Colors.grey.shade700, fontWeight: FontWeight.bold, fontSize: 13)),
               const SizedBox(width: 20),
 
               // View Specialist Comments Button
@@ -516,7 +516,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       (authUser != null && !isAnon && post['author_alias'] == '${authUser.firstName} ${authUser.lastName}'.trim());
 
                   return PopupMenuButton<String>(
-                    icon: Icon(Icons.more_vert_rounded, size: 20, color: AppColors.textSecondaryLight),
+                    icon: Icon(Icons.more_vert_rounded, size: 20, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     onSelected: (val) {
                       final pId = post['id'] is int ? post['id'] : (int.tryParse(post['id'].toString()) ?? 0);
@@ -535,7 +535,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             value: 'edit',
                             child: Row(
                               children: [
-                                const Icon(Icons.edit_note_rounded, color: Colors.black, size: 20),
+                                const Icon(Icons.edit_note_rounded, color: AppColors.primary, size: 20),
                                 const SizedBox(width: 8),
                                 Text(isBn ? 'সম্পাদনা করুন' : 'Edit Post', style: const TextStyle(fontWeight: FontWeight.w600)),
                               ],
@@ -607,13 +607,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
                   Text(
                     isBn ? 'পোস্ট সম্পাদনা করুন' : 'Edit Community Post',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
                   ),
                   const SizedBox(height: 16),
                   DropdownButtonFormField<String>(
@@ -733,7 +733,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       isBn
                           ? 'এই পোস্টটিতে কি কোনো সমস্যা রয়েছে? অনুগ্রহ করে কারণ উল্লেখ করুন:'
                           : 'Why are you reporting this post? Our moderation team will investigate:',
-                      style: const TextStyle(fontSize: 13, color: Colors.black),
+                      style: const TextStyle(fontSize: 13, color: Colors.black87),
                     ),
                     const SizedBox(height: 14),
                     ...reasons.map((r) {
@@ -826,13 +826,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
                   Text(
                     isBn ? 'কমিউনিটিতে নতুন পোস্ট করুন' : 'Create Community Post',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
                   ),
                   const SizedBox(height: 16),
 
@@ -1014,7 +1014,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: AppColors.textSecondaryLight, borderRadius: BorderRadius.circular(2)),
+                      decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -1039,7 +1039,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             child: Center(
                               child: Text(
                                 isBn ? 'এখনো কোনো বিশেষজ্ঞ কমেন্ট করেননি।' : 'No specialist responses yet.',
-                                style: const TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.grey),
                               ),
                             ),
                           )
@@ -1070,7 +1070,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                         const Spacer(),
                                         Text(
                                           _formatCreatedAt(c['created_at']),
-                                          style: const TextStyle(fontSize: 10, color: Colors.white),
+                                          style: const TextStyle(fontSize: 10, color: Colors.grey),
                                         ),
                                       ],
                                     ),
@@ -1104,7 +1104,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                         IconButton(
                           icon: isPosting
                               ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                              : const Icon(Icons.send_rounded, color: Colors.black),
+                              : const Icon(Icons.send_rounded, color: AppColors.primary),
                           onPressed: isPosting
                               ? null
                               : () async {

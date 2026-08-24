@@ -46,49 +46,54 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withOpacity(0.08),
               blurRadius: 16,
               offset: const Offset(0, -4),
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-            if (index == 0) {
-              Provider.of<DashboardProvider>(context, listen: false).fetchDashboardData();
-            }
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: isDark ? Colors.white : Colors.white,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12),
-          elevation: 0,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home_rounded),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.groups_outlined),
-              activeIcon: Icon(Icons.groups_rounded),
-              label: 'Community',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline_rounded),
-              activeIcon: Icon(Icons.person_rounded),
-              label: 'Profile',
-            ),
-          ],
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            indicatorColor: AppColors.lightMint, // #98E8DE Light Mint active indicator
+          ),
+          child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+              if (index == 0) {
+                Provider.of<DashboardProvider>(context, listen: false).fetchDashboardData();
+              }
+            },
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: AppColors.primary, // #4E1F6E Deep Purple
+            unselectedItemColor: AppColors.secondary, // #3E3E75 Dark Indigo
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.primary),
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: AppColors.secondary),
+            elevation: 0,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                activeIcon: Icon(Icons.home_rounded),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.groups_outlined),
+                activeIcon: Icon(Icons.groups_rounded),
+                label: 'Community',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline_rounded),
+                activeIcon: Icon(Icons.person_rounded),
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );

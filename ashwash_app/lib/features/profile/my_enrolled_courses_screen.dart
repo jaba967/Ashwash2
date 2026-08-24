@@ -302,25 +302,23 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.primary,
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text(
+        title: const Text(
           'My Enrolled Courses',
           style: TextStyle(
-            color: isDark ? Colors.white : Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: _fetchEnrolledCourses,
             tooltip: 'Refresh',
           ),
@@ -329,7 +327,7 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator(color: AppColors.primary))
           : _error != null
-              ? _buildErrorState(isDark)
+              ? _buildErrorState(false)
               : _rawCourses.isEmpty
                   ? _buildEmptyState(isDark)
                   : RefreshIndicator(
@@ -428,9 +426,9 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: AppColors.glassSurface,
+        color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.white : Colors.white, width: 1.5),
+        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200, width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.03),
@@ -501,7 +499,7 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : Colors.black,
+                      color: isDark ? Colors.white : const Color(0xFF0F172A),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -518,7 +516,7 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
                         child: const Icon(
                           Icons.person_outline_rounded,
                           size: 14,
-                          color: Colors.black,
+                          color: AppColors.primary,
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -540,7 +538,7 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: isDark ? Colors.white : Colors.white,
+                        color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
                       ),
                     ),
                   ],
@@ -604,14 +602,14 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : const Color(0xFF0F172A),
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Please check your internet connection and try again.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: isDark ? Colors.white : Colors.white),
+              style: TextStyle(fontSize: 14, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
             ),
             const SizedBox(height: 24),
             ElevatedButton.icon(
@@ -651,14 +649,14 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : const Color(0xFF0F172A),
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'Explore our mental wellness programs and enroll in courses designed by expert psychologists.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: isDark ? Colors.white : Colors.white),
+              style: TextStyle(fontSize: 14, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
             ),
             const SizedBox(height: 24),
             ElevatedButton(

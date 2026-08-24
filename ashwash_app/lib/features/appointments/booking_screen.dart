@@ -86,8 +86,11 @@ class _BookingScreenState extends State<BookingScreen> {
 
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(isBn ? 'সেশন বুকিং' : 'Book Session', style: const TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        elevation: 0,
+        title: Text(isBn ? 'সেশন বুকিং' : 'Book Session', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -98,9 +101,9 @@ class _BookingScreenState extends State<BookingScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: isDark ? 0.15 : 0.08),
+                color: AppColors.lightMint.withOpacity(0.4), // #98E8DE Information Highlight Area
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.primary.withValues(alpha: isDark ? 0.4 : 0.2)),
+                border: Border.all(color: AppColors.accent.withOpacity(0.3)),
               ),
               child: Row(
                 children: [

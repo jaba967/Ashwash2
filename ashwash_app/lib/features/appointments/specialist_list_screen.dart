@@ -163,10 +163,14 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(isBn ? 'বিশেষজ্ঞ সেশন বুকিং' : 'Book Specialist Session', style: const TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         elevation: 0,
+        title: Text(
+          isBn ? 'বিশেষজ্ঞ সেশন বুকিং' : 'Book Specialist Session',
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
@@ -178,10 +182,10 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
               onChanged: (val) => setState(() => _searchQuery = val),
               decoration: InputDecoration(
                 hintText: isBn ? 'ডাক্তারের নাম বা রোগ অনুযায়ী খুঁজুন...' : 'Search doctor by name (e.g. jaba acharjee)...',
-                prefixIcon: const Icon(Icons.search_rounded, color: Colors.black),
+                prefixIcon: const Icon(Icons.search_rounded, color: AppColors.primary),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
-                        icon: const Icon(Icons.clear_rounded, color: Colors.white),
+                        icon: const Icon(Icons.clear_rounded, color: Colors.grey),
                         onPressed: () {
                           _searchCtrl.clear();
                           setState(() => _searchQuery = '');
@@ -189,14 +193,14 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                       )
                     : null,
                 filled: true,
-                fillColor: AppColors.glassSurface,
+                fillColor: isDark ? AppColors.darkSurface : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
+                  borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade300),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(color: isDark ? Colors.white : Colors.white),
+                  borderSide: BorderSide(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
                 ),
               ),
             ),
@@ -215,9 +219,9 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                     label: Text(tab),
                     selected: isSelected,
                     selectedColor: AppColors.primary,
-                    backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
+                    backgroundColor: isDark ? AppColors.darkSurface : Colors.grey.shade200,
                     labelStyle: TextStyle(
-                      color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black),
+                      color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -239,11 +243,11 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(Icons.search_off_rounded, size: 54, color: Colors.white),
+                            const Icon(Icons.search_off_rounded, size: 54, color: Colors.grey),
                             const SizedBox(height: 10),
                             Text(
                               isBn ? 'কোনো বিশেষজ্ঞ পাওয়া যায়নি' : 'No specialist found',
-                              style: TextStyle(color: isDark ? Colors.white70 : Colors.white),
+                              style: TextStyle(color: isDark ? Colors.white70 : Colors.grey.shade600),
                             ),
                           ],
                         ),
@@ -267,9 +271,9 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
       margin: const EdgeInsets.only(bottom: 18),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.glassSurface,
+        color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: isDark ? Colors.white : Colors.white),
+        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200),
         boxShadow: const [
           BoxShadow(color: Color(0x08000000), blurRadius: 12, offset: Offset(0, 4)),
         ],
@@ -297,7 +301,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                         Expanded(
                           child: Text(
                             spec.name,
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isDark ? Colors.white : Colors.black),
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isDark ? Colors.white : Colors.black87),
                           ),
                         ),
                         Container(
@@ -334,7 +338,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                     if (spec.workingPlace.isNotEmpty)
                       Text(
                         spec.workingPlace,
-                        style: TextStyle(fontSize: 11, color: isDark ? Colors.white : Colors.white),
+                        style: TextStyle(fontSize: 11, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
                       ),
                   ],
                 ),
@@ -357,7 +361,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
                     children: [
                       Text(
                         '${spec.experienceYears} ${isBn ? "বছর অভিজ্ঞতা" : "yrs exp"}',
-                        style: const TextStyle(fontSize: 12, color: Colors.white),
+                        style: const TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                     ],
                   ),

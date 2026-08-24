@@ -43,15 +43,15 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.primary,
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text(
           isBn ? 'আমার বুকিংকৃত সেশনসমূহ' : 'My Booked Sessions',
-          style: TextStyle(
-            color: isDark ? Colors.white : Colors.black,
+          style: const TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -62,7 +62,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
           // Filter Tabs (All, Confirmed, Pending, Missed)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            color: AppColors.glassSurface,
+            color: Colors.white,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -88,8 +88,8 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
                     padding: const EdgeInsets.all(20),
                     itemCount: filteredAppointments.length,
                     itemBuilder: (context, index) {
-                      final app = filteredAppointments[index];
-                      return _buildAppointmentCard(context, app, isBn, isDark);
+                      final appt = filteredAppointments[index];
+                      return _buildAppointmentCard(context, appt, isBn, isDark);
                     },
                   ),
           ),
@@ -118,14 +118,14 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       label: Text(
         label,
         style: TextStyle(
-          color: isSelected ? Colors.white : (isDark ? Colors.white : Colors.black),
+          color: isSelected ? Colors.white : AppColors.secondary,
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           fontSize: 13,
         ),
       ),
       selected: isSelected,
-      selectedColor: AppColors.primary,
-      backgroundColor: isDark ? const Color(0xFF1E1F2C) : Colors.white,
+      selectedColor: AppColors.accent,
+      backgroundColor: const Color(0xFFF8F9FA),
       onSelected: (_) => setState(() => _selectedFilter = filterKey),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -212,9 +212,9 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.glassSurface,
+        color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.white : Colors.white, width: 1.5),
+        border: Border.all(color: isDark ? Colors.grey.shade800 : Colors.grey.shade200, width: 1.5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.02),
@@ -234,7 +234,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
                 backgroundColor: AppColors.primary.withOpacity(0.15),
                 backgroundImage: app.patientAvatar.startsWith('http') ? NetworkImage(app.patientAvatar) : null,
                 child: !app.patientAvatar.startsWith('http')
-                    ? const Icon(Icons.person_rounded, color: Colors.black, size: 28)
+                    ? const Icon(Icons.person_rounded, color: AppColors.primary, size: 28)
                     : null,
               ),
               const SizedBox(width: 14),
@@ -247,7 +247,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
-                          color: isDark ? Colors.white : Colors.black,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
                         ),
                       ),
                     const SizedBox(height: 2),
@@ -255,7 +255,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
                       isBn ? 'ক্লিনিক্যাল সাইকোলজিস্ট' : 'Clinical Psychologist & Consultant',
                       style: TextStyle(
                         fontSize: 13,
-                        color: isDark ? Colors.white : Colors.white,
+                        color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
                       ),
                     ),
                   ],
@@ -320,25 +320,25 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
           // Date, Time Slot & Category Details
           Row(
             children: [
-              const Icon(Icons.calendar_month_outlined, size: 18, color: Colors.black),
+              const Icon(Icons.calendar_month_outlined, size: 18, color: AppColors.primary),
               const SizedBox(width: 8),
               Text(
                 '${app.date}',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: isDark ? Colors.white70 : Colors.black,
+                  color: isDark ? Colors.white70 : Colors.black87,
                 ),
               ),
               const SizedBox(width: 16),
-              const Icon(Icons.access_time_rounded, size: 18, color: Colors.black),
+              const Icon(Icons.access_time_rounded, size: 18, color: AppColors.primary),
               const SizedBox(width: 8),
               Text(
                 app.timeSlot,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: isDark ? Colors.white70 : Colors.black,
+                  color: isDark ? Colors.white70 : Colors.black87,
                 ),
               ),
             ],
@@ -352,14 +352,14 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
               const SizedBox(width: 8),
               Text(
                 '${isBn ? 'ক্যাটাগরি' : 'Category'}: ',
-                style: TextStyle(fontSize: 13, color: isDark ? Colors.white : Colors.white),
+                style: TextStyle(fontSize: 13, color: isDark ? Colors.grey.shade400 : Colors.grey.shade600),
               ),
               Text(
                 app.category,
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
-                  color: isDark ? Colors.white : Colors.black,
+                  color: isDark ? Colors.white : Colors.black87,
                 ),
               ),
             ],
@@ -411,7 +411,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
               child: const Icon(
                 Icons.calendar_today_rounded,
                 size: 64,
-                color: Colors.black,
+                color: AppColors.primary,
               ),
             ),
             const SizedBox(height: 20),
@@ -420,7 +420,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : const Color(0xFF0F172A),
               ),
             ),
             const SizedBox(height: 8),
@@ -431,7 +431,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Colors.white : Colors.white,
+                color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
               ),
             ),
             const SizedBox(height: 24),

@@ -297,6 +297,7 @@ class MyCoursesList extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.3,
+                color: AppColors.textPrimary,
               ),
             ),
             GestureDetector(
@@ -305,8 +306,8 @@ class MyCoursesList extends StatelessWidget {
                 'View All',
                 style: TextStyle(
                   fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primary,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.accent, // #45A9A9 Teal CTA
                 ),
               ),
             ),
@@ -325,17 +326,18 @@ class MyCoursesList extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             decoration: BoxDecoration(
-              color: isDark ? AppColors.cardDark : AppColors.cardLight,
+              color: AppColors.lightMint.withOpacity(0.4), // #98E8DE Light Mint card bg
               borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.accent.withOpacity(0.2)),
             ),
             child: Column(
               children: [
-                Icon(Icons.school_outlined, size: 48, color: Colors.white),
+                const Icon(Icons.school_outlined, size: 48, color: AppColors.secondary),
                 const SizedBox(height: 12),
                 Text(
                   isBn ? 'আপনি এখনো কোনো কোর্সে এনরোল করেননি।' : 'You are not enrolled in any courses yet.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: const TextStyle(color: AppColors.secondary, fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -344,94 +346,96 @@ class MyCoursesList extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-          itemCount: courses.length,
-          itemBuilder: (context, index) {
-            final course = courses[index];
+            itemCount: courses.length,
+            itemBuilder: (context, index) {
+              final course = courses[index];
 
-            return GestureDetector(
-              onTap: () {
-                final target = _buildCourseModel(course);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => CourseDetailScreen(course: target)),
-                );
-              },
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 14),
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  color: isDark ? AppColors.cardDark : AppColors.cardLight,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0x08000000),
-                      blurRadius: 12,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _getCourseTitle(course),
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+              return GestureDetector(
+                onTap: () {
+                  final target = _buildCourseModel(course);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => CourseDetailScreen(course: target)),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 14),
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    color: AppColors.lightMint.withOpacity(0.35), // #98E8DE Light Mint card bg
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x06000000),
+                        blurRadius: 10,
+                        offset: Offset(0, 4),
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      _getCourseDescription(course),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: isDark ? Colors.white : Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 14),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: AppColors.primary.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            isBn ? '📚 এনরোলড' : '📚 Enrolled',
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primary,
-                            ),
-                          ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _getCourseTitle(course),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textPrimary,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              isBn ? 'শিক্ষা শুরু করুন' : 'Continue',
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        _getCourseDescription(course),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: AppColors.secondary, // #3E3E75 Dark Indigo
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: AppColors.accent.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              isBn ? '📚 এনরোলড' : '📚 Enrolled',
                               style: const TextStyle(
-                                fontSize: 13,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primary,
                               ),
                             ),
-                            const SizedBox(width: 4),
-                            const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: Colors.black),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                          ),
+                          Row(
+                            children: const [
+                              Text(
+                                'Continue',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primary, // #4E1F6E Deep Purple
+                                ),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(Icons.arrow_forward_ios_rounded, size: 12, color: AppColors.primary),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
-        ),
+              );
+            },
+          ),
       ],
     );
   }

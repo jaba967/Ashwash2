@@ -48,21 +48,20 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Colors.black : const Color(0xFFF8FAFC),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: isDark ? Colors.black : Colors.white,
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         elevation: 0,
         scrolledUnderElevation: 0,
         titleSpacing: 20,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded,
-              color: isDark ? Colors.white : Colors.black),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           isBn ? 'মাইন্ড গেমসমূহ (Mind Games)' : 'Mind Games Hub',
-          style: TextStyle(
-            color: isDark ? Colors.white : Colors.black,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -148,7 +147,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: isDark ? Colors.white : Colors.white,
+                      color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
                       letterSpacing: 1.2,
                     ),
                   ),
@@ -245,10 +244,10 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.glassSurface,
+        color: isDark ? const Color(0xFF111111) : Colors.white,
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: isDark ? Colors.white : Colors.white,
+          color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
           width: 1.2,
         ),
         boxShadow: [
@@ -299,7 +298,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
-                          color: isDark ? Colors.white : Colors.black,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -308,8 +307,8 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                         style: TextStyle(
                           fontSize: 12,
                           color: isDark
-                              ? Colors.white
-                              : Colors.white,
+                              ? Colors.grey.shade400
+                              : Colors.grey.shade600,
                           height: 1.3,
                         ),
                       ),
@@ -370,7 +369,7 @@ class _MindGamesHubScreenState extends State<MindGamesHubScreen> {
                 Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 18,
-                  color: isDark ? Colors.white : Colors.white,
+                  color: isDark ? Colors.grey.shade600 : Colors.grey,
                 ),
               ],
             ),

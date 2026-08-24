@@ -34,12 +34,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final dashboardProvider = Provider.of<DashboardProvider>(context);
     final notifProvider = Provider.of<NotificationProvider>(context);
 
-    return Container(
-      decoration: const BoxDecoration(color: Colors.transparent),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        elevation: 0,
         title: Row(
           children: [
             Image.asset(
@@ -48,7 +48,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               width: 36,
               fit: BoxFit.contain,
               errorBuilder: (context, error, stackTrace) =>
-                  const Icon(Icons.health_and_safety, color: Colors.black, size: 36),
+                  const Icon(Icons.health_and_safety, color: Colors.white, size: 36),
             ),
             const SizedBox(width: 10),
             const Text(
@@ -56,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: AppColors.primary,
+                color: Colors.white,
               ),
             ),
           ],
@@ -73,7 +73,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             icon: Stack(
               clipBehavior: Clip.none,
               children: [
-                Icon(Icons.notifications_none_rounded, size: 28, color: AppColors.textPrimaryLight),
+                const Icon(Icons.notifications_none_rounded, size: 28, color: Colors.white),
                 if (notifProvider.unreadCount > 0)
                   Positioned(
                     right: -2,
@@ -81,7 +81,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(3),
                       decoration: const BoxDecoration(
-                        color: Colors.red,
+                        color: AppColors.accent, // #45A9A9 Teal badge
                         shape: BoxShape.circle,
                       ),
                       constraints: const BoxConstraints(
@@ -104,8 +104,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           const SizedBox(width: 8),
         ],
-        elevation: 0,
-        backgroundColor: Colors.transparent,
       ),
       body: dashboardProvider.isLoading
           ? const Center(child: CircularProgressIndicator(color: AppColors.primary))
@@ -171,7 +169,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 ),
               ),
-            ),
-    ));
+            );
   }
 }

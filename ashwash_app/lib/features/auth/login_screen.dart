@@ -119,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final isBn = langProvider.isBangla;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
