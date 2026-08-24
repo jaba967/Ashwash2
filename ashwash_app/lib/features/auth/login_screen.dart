@@ -4,7 +4,8 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/localization/app_language_provider.dart';
 import '../../core/theme/app_theme.dart';
-import '../../core/services/auth_service.dart';
+import '../../core/providers/auth_provider.dart';
+import '../navigation/presentation/screens/main_navigation_screen.dart';
 import 'category_selection_screen.dart';
 import 'register_screen.dart';
 
@@ -16,8 +17,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _emailController = TextEditingController(text: 'you@example.com');
-  final _passwordController = TextEditingController(text: '12345678');
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _isLoading = false;
 
   String? _emailError;
@@ -37,42 +38,40 @@ class _LoginScreenState extends State<LoginScreen> {
 
     bool hasError = false;
     if (email.isEmpty) {
-      setState(() => _emailError = isBn ? 'ইউজারনেম অথবা ইমেইল দেওয়া আবশ্যিক' : 'Email is required');
+      setState(() => _emailError = isBn ? 'ইউজারনেম অথবা ইমেইল দেওয়া আবশ্যিক' : 'Email or username is required');
       hasError = true;
     }
 
     if (pass.isEmpty) {
       setState(() => _passwordError = isBn ? 'পাসওয়ার্ড প্রদান করা আবশ্যিক' : 'Password is required');
       hasError = true;
-    } else if (pass.length < 6) {
-      setState(() => _passwordError = isBn ? 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে' : 'Password must be at least 6 characters');
-      hasError = true;
     }
 
     if (hasError) return;
 
     setState(() => _isLoading = true);
-    final authService = Provider.of<AuthService>(context, listen: false);
-    final success = await authService.login(email, pass);
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final success = await authProvider.login(email, pass);
     setState(() => _isLoading = false);
 
     if (success && mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const CategorySelectionScreen()),
+        MaterialPageRoute(builder: (_) => const MainNavigationScreen()),
       );
     } else if (mounted) {
+      final serverErr = authProvider.errorMessage;
       setState(() {
-        _emailError = isBn ? 'ইউজারনেম বা ইমেইল সঠিক নয়' : 'Incorrect email or username';
+        _emailError = serverErr ?? (isBn ? 'ইউজারনেম বা ইমেইল সঠিক নয়' : 'Incorrect email or username');
         _passwordError = isBn ? 'পাসওয়ার্ডটি ভুল হয়েছে' : 'Incorrect password';
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            isBn
+            serverErr ?? (isBn
                 ? 'লগইন তথ্য ভুল দেওয়া হয়েছে! চিহ্নিত লাল ফিল্ডগুলো চেক করুন।'
-                : 'Incorrect credentials! Please check highlighted red fields.',
+                : 'Incorrect credentials! Please check highlighted red fields.'),
           ),
           backgroundColor: AppColors.emergency,
         ),

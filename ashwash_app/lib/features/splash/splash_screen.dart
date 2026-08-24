@@ -33,6 +33,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   void _navigateToNext() async {
+    // Background warm-up call to wake Render cloud backend on app launch
+    ApiService.get(ApiEndpoints.courses, requireAuth: false).catchError((_) {});
+
     await Future.delayed(const Duration(milliseconds: 2500));
     if (!mounted) return;
 
