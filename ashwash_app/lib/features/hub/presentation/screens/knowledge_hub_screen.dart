@@ -42,7 +42,7 @@ class KnowledgeHubScreen extends StatelessWidget {
     final resources = hubProvider.resources;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
         backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         title: Text(isBn ? 'নলেজ হাব' : 'Knowledge Hub', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
@@ -56,12 +56,11 @@ class KnowledgeHubScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColors.lightMint, // #98E8DE Information Card Background
+              color: AppColors.primary, // #4E1F6E Deep Purple Highlight Header Card
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.accent.withOpacity(0.3)),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.accent.withOpacity(0.2),
+                  color: AppColors.primary.withOpacity(0.3),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -69,23 +68,23 @@ class KnowledgeHubScreen extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        isBn ? 'নলেজ হাব ও PDF লাইব্রেরি' : 'Knowledge Hub & PDF Library',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Text(
-                        isBn ? 'অডিও, ভিডিও ও বিষয়ভিত্তিক PDF বইসমূহ' : 'Audio, video & PDF psychological books',
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: AppColors.secondary,
-                        ),
-                      ),
-                    ],
+              children: [
+                Text(
+                  isBn ? 'নলেজ হাব ও PDF লাইব্রেরি' : 'Knowledge Hub & PDF Library',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  isBn ? 'অডিও, ভিডিও ও বিষয়ভিত্তিক PDF বইসমূহ' : 'Audio, video & PDF psychological books',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: AppColors.mint,
+                  ),
+                ),
+              ],
             ),
           ),
 

@@ -305,7 +305,7 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         elevation: 0,

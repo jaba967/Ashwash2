@@ -39,8 +39,8 @@ class QuickActionsGrid extends StatelessWidget {
         'id': 'book_session',
         'title': isBn ? 'সেশন বুকিং' : 'Book Session',
         'imageAsset': 'assets/images/specialist_consult_icon.jpg',
-        'bgColor': AppColors.lightMint, // #98E8DE
-        'textColor': AppColors.textPrimary, // #1F1F1F
+        'bgColor': AppColors.deepPurple, // #4E1F6E
+        'textColor': Colors.white,
       },
     ];
 

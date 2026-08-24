@@ -35,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final notifProvider = Provider.of<NotificationProvider>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header

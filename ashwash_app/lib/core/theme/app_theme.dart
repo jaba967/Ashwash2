@@ -16,34 +16,41 @@ class AppThemeProvider extends ChangeNotifier {
     useMaterial3: true,
     brightness: Brightness.light,
     primaryColor: AppColors.primary, // #4E1F6E Deep Purple
-    scaffoldBackgroundColor: AppColors.bgLight, // #FFFFFF Clean White
-    cardColor: AppColors.cardLight,
+    scaffoldBackgroundColor: AppColors.lightMint, // #98E8DE Light Mint Background
+    cardColor: Colors.white,
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary, // #4E1F6E Deep Purple
       secondary: AppColors.secondary, // #3E3E75 Dark Indigo
       tertiary: AppColors.accent, // #45A9A9 Teal
       error: AppColors.danger,
-      surface: AppColors.cardLight,
-      background: AppColors.bgLight,
+      surface: Colors.white,
+      background: AppColors.lightMint,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primary, // #4E1F6E Deep Purple
+      backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
       actionsIconTheme: IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE
       selectedItemColor: AppColors.primary, // #4E1F6E Deep Purple
       unselectedItemColor: AppColors.secondary, // #3E3E75 Dark Indigo
       elevation: 8,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Primary Button
         foregroundColor: Colors.white,
         textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.secondary, // #3E3E75 Dark Indigo Secondary Button
+        side: const BorderSide(color: AppColors.secondary, width: 1.5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
       ),
     ),
@@ -56,3 +63,4 @@ class AppThemeProvider extends ChangeNotifier {
 
   static ThemeData darkTheme = lightTheme;
 }
+

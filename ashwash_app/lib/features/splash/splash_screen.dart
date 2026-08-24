@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../core/constants/app_colors.dart';
 import '../../core/services/auth_service.dart';
 import '../onboarding/onboarding_screen.dart';
 import '../navigation/presentation/screens/main_navigation_screen.dart';
@@ -59,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,

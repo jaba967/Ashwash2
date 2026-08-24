@@ -43,9 +43,9 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text(
@@ -62,7 +62,7 @@ class _MyPatientSessionsScreenState extends State<MyPatientSessionsScreen> {
           // Filter Tabs (All, Confirmed, Pending, Missed)
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            color: Colors.white,
+            color: AppColors.lightMint,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

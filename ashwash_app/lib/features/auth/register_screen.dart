@@ -50,8 +50,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final isBn = Provider.of<AppLanguageProvider>(context).isBangla;
 
     return Scaffold(
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
-        title: Text(isBn ? 'সাইন আপ' : 'Register', style: const TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
+        elevation: 0,
+        title: Text(isBn ? 'সাইন আপ' : 'Register', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

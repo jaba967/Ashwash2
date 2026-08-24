@@ -46,10 +46,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.lightMint, // #98E8DE Light Mint Bottom Nav Background
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: AppColors.darkIndigo.withOpacity(0.12),
               blurRadius: 16,
               offset: const Offset(0, -4),
             ),
@@ -57,7 +57,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: AppColors.lightMint, // #98E8DE Light Mint active indicator
+            indicatorColor: AppColors.accent, // #45A9A9 Teal Active Indicator
           ),
           child: BottomNavigationBar(
             currentIndex: _currentIndex,
@@ -70,11 +70,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               }
             },
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            selectedItemColor: AppColors.primary, // #4E1F6E Deep Purple
-            unselectedItemColor: AppColors.secondary, // #3E3E75 Dark Indigo
+            backgroundColor: AppColors.lightMint, // #98E8DE Light Mint Nav Background
+            selectedItemColor: AppColors.primary, // #4E1F6E Deep Purple Selected
+            unselectedItemColor: AppColors.secondary, // #3E3E75 Dark Indigo Unselected
             selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: AppColors.primary),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: AppColors.secondary),
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: AppColors.secondary),
             elevation: 0,
             items: const [
               BottomNavigationBarItem(

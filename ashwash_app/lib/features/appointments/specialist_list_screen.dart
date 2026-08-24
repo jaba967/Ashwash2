@@ -163,7 +163,7 @@ class _SpecialistListScreenState extends State<SpecialistListScreen> {
     }).toList();
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.lightMint, // #98E8DE Soft Light Mint Page Background
       appBar: AppBar(
         backgroundColor: AppColors.primary, // #4E1F6E Deep Purple Header
         elevation: 0,
