@@ -302,6 +302,8 @@ class _MyEnrolledCoursesScreenState extends State<MyEnrolledCoursesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

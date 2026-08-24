@@ -53,4 +53,5 @@ class AppColors {
   static const Color surfaceLight = Color(0xFFFFFFFF);
   static const Color surfaceDark = Color(0xFFFFFFFF);
   static const Color inputBgLight = Color(0xFFF8F9FA);
+  static const Color glassSurface = Color(0xFFF8F9FA);
 }
